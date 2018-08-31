@@ -1,0 +1,37 @@
+// ================================================= /
+// ======   PROPORTION UTILITIES  ================== /
+// ================================================= /
+
+// Paddings
+.u-padding {
+	@include PSJ_padding-helpers(((
+		fill-empty-responsive-classes: true
+	)));
+}
+
+// Margins
+.u-margin {
+	@include PSJ_margin-helpers((
+		fill-empty-responsive-classes: true
+	));
+
+	@at-root {
+
+		// Negative section margins for overlaps
+		@each $side in (top, bottom) {
+
+			// Set class
+			&-#{$side}--negative-section {
+
+				// Loop through breakpoints and get proportions
+				@each $breakpoint-label, $proportion in map-get($proportion-map, section) {
+
+					// Include responsive styles
+					@include PSJ_breakpoint($breakpoint-label) {
+						margin-#{$side}: $proportion * -1;
+					}
+				}
+			}
+		}
+	}
+}

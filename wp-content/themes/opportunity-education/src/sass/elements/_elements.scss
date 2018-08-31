@@ -1,0 +1,40 @@
+// ================================================= /
+// ======   ELEMENTS  ============================== /
+// ================================================= /
+
+html {
+	&.locked-by-popover {
+		overflow: hidden;
+
+		body {
+			overflow: hidden;
+		}
+	}
+}
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+// Lists
+@import "inc/lists";
+
+// Tables
+@import "inc/tables";

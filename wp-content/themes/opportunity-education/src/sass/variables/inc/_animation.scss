@@ -1,0 +1,173 @@
+// ================================================= /
+// ======   ANIMATION VARIABLES  =================== /
+// ================================================= /
+
+$transition-map: (
+	fast: 0.1s,
+	std: 0.2s,
+	md: 0.5s,
+	slow: 0.625s,
+	very-slow: 1s,
+	sloth: 2s,
+	bezier: cubic-bezier(0.85, 0, 0.3, 1)
+);
+
+// Scales
+
+@keyframes scale-vertical {
+	0% {
+		transform: scaleY(0);
+	}
+	100% {
+		transform: scaleY(1);
+	}
+}
+@keyframes scale-horizontal {
+	0% {
+		transform: scaleX(0);
+	}
+	100% {
+		transform: scaleX(1);
+	}
+}
+
+// Pops
+
+@keyframes pop-in {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+// Fades
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-up {
+	0% {
+		opacity: 0;
+		transform: scaleZ(0.1) translate(0, 1.25rem);
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: scaleZ(0.1) translate(0, 0);
+	}
+}
+@keyframes fade-right {
+	0% {
+		opacity: 0;
+		transform: scaleZ(0.1) translate(-1.125rem, 0);
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: scaleZ(0.1) translate(0, 0);
+	}
+}
+@keyframes fade-down {
+	0% {
+		opacity: 0;
+		transform: scaleZ(0.1) translate(0, -1.25rem);
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: scaleZ(0.1) translate(0, 0);
+	}
+}
+@keyframes fade-left {
+	0% {
+		opacity: 0;
+		transform: scaleZ(0.1) translate(1.25rem, 0);
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: scaleZ(0.1) translate(0, 0);
+	}
+}
+
+// Turns
+
+@keyframes turn-up {
+	0% {
+		opacity: 0;
+		transform: scaleZ(0.1) translate(0, 1.25rem) rotate3d(1, 0, 0, 45deg);
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: scaleZ(0.1) translate(0, 0) rotate3d(1, 0, 0, 0deg);
+	}
+}
+@keyframes turn-down {
+	0% {
+		opacity: 0;
+		transform: scaleZ(0.1) translate(0, -1.25rem) rotate3d(1, 0, 0, 45deg);
+	}
+	25% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: scaleZ(0.1) translate(0, 0) rotate3d(1, 0, 0, 0deg);
+	}
+}
+
+// Draws
+
+@keyframes draw-right-facing-arrow {
+	0% {
+		stroke-dasharray: 134.697516067;
+		stroke-dashoffset: -134.697516067;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes draw-left-facing-arrow {
+	0% {
+		stroke-dasharray: 186.701040017;
+		stroke-dashoffset: -186.701040017;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+// Blinking things
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,92 @@
+// ================================================= /
+// ======   TYPOGRAPHY  ============================ /
+// ================================================= /
+
+// Fonts
+@import 'inc/fonts';
+
+// Text utility placeholder
+%u-text {
+
+	// Include text styles
+	@include PSJ_text-styles((
+		text-style-map: $text-style-map,
+		include-responsive-classes: false
+	));
+}
+
+// Text utility class
+.u-text {
+
+	// Include text helpers
+	@include PSJ_text-helpers(((
+		include-responsive-classes: (md, lg, xl)
+	)));
+
+	@at-root {
+
+		// Loop through text styles and add each to this utility class
+		@each $text-style in $text-style-map {
+
+			// Create utility class for said text style
+			&--#{$text-style} {
+				@extend %u-text--#{$text-style};
+			}
+		}
+
+		// Smaller line-height
+		&--compact {
+			line-height: 1.5;
+		}
+
+		// Tiny line height
+		&--squished {
+			line-height: 1.375;
+		}
+
+		// Medium text
+		&--medium {
+			font-weight: 500;
+		}
+
+		// Bold text
+		&--bold {
+			font-weight: 700;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		// Italic text
+		&--italic {
+			font-style: italic;
+		}
+
+		// Centered text
+		&--centered {
+			text-align: center;
+		}
+	}
+}
+
+// Set base text attributes
+html,
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	@extend %u-text--body;
+
+	font-family: PSJ_font-family(roboto);
+	color: PSJ_color(dark-gray);
+}
+
+strong {
+	-webkit-font-smoothing: antialiased;
+}
+
+// Headings
+@import 'inc/headings';
+
+// Copy
+@import 'inc/copy';

@@ -1,0 +1,166 @@
+// ================================================= /
+// ======   GRID MODULE   ========================== /
+// ================================================= /
+
+// - DESCRIPTION ----------------------------------- /
+//
+//   Provides a grid system with an arbitrary number
+//   of columns that can be configured to change at
+//   any viewport size.
+//
+// - Configuration --------------------------------- /
+//
+//   Parameter: columns (int)
+//
+//   Description: Sets the number of columns the
+//   grid can be broken up into.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: gutter (CSS length)
+//
+//   Description: The amount of space between each column.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: include-column-widths (bool/list)
+//
+//   Description: Determines which column widths to
+//   include in the module, up to and including the
+//   the total number of columns in the grid.
+//   Passing a bool assumes either all or no column widths
+//   are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: include-push-widths (bool/list)
+//
+//   Description: Determines which push widths to
+//   include in the module, up to but not including the
+//   the total number of columns in the grid.
+//   Passing a bool assumes either all or no push widths
+//   are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: include-column-responsive-classes (bool/list)
+//
+//   Description: Determines which responsive classes
+//   to include with each column.
+//   Passing a bool assumes either all or no responsive
+//   classes are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: include-push-responsive-classes (bool/list)
+//
+//   Description: Determines which responsive classes
+//   to include with each push.
+//   Passing a bool assumes either all or no responsive
+//   classes are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: breakpoint-map (map)
+//
+//   Description: Determines which breakpoint map will
+//   be used to set the responsive classes.
+//
+// ------------------------------------------------- /
+
+
+@mixin PSJ_grid($config: ()) {
+
+	// ------   Default Configuration   ------------ /
+
+	$config: map-merge((
+		columns: 12,
+		gutter: $PSJ_base * 4,
+		include-column-widths: true,
+		include-push-widths: false,
+		include-column-responsive-classes: true,
+		include-push-responsive-classes: false,
+		breakpoint-map: $PSJ_breakpoint-map,
+	), $config);
+
+	// Get column count
+	$columns: map-get($config, columns);
+
+	// Normalize included columns, pushes, and responsive classes
+	$included-column-widths: PSJ_selective-list(map-get($config, include-column-widths), PSJ_range(1, $columns));
+	$included-push-widths: PSJ_selective-list(map-get($config, include-push-widths), PSJ_range(1, $columns - 1));
+	$included-column-responsive-classes: PSJ_selective-list(map-get($config, include-column-responsive-classes), map-keys(map-get($config, breakpoint-map)));
+	$included-push-responsive-classes: PSJ_selective-list(map-get($config, include-push-responsive-classes), map-keys(map-get($config, breakpoint-map)));
+
+
+	// ------   Registration   --------------------- /
+
+	$registration: PSJ_register-module(grid, #{&}, $config);
+
+
+	// ------   Generated CSS   -------------------- /
+
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: map-get($config, gutter) * -1;
+
+	// User-generated styling
+	@content;
+
+	@at-root {
+
+		// Columns
+		&__column {
+
+			padding-left: map-get($config, gutter);
+
+			// Column base classes
+			@each $column-index in $included-column-widths {
+
+				// Output CSS for each included column
+				&--#{ $column-index } {
+					width: ((100 / $columns) * $column-index) * 1%;
+				}
+			}
+
+			// Column responsive classes
+			@each $breakpoint-label in $included-column-responsive-classes {
+
+				@include PSJ_breakpoint($breakpoint-label, map-get($config, breakpoint-map)) {
+
+					// Add responsive class for each included column
+					@each $column-index in $included-column-widths {
+
+						&--#{ $column-index + \@ + $breakpoint-label } {
+							width: ((100 / $columns) * $column-index) * 1%;
+						}
+					}
+				}
+			}
+
+			// Push base classes
+			@each $push-index in $included-push-widths {
+
+				// Output CSS for each included push
+				&--#{ push }-#{ $push-index } {
+					margin-left: ((100 / $columns) * $i) * 1%;
+				}
+			}
+
+			// Push responsive classes
+			@each $breakpoint-label in $included-push-responsive-classes {
+
+				@include PSJ_breakpoint($breakpoint-label, map-get($config, breakpoint-map)) {
+
+					// Add responsive class for each included push
+					@each $push-index in $included-push-widths {
+
+						&--#{ push }-#{ $push-index + \@ + $breakpoint-label } {
+							margin-left: ((100 / $columns) * $push-index) * 1%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,17 @@
+// ================================================= /
+// ======   MENUS  ================================= /
+// ================================================= /
+
+// All menus don't have list props
+.menu {
+	@extend %padded-element;
+
+	@include reset-list();
+
+	@at-root {
+
+		.menu-item {
+			@include PSJ_proportion(margin-bottom, tiny);
+		}
+	}
+}

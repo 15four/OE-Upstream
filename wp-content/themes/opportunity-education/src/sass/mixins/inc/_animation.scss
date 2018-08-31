@@ -1,0 +1,17 @@
+// ================================================= /
+// ======   ANIMATION MIXINS  ====================== /
+// ================================================= /
+
+// Simple animation transition
+@mixin transition($props: all, $transition: std) {
+
+	// When the props are not a list
+	@if type-of($props) != list {
+
+		// Make props a list
+		$props: ($props);
+	}
+
+	// Return final transition string
+	transition: list-to-string($props, #{' ' + map-get($transition-map, $transition) + ', '}) #{map-get($transition-map, $transition)};
+}

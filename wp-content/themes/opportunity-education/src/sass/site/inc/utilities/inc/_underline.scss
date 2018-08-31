@@ -1,0 +1,48 @@
+// ================================================= /
+// ======   UNDERLINE UTILITIES  =================== /
+// ================================================= /
+
+.u-underline {
+	display: inline-block;
+	position: relative;
+
+	&::after {
+		@extend %floating-pseudo-element;
+
+		left: 0;
+		top: 100%;
+		width: 100%;
+		border-bottom: border(std) solid PSJ_color(zest);
+
+		// The border gets larger on larger viewports
+		@include PSJ_breakpoint(lg) {
+			top: calc(100% + 2px);
+			border-width: border(lg);
+		}
+	}
+
+	@at-root {
+
+		// Animated underlines are hidden at first, then animate upon being resolved
+		&--animated {
+			&::after {
+				transform-origin: left center;
+				transform: scaleX(0);
+				transition: transform transition(slow);
+			}
+
+			&.is-resolved {
+				&::after {
+					transform: scaleX(1);
+				}
+			}
+		}
+
+		// Small underlined text has a width limit
+		&--small {
+			&::after {
+				max-width: 2.25rem;
+			}
+		}
+	}
+}

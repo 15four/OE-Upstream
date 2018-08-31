@@ -1,0 +1,181 @@
+// ================================================= /
+// ======   TEXT STYLES MODULE   =================== /
+// ================================================= /
+
+// - DESCRIPTION ----------------------------------- /
+//
+//   Outputs classes for custom text styles by name.
+//
+//   Uses dynamic responsive classes.
+//
+// - Configuration --------------------------------- /
+//
+//   Parameter: include-responsive-classes (bool/list)
+//
+//   Description: Determines which responsive classes
+//   to include with each helper class in the module.
+//   Passing a bool assumes either all or no responsive
+//   classes are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: fill-empty-responsive-classes (bool/list)
+//
+//   Description: Determines whether to generate
+//   responsive classes for breakpoints that are not
+//   specified in the proportion map. Finds and uses
+//   styles from the closest lower breakpoint relative
+//   to the one being generated.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: test-style-map (map)
+//
+//   Description: Determines which text style map will
+//   be used to set the text classes and styles.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: breakpoint-map (map)
+//
+//   Description: Determines which breakpoint map will
+//   be used to set the responsive classes.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: additional-class-map (map)
+//
+//   Description: Additional classes and styles to add.
+//
+// ------------------------------------------------- /
+
+
+// Default text style map
+$PSJ_text-style-map: (
+
+	// Heading 1 styles
+	heading-1: (
+		default: (
+			font-size: 2.125rem,
+			line-height: 1.25
+		),
+		xs: (
+			font-size: 2.6rem,
+		),
+		md: (
+			font-size: 3rem,
+		),
+		lg: (
+			font-size: 3.25rem,
+			line-height: 1.125
+		),
+		xl: (
+			font-size: 3.5rem,
+			line-height: 1.05
+		),
+		xxl: (
+			font-size: 3.65rem
+		)
+	),
+
+	// Heading 2 styles
+	heading-2: (
+		default: (
+			font-size: 1.3rem,
+			line-height: 1.125
+		),
+		xs: (
+			font-size: 1.35rem,
+			line-height: 1.15384614
+		),
+		md: (
+			line-height: 1.25
+		),
+		lg: (
+			font-size: 1.55rem
+		),
+		xl: (
+			font-size: 1.65rem
+		),
+	),
+
+	// Heading 3 styles
+	heading-3: (
+		default: (
+			font-size: 1.75rem,
+			line-height: 1.125
+		),
+		xs: (
+			line-height: 1.13636364
+		),
+		md: (
+			line-height: 1.25
+		),
+		lg: (
+			font-size: 2.2rem,
+			line-height: 1.225
+		),
+		xl: (
+			font-size: 2.375rem
+		)
+	),
+
+	// Heading 4 styles
+	heading-4: (
+		default: (
+			font-size: 1.25rem,
+			line-height: 1.125
+		),
+		xs: (
+			line-height: 1.11111111
+		),
+		lg: (
+			line-height: 1.22222222
+		)
+	),
+
+	// Body styles (be vewy vewy cereful)
+	body: (
+		default: (
+			font-size: 14,
+			line-height: 1.4
+		),
+		md: (
+			font-size: 16px,
+			line-height: 1.5
+		),
+		xxl: (
+			font-size: 17px,
+			line-height: 1.6
+		)
+	)
+);
+
+// Text styles mixin
+@mixin PSJ_text-styles($config: ()) {
+
+	// ------   Default Configuration   ------------ /
+
+	$config: map-merge((
+		include-responsive-classes: false,
+		fill-empty-responsive-classes: false,
+		text-style-map: $PSJ_text-style-map,
+		breakpoint-map: $PSJ_breakpoint-map,
+		additional-class-map: ()
+	), $config);
+
+	// Merge additional classes into text style map
+	$text-classes: map-merge(map-get($config, text-style-map), map-get($config, additional-class-map));
+
+
+	// ------   Registration   --------------------- /
+
+	$registration: PSJ_register-module(text-styles, #{&}, $config);
+
+
+	// ------   Generated CSS   -------------------- /
+
+	@at-root {
+		@include PSJ_dynamic-responsive-classes($text-classes, map-get($config, include-responsive-classes), map-get($config, fill-empty-responsive-classes), map-get($config, breakpoint-map));
+	}
+}

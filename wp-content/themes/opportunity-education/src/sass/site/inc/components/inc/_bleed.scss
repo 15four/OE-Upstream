@@ -1,0 +1,64 @@
+// ================================================= /
+// ======   BLEED COMPONENT  ======================= /
+// ================================================= /
+
+.c-bleed {
+	$block: &;
+
+	@extend %padded-element;
+	@extend %standard-margin-element;
+
+	@at-root {
+
+		// Subject, subject inner, and content are all padded elements
+		&__subject,
+		&__content {
+			@extend %padded-element;
+		}
+
+		// Subject stretches to the other side of the screen
+		&__subject {
+			width: 100%;
+
+			// Breakpoints at which it stretches
+			$bleed_subject_stretch_breakpoints: (lg, xl, xxl, xxxl, longboi);
+
+			max-width: 1480px;
+
+			// Loop through stretch breakpoints
+			@each $breakpoint-label in $bleed_subject_stretch_breakpoints {
+
+				// Set media query
+				@include PSJ_breakpoint($breakpoint-label) {
+					width: calc(100% + ((100vw - #{PSJ_round-decimal(map-get($container-map, $breakpoint-label))}) / 2));
+				}
+			}
+
+			// Children of cutoff bleeds always stretch
+			#{$block}--cutoff & {
+
+				max-width: none;
+
+				// Loop through breakpoints lower than the stretch ones
+				@each $breakpoint-label in map-keys($container-map) {
+
+					// Set media query
+					@include PSJ_breakpoint($breakpoint-label) {
+						width: calc(100% + ((100vw - #{PSJ_round-decimal(map-get($container-map, $breakpoint-label))}) / 2));
+					}
+				}
+			}
+
+			// Children of bleeds with the subject on the left have no flex shrink
+			#{$block}--left & {
+				flex-shrink: 0;
+			}
+
+			// Images here are full-width and block
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+}

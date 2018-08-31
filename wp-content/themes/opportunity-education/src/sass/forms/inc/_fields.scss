@@ -1,0 +1,66 @@
+// ================================================= /
+// ======   FIELDS  ================================ /
+// ================================================= /
+
+%field {
+
+	$padding-while-focused: 2rem;
+
+	&:not(.o-field--small) {
+		@include PSJ_proportion(padding, sm);
+	}
+
+	display: block;
+	width: 100%;
+	line-height: 1;
+	border: none;
+	border-radius: border(std);
+	outline: none;
+	box-shadow: map-get($box-shadow-map, sm);
+	transition: padding-left transition(std), border-width transition(std);
+
+	&:hover {
+		padding-left: $padding-while-focused;
+	}
+
+	&:focus {
+		padding-left: calc(#{$padding-while-focused} - #{border(std)});
+		border-left: border(std) solid PSJ_color(zest);
+	}
+
+	// Children of zesty backgrounds have a victoria border
+	.u-background--zest :not([class*=".u-background--"]) & {
+		border-color: PSJ_color(victoria);
+	}
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	@extend %field;
+}
+
+select {
+	@extend %field;
+
+	appearance: none;
+	-webkit-appearance: none;
+	line-height: 1.2;
+}
+
+textarea {
+
+}

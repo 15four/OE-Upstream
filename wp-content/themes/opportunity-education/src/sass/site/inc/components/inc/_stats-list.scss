@@ -1,0 +1,63 @@
+// ================================================= /
+// ======   STATS LIST COMPONENT  ================== /
+// ================================================= /
+
+.c-stats-list {
+	$block: &;
+
+	@extend %small-margin-element;
+
+	@at-root {
+
+		&__icon-container {
+			@include PSJ_proportion(margin-right, tiny);
+
+			flex: 0 0 2rem;
+		}
+
+		&__list {
+			@include reset-list();
+
+			margin-bottom: 0;
+		}
+
+		&__item {
+			@include PSJ_proportion((padding-top, padding-bottom), micro);
+			@include PSJ_proportion((padding-right, padding-left), tiny);
+
+			margin-bottom: 0;
+			border-right: border(sm) solid;
+
+			&:first-child {
+				padding-left: 0;
+			}
+
+			&:last-child {
+				padding-right: 0;
+				border-right: none;
+			}
+
+			// When the child of light backgrounds, the border color is lighter
+			.u-background--light :not(.u-background--dark) & {
+				border-color: PSJ_color(light-mid-gray);
+			}
+		}
+
+		&__count,
+		&__stat {
+			line-height: 1;
+		}
+
+		&__count {
+			margin-right: 0.25rem;
+		}
+
+		&__stat {
+
+			// When the child of light backgrounds, these are lighter
+			.u-background--light :not(.u-background--dark) & {
+				color: PSJ_color(mid-gray);
+			}
+		}
+	}
+}

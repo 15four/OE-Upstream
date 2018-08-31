@@ -1,0 +1,29 @@
+// ================================================= /
+// ======   BLOCK UTILITIES  ======================= /
+// ================================================= /
+
+// Additional block utilities
+$additional_block_utilities: (
+	quarter-width: (
+		width: 25%
+	),
+	third-width: (
+		width: 33.33333333%
+	),
+	half-width: (
+		width: 50%
+	),
+	two-thirds-width: (
+		width: 66.66666666%
+	),
+	three-quarters-width: (
+		width: 75%
+	)
+);
+
+.u-block {
+	@include PSJ_block-helpers((
+		include-responsive-classes: (md, lg, xl),
+		additional-class-map: $additional_block_utilities
+	)	);
+}

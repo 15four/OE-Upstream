@@ -1,0 +1,127 @@
+// ================================================= /
+// ======   Internal Mixins   ====================== /
+// ================================================= /
+
+
+// Generate static responsive classes
+@mixin PSJ_static-responsive-classes($classes, $include-breakpoint-classes: true, $breakpoint-map: $PSJ_breakpoint-map) {
+
+	// Loop through the classes and create a base class for each
+	@each $class-name, $style-map in $classes {
+		&--#{$class-name} {
+
+			// Generate the styles
+			@include PSJ_map-styles($style-map);
+		}
+	}
+
+	// If include-breakpoint-classes arg is true or is a list of breakpoints, start including breakpoint classes
+	@if $include-breakpoint-classes or type-of($include-breakpoint-classes) == list {
+
+		// Loop through breakpoint map
+		@each $breakpoint in map-keys($breakpoint-map) {
+
+			// If the breakpoint is in the include-breakpoint-classes arg, include the breakpoint class
+			@if $include-breakpoint-classes == true or index($include-breakpoint-classes, $breakpoint) {
+
+				// Loop through classes to establish breakpoint classes for each
+				@each $class-name, $style-map in $classes {
+
+					// Print the class's styles at the included breakpoint
+					@include PSJ_breakpoint($breakpoint, $breakpoint-map) {
+						&--#{$class-name + \@ + $breakpoint} {
+
+							// Generate the styles
+							@include PSJ_map-styles($style-map);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Generate dynamic responsive classes
+@mixin PSJ_dynamic-responsive-classes($classes, $include-breakpoint-classes: false, $fill-empty-breakpoints: false, $breakpoint-map: PSJ_breakpoint-map) {
+
+	// Loop through the classes and create a base class for each
+	@each $class-name, $breakpoint-style-map in $classes {
+
+		// Set base class
+		&--#{$class-name} {
+
+			// Loop through the class's breakpoint map and print the styles at each breakpoint
+			@each $breakpoint, $style-map in $breakpoint-style-map {
+				@include PSJ_breakpoint($breakpoint, $breakpoint-map) {
+					@include PSJ_map-styles($style-map);
+				}
+			}
+		}
+	}
+
+	// If include-breakpoint-classes arg is true or is a list of breakpoints, start including breakpoint classes
+	@if $include-breakpoint-classes or type-of($include-breakpoint-classes) == list {
+
+		// Loop through breakpoint map
+		@each $breakpoint in map-keys($breakpoint-map) {
+
+			// If the breakpoint is in the include-breakpoint-classes arg, include the breakpoint class
+			@if $include-breakpoint-classes == true or index($include-breakpoint-classes, $breakpoint) {
+
+				// Loop through classes to establish breakpoint classes for each
+				@each $class-name, $breakpoint-style-map in $classes {
+
+					// If the current breakpoint exists in the class breakpoint map or the fill-empty-breakpoints arg is true, start constructing the breakpoint class
+					@if map-has-key($breakpoint-style-map, $breakpoint) or $fill-empty-breakpoints {
+
+						// Convert breakpoint maps into breakpoint lists
+						$breakpoint-list: map-keys($breakpoint-map);
+
+						// Set up the prop-map by hoisting props from lower breakpoints to preserve the cascade
+						$style-map: ();
+
+						// Set variable indicating closest smaller breakpoint to hoist styles from
+						$closest-smaller-breakpoint: null;
+
+						// Loop backwards through the breakpoint map until a shared breakpoint is found
+						@for $index from index($breakpoint-list, $breakpoint) * -1 through -1 {
+
+							// If the corresponding breakpoint exists in both maps and the closest smaller breakpoint is still null, set the closest smaller breakpoint
+							@if map-has-key($breakpoint-style-map, nth($breakpoint-list, $index * -1)) and $closest-smaller-breakpoint == null {
+								$closest-smaller-breakpoint: nth($breakpoint-list, $index * -1);
+							}
+						}
+
+						// Set variable indicating that we have reached the closest smaller breakpoint
+						$has-reached-closest-smaller-breakpoint: false;
+
+						// Loop through class breakpoint map and merge each style map into the hoisted style map
+						@each $responsive-class-breakpoint, $responsive-class-style-map in $breakpoint-style-map {
+
+							// Only merge the maps if the loop hasn't reached the current breakpoint
+							@if $has-reached-closest-smaller-breakpoint == false {
+								$style-map: map-merge($style-map, $responsive-class-style-map);
+							}
+
+							// If the loop has reached the closest smaller breakpoint, set the indicator variable to true
+							@if $responsive-class-breakpoint == $closest-smaller-breakpoint {
+								$has-reached-closest-smaller-breakpoint: true;
+							}
+						}
+
+						// Set breakpoint class
+						&--#{$class-name + \@ + $breakpoint} {
+
+							// Print the styles with the hoisted style map
+							@include PSJ_breakpoint($breakpoint, $breakpoint-map) {
+								@include PSJ_map-styles($style-map);
+							}
+
+							// TODO: Add media queries for higher breakpoints than the current one perhaps link with placeholders to minimize output
+						}
+					}
+				}
+			}
+		}
+	}
+}

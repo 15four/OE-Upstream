@@ -1,0 +1,24 @@
+// ================================================= /
+// ======   VARIABLES  ============================= /
+// ================================================= /
+
+// Color
+@import "inc/color";
+
+// Typography
+@import "inc/typography";
+
+// Structure
+@import "inc/structure";
+
+// Column
+@import "inc/column";
+
+// Animation
+@import "inc/animation";
+
+// General variables
+$box-shadow-map: (
+	sm: 0 0.125rem 0.25rem rgba(map-get($color-map, rich-black), 0.2),
+	std: 0 0.25rem 0.5rem rgba(map-get($color-map, rich-black), 0.2)
+)

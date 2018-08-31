@@ -1,0 +1,169 @@
+// ================================================= /
+// ======   LOCATION MAP COMPONENT  ================ /
+// ================================================= /
+
+.c-location-map {
+	$block: &;
+	$js: '.js-location-map';
+	$marker-width: 1.35rem;
+	$marker-height: $marker-width * 1.2;
+
+	$type-color-key: (
+		quest-forward-academy: zest,
+		quest-forward-school: zest,
+		quest-forward-program: zest,
+		primary-program-school: victoria,
+		quest-forward-sister-school: emerald,
+		admin: light-mid-gray
+	);
+
+	@extend %small-margin-element;
+
+	position: relative;
+	z-index: 0;
+
+	@at-root {
+
+		// Admin map needs a little bit of override love
+		&--admin {
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		&__locations,
+		&__location {
+			position: absolute;
+		}
+
+		&__locations {
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		&__location {
+			$location: &;
+
+			pointer-events: none;
+
+			// Children of admin maps are not clickable and are dimmed unless it is the picker
+			#{$block}--admin & {
+
+				&:not(#{$location}--picker) {
+					opacity: 0.5;
+				}
+			}
+		}
+
+		&__location-marker {
+			pointer-events: auto;
+			position: relative;
+			top: $marker-height * -1;
+			left: $marker-width / 2 * -1;
+			width: $marker-width;
+			outline: none;
+
+			// Children of admin maps have to override button styles
+			#{$block}--admin & {
+				@include reset-button();
+
+				pointer-events: none;
+			}
+
+			// If it's an academy, school, or program marker, it turns cintrony
+			#{$block}__location--quest-forward-academy &,
+			#{$block}__location--quest-forward-school &,
+			#{$block}__location--quest-forward-program & {
+				&:hover,
+				&:focus,
+				&.is-active {
+					path {
+						fill: PSJ_color(cintron);
+					}
+				}
+			}
+
+			// If it's a primary school, it turns mid gray
+			#{$block}__location--primary-program-school & {
+				&:hover,
+				&:focus,
+				&.is-active {
+					path {
+						fill: PSJ_color(mid-gray);
+					}
+				}
+			}
+
+			// If it's a sister school, it turns light emerald
+			#{$block}__location--quest-forward-sister-school & {
+				&:hover,
+				&:focus,
+				&.is-active {
+					path {
+						fill: PSJ_color(light-emerald);
+					}
+				}
+			}
+
+			// Svg has a shadow
+			-webkit-filter: drop-shadow(0 0 0.125rem rgba(PSJ_color(victoria), 0.2));
+		}
+
+		&__location-card {
+			@include transition((opacity, transform), std);
+
+			pointer-events: none;
+			position: absolute;
+			z-index: 1;
+			top: 1rem;
+			left: calc(-1.5rem - #{$marker-width / 2});
+			width: 320px;
+			overflow: visible;
+			opacity: 0;
+			transform: translate3d(0, -1rem, 0);
+
+			// Card appears when the location is active
+			#{$block}__location.is-active & {
+				pointer-events: auto;
+				opacity: 1;
+				transform: translate3d(0, 0, 0);
+			}
+
+			// Card header here is treated a bit differently
+			.c-card__header {
+				position: relative;
+				border-radius: border(lg) border(lg) 0 0;
+
+				// Little floaty guy
+				&::after {
+					@extend %floating-pseudo-element;
+
+					top: -0.5rem;
+					left: 1.7rem;
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 0.5rem 0.5rem;
+
+					// Loop through type color key and assign border colors
+					@each $type, $color in $type-color-key {
+						#{$block}__location--#{$type} & {
+							border-color: transparent transparent PSJ_color($color);
+						}
+					}
+				}
+			}
+
+			// Card content here is treated a bit differently
+			.c-card__content {
+				border-radius: 0 0 border(lg) border(lg);
+			}
+		}
+
+		&__close {
+			width: 1.25rem;
+		}
+	}
+}

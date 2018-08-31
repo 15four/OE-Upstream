@@ -1,0 +1,70 @@
+// ================================================= /
+// ======   CIRCLE GUY OBJECT  ===================== /
+// ================================================= /
+
+.o-circle-guy {
+	@extend %small-margin-element;
+
+	position: relative;
+	z-index: 0;
+	border: border(std) solid;
+	border-radius: 50%;
+
+	// Children of light backgrounds have slightly lighter borders
+	.u-background--light :not(.u-background--dark) & {
+		border-color: PSJ_color(light-mid-gray);
+	}
+
+	@at-root {
+
+		// Sizes
+		&--tiny {
+			width: 82px;
+		}
+		&--sm {
+			width: 82px;
+
+			@include PSJ_breakpoint(lg) {
+				width: 96px;
+			}
+		}
+		&--md {
+			width: 96px;
+
+			@include PSJ_breakpoint(lg) {
+				width: 120px;
+			}
+		}
+
+		&--full {
+			padding: 0.5rem;
+		}
+
+		&__image-container {
+			position: relative;
+			padding-top: 100%;
+		}
+
+		&__image-container-inner,
+		&__image {
+			width: 100%;
+		}
+
+		&__image-container-inner {
+			position: absolute;
+			z-index: -1;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 90%;
+			height: 90%;
+			overflow: hidden;
+			border-radius: 50%;
+
+			// Since Safari sucks at rendering, we have to add an image mask to get the overflow to render properly
+			body._browser--safari & {
+				-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+			}
+		}
+	}
+}

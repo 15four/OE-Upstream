@@ -1,0 +1,82 @@
+// ================================================= /
+// ======   STRUCTURE VARIABLES  =================== /
+// ================================================= /
+
+// Breakpoint map
+$breakpoint-map: (
+	xs: 480px,
+	sm: 680px,
+	md: 768px,
+	lg: 1024px,
+	xl: 1200px,
+	xxl: 1600px,
+	xxxl: 1920px,
+	longboi: 3000px
+);
+
+// Proportion map
+$proportion-map: (
+	none: (
+		default: 0,
+		md: 0,
+		lg: 0,
+		xl: 0,
+	),
+	micro: (
+		default: 0.5rem
+	),
+	tiny: (
+		default: 0.75rem,
+		xl: 1rem,
+	),
+	sm: (
+		default: 1.25rem,
+		md: 1.25rem,
+		xl: 1.5rem
+	),
+	std: (
+		default: 1.5rem,
+		md: 2rem,
+		lg: 2.25rem,
+		xxl: 2.5rem,
+		xxxl: 3rem
+	),
+	section: (
+		default: 3rem,
+		md: 3.5rem,
+		xl: 4rem,
+		xxl: 4.5rem,
+		xxxl: 5.5rem,
+		longboi: 6rem
+	)
+);
+
+$special_proportion_map: (
+	large-section: (
+		default: 5rem,
+		xl: 7rem,
+		xxxl: 9rem
+	),
+	absolute-unit: (
+		default: 9rem,
+		md: 12rem,
+		xl: 16rem,
+		xxxl: 20rem,
+		longboi: 24rem
+	)
+);
+
+// Button padding
+$button-vertical-padding: 0.875em;
+
+// Border map
+$border-map: (
+	tiny: 1px,
+	sm: 2px,
+	std: 3px,
+	lg: 5px,
+	absolute-unit: 10px
+);
+
+$size__site-main: 100%;
+$size__site-sidebar: 25%;

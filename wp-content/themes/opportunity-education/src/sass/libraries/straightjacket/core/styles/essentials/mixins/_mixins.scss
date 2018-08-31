@@ -1,0 +1,22 @@
+// ================================================= /
+// ======   Mixins   =============================== /
+// ================================================= /
+
+
+// ------   Internal mixins   ---------------------- /
+
+
+// ------   Public mixins   ------------------------ /
+
+// Print a map of styles
+@mixin PSJ_map-styles($style-map) {
+	@each $prop, $value in $style-map {
+		#{$prop}: #{$value};
+	}
+}
+
+// Include structure mixins
+@import 'public/structure';
+
+// Include responsive class mixins
+@import 'public/responsive-classes';

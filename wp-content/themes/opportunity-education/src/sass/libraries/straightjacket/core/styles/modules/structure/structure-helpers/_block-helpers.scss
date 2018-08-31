@@ -1,0 +1,99 @@
+// ================================================= /
+// ======   BLOCK HELPERS MODULE   ================= /
+// ================================================= /
+
+// - DESCRIPTION ----------------------------------- /
+//
+//   Provides helper classes for general element
+//   arrangement and display.
+//
+//   Uses static responsive classes.
+//
+// - Configuration --------------------------------- /
+//
+//   Parameter: include-responsive-classes (bool/list)
+//
+//   Description: Determines which responsive classes
+//   to include with each helper class in the module.
+//   Passing a bool assumes either all or no responsive
+//   classes are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: breakpoint-map (map)
+//
+//   Description: Determines which breakpoint map will
+//   be used to set the responsive classes.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: additional-class-map (map)
+//
+//   Description: Additional classes and styles to add.
+//
+// ------------------------------------------------- /
+
+
+@mixin PSJ_block-helpers($config: ()) {
+
+	// ------   Default Configuration   ------------ /
+
+	$config: map-merge((
+		include-responsive-classes: true,
+		breakpoint-map: $PSJ_breakpoint-map,
+		additional-class-map: ()
+	), $config);
+
+	// Set up helper classes map
+	$helper-classes: (
+		float-left: (
+			float: left
+		),
+		float-right: (
+			float: right
+		),
+		float-none: (
+			float: none
+		),
+		clear-left: (
+			clear: left
+		),
+		clear-right: (
+			clear: right
+		),
+		clear-both: (
+			clear: both
+		),
+		centered: (
+			float: none,
+			margin-left: auto,
+			margin-right: auto
+		),
+		auto-width: (
+			width: auto
+		),
+		full-width: (
+			width: 100%
+		),
+		auto-height: (
+			height: auto
+		),
+		full-height: (
+			height: 100%
+		)
+	);
+
+	// Merge additional classes into helper classes
+	$helper-classes: map-merge($helper-classes, map-get($config, additional-class-map));
+
+	// ------   Registration   --------------------- /
+
+	$registration: PSJ_register-module(block-helpers, #{&}, ());
+
+
+	// ------   Generated CSS   -------------------- /
+
+	@at-root {
+		@include PSJ_static-responsive-classes($helper-classes, map-get($config, include-responsive-classes), map-get($config, breakpoint-map));
+	}
+}

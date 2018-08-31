@@ -1,0 +1,24 @@
+// ================================================= /
+// ======   CONTAINER COMPONENT  =================== /
+// ================================================= /
+
+// Container map
+$container-map: (
+	default: 90%,
+	xs: 90%,
+	sm: 85%,
+	md: 680px,
+	lg: 928px,
+	xl: 1096px,
+	xxl: 1340px,
+	xxxl: 1520px,
+	longboi: 1600px
+);
+
+.c-container {
+	@extend %padded-element;
+
+	@include PSJ_container((
+		container-map: $container-map
+	));
+}

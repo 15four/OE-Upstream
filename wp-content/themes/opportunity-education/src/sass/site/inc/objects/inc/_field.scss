@@ -1,0 +1,27 @@
+// ================================================= /
+// ======   FIELD OBJECT  ========================== /
+// ================================================= /
+
+.o-field {
+	@extend %field;
+
+	@at-root {
+
+		&--small {
+			$padding-while-focused: 1.5rem;
+
+			@include PSJ_proportion((padding-right, padding-left), tiny);
+
+			padding-top: $button-vertical-padding + 0.1;
+			padding-bottom: $button-vertical-padding + 0.1;
+
+			&:hover {
+				padding-left: $padding-while-focused;
+			}
+
+			&:focus {
+				padding-left: calc(#{$padding-while-focused} - #{border(std)});
+			}
+		}
+	}
+}

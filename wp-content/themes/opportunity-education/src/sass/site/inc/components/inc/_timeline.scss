@@ -1,0 +1,53 @@
+// ================================================= /
+// ======   TIMELINE COMPONENT  ==================== /
+// ================================================= /
+
+.c-timeline {
+	@extend %padded-element;
+	@extend %standard-margin-element;
+
+	@include reset-list();
+
+	position: relative;
+	z-index: 0;
+
+	// The line that travels all the way down
+	// &::before {
+	// 	content: '';
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: calc(50% - #{border(lg) / 2});
+	// 	width: border(lg);
+	// 	height: 100%;
+	// 	background-color: PSJ_color(light-mid-gray);
+	// }
+
+	@at-root {
+
+		&__period,
+		&__period-label,
+		&__item {
+			@include PSJ_proportion(margin-bottom, std);
+		}
+
+		&__period {
+			position: relative;
+		}
+
+		&__period-label {
+			width: 60%;
+			text-align: center;
+
+			// @include PSJ_breakpoint(lg) {
+			// 	width: 6rem;
+			// 	height: 6rem;
+			// }
+		}
+
+		&__items {
+			@extend %padded-element;
+
+			@include reset-list();
+		}
+	}
+}

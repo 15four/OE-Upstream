@@ -1,0 +1,80 @@
+// ================================================= /
+// ======   LAUNCHER COMPONENT  ==================== /
+// ================================================= /
+
+.c-launcher {
+	$block: &;
+
+	@extend %small-margin-element;
+	@extend %padded-element;
+
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	@at-root {
+
+		&__content {
+			transition: transform transition(std);
+
+			// Content grows a bit when launcher is interacted with
+			#{$block}:hover &,
+			#{$block}:focus & {
+				transform: scale(1.03);
+			}
+
+			&::after {
+				@extend %floating-pseudo-element;
+
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: PSJ_color(victoria);
+				opacity: 0;
+				transition: opacity transition(std);
+
+				// Children of victoria or zesty launchers backgrounds have a zest overlay
+				#{$block}--zest &,
+				.u-background--victoria :not([class*=u-background--]) & {
+					background-color: PSJ_color(zest);
+				}
+
+				// Overlay becomes visible on hover and focus
+				#{$block}:hover &,
+				#{$block}:focus & {
+					opacity: 0.65;
+				}
+			}
+
+			// Images here are block
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		&__icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 70px;
+			transform: translate(-50%, -50%) scale(1);
+			transition: transform transition(std);
+
+			// Icon shrinks a bit when launcher is interacted with
+			#{$block}:hover &,
+			#{$block}:focus & {
+				transform: translate(-50%, -50%) scale(0.9);
+			}
+
+			// Icon is a little larger on larger devices
+			@include PSJ_breakpoint(md) {
+				width: 80px;
+			}
+			@include PSJ_breakpoint(lg) {
+				width: 100px;
+			}
+		}
+	}
+}

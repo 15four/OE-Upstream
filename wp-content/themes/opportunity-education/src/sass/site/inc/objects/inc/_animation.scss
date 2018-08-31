@@ -1,0 +1,140 @@
+// ================================================= /
+// ======   SCROLL ANIMATION OBJECT  =============== /
+// ================================================= /
+
+.o-animation {
+	$block: &;
+
+	animation-duration: transition(md);
+	animation-delay: 0s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+	animation-fill-mode: forwards;
+
+	&:last-child {
+		@extend %padded-element;
+	}
+
+	@at-root {
+
+		// Animation types
+		&--scroll {
+			animation-play-state: paused;
+		}
+
+		// Animation speeds
+		&--slow {
+			animation-duration: transition(slow);
+		}
+		&--very-slow {
+			animation-duration: transition(very-slow);
+		}
+
+		// Animation eases
+		&--linear {
+			animation-timing-function: linear;
+		}
+
+		// Stagger guys are staggered
+		&--stagger {
+			$max-staggered-animations: 20;
+			$stagger-interval: 0.1s;
+
+			@for $i from 1 through $max-staggered-animations {
+				&-#{$i} {
+					animation-delay: $i * $stagger-interval;
+				}
+			}
+		}
+
+		// Resolved
+		&.is-resolved {
+			animation-play-state: running;
+		}
+
+		// Origins
+		&--from-left {
+			transform-origin: left center;
+		}
+		&--from-right {
+			transform-origin: left center;
+		}
+
+		// Scale vertical
+		&--scale-vertical {
+			transform: scaleY(0);
+			animation-name: scale-vertical;
+		}
+
+		// Scale horizontal
+		&--scale-horizontal {
+			transform: scaleX(0);
+			animation-name: scale-horizontal;
+		}
+
+		// Pop in
+		&--pop-in {
+			transform: scale(0);
+			animation-name: pop-in;
+		}
+
+		// Fades and turns all start with 0 opacity
+		&--fade-up,
+		&--fade-right,
+		&--fade-down,
+		&--fade-left,
+		&--turn-up,
+		&--turn-down {
+			opacity: 0;
+		}
+
+		// Fades
+		&--fade-up {
+			//transform: scaleZ(0.1) translate(0, 1.25rem);
+			animation-name: fade-up;
+		}
+		&--fade-right {
+			transform: scaleZ(0.1) translate(-1.25rem, 0);
+			animation-name: fade-right;
+		}
+		&--fade-down {
+			transform: scaleZ(0.1) translate(0, -1.25rem);
+			animation-name: fade-down;
+		}
+		&--fade-left {
+			transform: scaleZ(0.1) translate(1.25rem, 0);
+			animation-name: fade-left;
+		}
+
+		// Turn up and turn down both share the same perspective
+		&--turn-up,
+		&--turn-down {
+			perspective: 500px;
+		}
+
+		// Turns
+		&--turn-up {
+			transform-origin: center bottom;
+			transform: scaleZ(0.1) translate(0, 1.25rem) rotate3d(1, 0, 0, 45deg);
+			animation-name: turn-up;
+		}
+		&--turn-down {
+			transform-origin: center top;
+			transform: scaleZ(0.1) translate(0, -1.25rem) rotate3d(1, 0, 0, 45deg);
+			animation-name: turn-down;
+		}
+
+		// Draws
+		&--draw-left-facing-arrow {
+			stroke-dasharray: 186.701040017;
+			stroke-dashoffset: 186.701040017;
+			animation-name: draw-left-facing-arrow;
+		}
+		&--draw-right-facing-arrow {
+			stroke-dasharray: 134.697516067;
+			stroke-dashoffset: -134.697516067;
+			animation-name: draw-right-facing-arrow;
+		}
+	}
+}

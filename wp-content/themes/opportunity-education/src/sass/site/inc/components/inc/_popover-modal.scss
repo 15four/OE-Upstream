@@ -1,0 +1,41 @@
+// ================================================= /
+// ======   POPOVER MODAL COMPONENT  =============== /
+// ================================================= /
+
+.c-popover-modal {
+
+	@include PSJ_popover-modal((
+		opinionated: false
+	));
+
+	background-color: rgba(darken(PSJ_color(victoria), 15), 0.925);
+
+	@at-root {
+
+		&__closer-container {
+			@include PSJ_proportion(padding, tiny);
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&__closer {
+			width: 1.25rem;
+
+			@include PSJ_breakpoint(lg) {
+				width: 1.5rem;
+			}
+		}
+
+		&__box {
+			@extend %padded-element;
+
+			@include PSJ_proportion((padding-top, padding-bottom), std);
+			@include PSJ_proportion((padding-right, padding-left), section);
+
+			overflow-y: scroll;
+			box-shadow: 0 0.25rem 0.5rem rgba(PSJ_color(rich-black), 0.2);
+		}
+	}
+}

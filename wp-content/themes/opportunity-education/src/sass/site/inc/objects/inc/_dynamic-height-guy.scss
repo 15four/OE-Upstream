@@ -1,0 +1,24 @@
+// ================================================= /
+// ======   DYNAMIC HEIGHT GUY OBJECT  ============= /
+// ================================================= /
+
+.o-dynamic-height-guy {
+	$block: &;
+	$js-block: '.js-dynamic-height-guy';
+
+	@include transition(height, slow);
+
+	position: relative;
+	height: 0;
+
+	@at-root {
+
+		#{$js-block}--loading {
+			height: 200px;
+		}
+
+		&__inner {
+			@include transition(opacity, slow);
+		}
+	}
+}

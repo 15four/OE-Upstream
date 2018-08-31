@@ -1,0 +1,243 @@
+// ================================================= /
+// ======   SLIDER COMPONENT  ====================== /
+// ================================================= /
+
+.c-slider {
+	$block: &;
+	$js-block: '.js-slider';
+
+	@extend %standard-margin-element;
+
+	position: relative;
+
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	@at-root {
+
+		&__slides {
+			position: relative;
+			z-index: 0;
+
+			// Children of an inactive slide, have a delayed transition
+			#{$block}__slide:not(.is-active) & {
+				transition-delay: 0.625s;
+			}
+
+			// Children of an active slide have no transition
+			#{$block}__slide.is-active & {
+				transition: none;
+			}
+
+			// Children of an inactive slide have a height of 0
+			#{$block}__slide:not(.is-active) & {
+				height: 0;
+				overflow: hidden;
+			}
+		}
+
+		&__slide {
+			@extend %padded-element;
+
+			position: absolute;
+			z-index: 0;
+			pointer-events: none;
+			top: 0;
+			left: 0;
+			width: 100%;
+			opacity: 0;
+			transform: translate(12.5%, 0);
+
+			#{$js-block}--backwards &:not(.is-active) {
+				transform: translate(-12.5%, 0);
+
+				&.was-just-active {
+					transform: translate(12.5%, 0);
+				}
+			}
+
+			&.was-just-active,
+			&.is-active {
+				@include transition((opacity, transform), slow);
+			}
+
+			&.was-just-active {
+				z-index: 1;
+				transform: translate(-12.5%, 0);
+			}
+
+			&.is-active {
+				pointer-events: auto;
+				z-index: 2;
+				position: relative;
+				top: auto;
+				left: auto;
+				opacity: 1;
+				transform: translate(0, 0);
+
+				// If this happens to be the child of another slide that is not active, remove these pointer events
+				#{$block}__slide:not(.is-active) & {
+					pointer-events: none;
+				}
+			}
+		}
+
+		&__controls-container {
+			@include PSJ_proportion(margin-bottom, std);
+		}
+
+		&__controls {
+
+			// Regular controls
+			&--regular {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translate(0, -50%);
+			}
+
+			// Tab controls
+			&--tab {
+				@include PSJ_proportion(margin-bottom, std);
+			}
+
+			// High and Tight
+			&--high-and-tight {
+				position: absolute;
+				top: -16.5%;
+				left: 0;
+				transform: translate(0, -50%);
+				@include PSJ_breakpoint(xs) {
+					justify-content: space-between!important;
+					top: -13%;
+				}
+				@include PSJ_breakpoint(sm) {
+					justify-content: space-around!important;
+					top: -11.5%;
+				}
+				@include PSJ_breakpoint(lg) {
+					justify-content: space-between!important;
+					top: -16.5%;
+				}
+			}
+
+			// Top Belt Controls
+			&--top-belt {
+				@include PSJ_breakpoint(xs) {
+					top: 120px;
+				}
+				@include PSJ_breakpoint(sm) {
+					top: 150px;
+				}
+				@include PSJ_breakpoint(md) {
+					top: 170px;
+				}
+				@include PSJ_breakpoint(lg) {
+					top: 130px;
+				}
+				@include PSJ_breakpoint(xl) {
+					top: 145px;
+				}
+				@include PSJ_breakpoint(xxl) {
+					top: 175px;
+				}
+				@include PSJ_breakpoint(xxl) {
+					top: 195px;
+				}
+			}
+		}
+
+		&__control {
+
+			// Regular controls
+			&--regular {
+				width: 2.66666666rem;
+				color: PSJ_color(rich-white);
+
+				&:before {
+					display: none;
+				}
+
+				// These are offset from the container by a little
+				&:first-of-type {
+					left: -1.35rem;
+				}
+				&:nth-of-type(2) {
+					right: -1.35rem;
+				}
+
+				@include PSJ_breakpoint(md) {
+					width: 3rem;
+
+					&:first-of-type {
+						left: -1.5rem;
+					}
+					&:nth-of-type(2) {
+						right: -1.5rem;
+					}
+				}
+			}
+
+			// Tab control
+			&--tab {
+				@extend %u-text--caption;
+
+				@include transition(opacity, std);
+
+				position: relative;
+				padding: 0;
+				text-transform: uppercase;
+				border: none;
+				opacity: 0.5;
+
+				&:hover,
+				&:focus,
+				&.is-active {
+					opacity: 1;
+					color: inherit;
+				}
+
+				&::after {
+					@extend %floating-pseudo-element;
+
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					border-bottom: border(sm) solid PSJ_color(zest);
+					transform-origin: left center;
+					transform: scaleX(0);
+					transition: transform transition(std);
+
+					// If this is the child of a zesty background, the accent border is victoria
+					.u-background--zest :not([class*="u-background--"]) & {
+						border-color: PSJ_color(victoria);
+					}
+				}
+
+				&.is-active {
+					&::after {
+						transform: scaleX(1);
+					}
+				}
+			}
+		}
+	}
+
+}
+
+// The sample quests slider
+.c-slider {
+	$block: &;
+
+	@at-root {
+
+		&__control {
+			#{$block}--sample-quests & {
+				flex-grow: 1;
+			}
+		}
+	}
+}

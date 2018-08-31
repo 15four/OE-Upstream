@@ -1,0 +1,15 @@
+// ================================================= /
+// ======   BLOCK OBJECT  ========================== /
+// ================================================= /
+
+.o-block {
+	@extend %padded-element;
+
+	@include PSJ_proportion(margin-bottom, section);
+
+	@at-root {
+		&--sm {
+			@include PSJ_proportion(margin-bottom, std);
+		}
+	}
+}

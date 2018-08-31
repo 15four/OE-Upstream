@@ -1,0 +1,79 @@
+// ================================================= /
+// ======   GRID COMPONENT  ======================== /
+// ================================================= /
+
+.c-grid {
+	$block: &;
+
+	@extend %standard-margin-element;
+	@extend %padded-element;
+
+	@include PSJ_grid(((
+		gutter: 24px
+	)));
+
+	// Gutter gets larger at higher breakpoints
+	@include PSJ_breakpoint(md) {
+		margin-left: -32px;
+	}
+	@include PSJ_breakpoint(lg) {
+		margin-left: -38px;
+	}
+	@include PSJ_breakpoint(xl) {
+		margin-left: -46px;
+	}
+	@include PSJ_breakpoint(xxl) {
+		margin-left: -60px;
+	}
+
+	@at-root {
+
+		// Compact grids have a much smaller gutter
+		&--compact {
+			margin-left: -1rem;
+		}
+
+		&__column {
+
+			// Breakpoints at which to kill the margins on columns
+			$single-row-breakpoints: (md, lg, xl);
+
+			@extend %padded-element;
+
+			@include PSJ_proportion(margin-bottom, std);
+
+			// Gutter gets larger at higher breakpoints
+			@include PSJ_breakpoint(md) {
+				padding-left: 32px;
+			}
+			@include PSJ_breakpoint(lg) {
+				padding-left: 38px;
+			}
+			@include PSJ_breakpoint(xl) {
+				padding-left: 46px;
+			}
+			@include PSJ_breakpoint(xxl) {
+				padding-left: 60px;
+			}
+
+			// Children of compact girds have smaller gutter
+			#{$block}--compact & {
+				padding-left: 1rem;
+			}
+
+			// Children of single row grids have no margin
+			#{$block}--single-row & {
+				margin-bottom: 0;
+			}
+
+			// Loop through breakpoints at which to kill column margins
+			@each $breakpoint-label in $single-row-breakpoints {
+				@include PSJ_breakpoint($breakpoint-label) {
+					#{$block}--single-row\@#{$breakpoint-label} & {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}

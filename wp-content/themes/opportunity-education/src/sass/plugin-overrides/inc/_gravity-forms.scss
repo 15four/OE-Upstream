@@ -1,0 +1,305 @@
+// ================================================= /
+// ======   GRAVITY FORMS PLUGIN OVERRIDES  ======== /
+// ================================================= /
+
+// General overrides
+.gform_wrapper {
+
+	.validation_error {
+		text-align: center;
+		color: PSJ_color(error-red);
+		font-weight: 700;
+	}
+
+	.gform_body,
+	.ginput_container {
+		@extend %padded-element;
+	}
+
+	.validation_error,
+	.gform_body,
+	.gfield {
+		@include PSJ_proportion(margin-bottom, std);
+	}
+
+	.gform_fields,
+	.gfield_radio {
+		@include reset-list();
+	}
+
+	// These guys get kinda annoying
+	.ginput_complex {
+		@extend %padded-element;
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		// The inputs are inside of spans for some reason
+		span {
+			@include PSJ_proportion(margin-bottom, sm);
+
+			display: block;
+			width: calc(50% - 0.5rem);
+
+			&.ginput_full {
+				width: 100%;
+			}
+
+			&.ginput_left,
+			&.ginput_right {
+				&:last-of-type,
+				&:nth-last-of-type(2) {
+					@include PSJ_breakpoint(lg) {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+
+		label {
+			@include PSJ_proportion(margin-top, micro);
+
+			display: block;
+		}
+
+		.gf_clear_complex {
+			display: none;
+		}
+	}
+
+	// So do these
+	.ginput_container_name {
+		span {
+			&:last-of-type,
+			&:nth-last-of-type(2) {
+				@include PSJ_breakpoint(lg) {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.gfield_description {
+		@include PSJ_proportion(margin-top, micro);
+
+		&.validation_message {
+			color: PSJ_color(error-red);
+		}
+	}
+
+	// Radio buttons need some lovin'
+	.gfield_radio {
+
+		// Kill the actual inputs
+		input[type="radio"] {
+			display: none;
+		}
+
+		// Make some fake ones
+		label {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+
+			&::before {
+				@include PSJ_proportion(margin-right, micro);
+
+				content: '';
+				display: inline-block;
+				flex-shrink: 0;
+				width: 1.5em;
+				height: 1.5em;
+				border: border(sm) solid;
+				border-radius: 50%;
+				transition: background-color transition(std), box-shadow transition(std), border-color transition(std);
+			}
+
+			// When the label is hovered, the label dude only changes its border color
+			&:hover,
+			&:focus {
+				&::before {
+					border-color: PSJ_color(zest);
+				}
+			}
+		}
+
+		// When the input is checked, the label dude changes
+		input:checked + label::before {
+			background-color: PSJ_color(zest);
+			border-color: PSJ_color(zest);
+			box-shadow: inset 0 0 0 0.25rem PSJ_color(rich-white);
+		}
+
+		// When these are the child of a zesty background, all of the above shit kinda goes out the window
+		@at-root {
+			.u-background--zest :not([class*="u-background--"]) & {
+
+				// The little label dude turns white now
+				label {
+					&:hover::before,
+					&:focus::before {
+						border-color: PSJ_color(rich-white);
+					}
+				}
+				input:checked + label::before {
+					background-color: PSJ_color(rich-white);
+					border-color: PSJ_color(rich-white);
+					box-shadow: inset 0 0 0 0.25rem PSJ_color(zest);
+				}
+			}
+		}
+	}
+
+	.gform_footer {
+		position: relative;
+		text-align: center;
+
+		.gform_ajax_spinner {
+			position: absolute;
+			right: 0;
+			top: calc(50% - 0.65rem);
+		}
+	}
+}
+
+// Confirmations
+.gform_confirmation_message {
+	@extend %u-text--heading-sm;
+
+	font-family: PSJ_font-family(meta-serif);
+	text-align: center;
+}
+
+// Contact form overrides
+#gform_wrapper_1 {
+
+	// Some labels die annoying
+	#field_1_6,
+	#field_1_3,
+	#field_1_4,
+	#field_1_3,
+	#field_1_5 {
+		.gfield_label {
+			display: none;
+		}
+	}
+
+	// Others live long enough to see themselves become slightly modified and less annoying
+	#field_1_2 {
+		.gfield_label {
+			@include PSJ_proportion(margin-bottom, tiny);
+
+			display: block;
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: 700;
+
+			.gfield_required {
+				display: none;
+			}
+		}
+
+		// Then there's these assholes
+		.gfield_radio {
+			display: flex;
+			flex-wrap: wrap;
+
+			li {
+				width: 50%;
+
+				&:last-of-type,
+				&:nth-last-of-type(2){
+					margin-bottom: 0;
+				}
+
+				@include PSJ_breakpoint(lg) {
+					width: auto;
+					margin-bottom: 0;
+				}
+			}
+
+			@include PSJ_breakpoint(lg) {
+				flex-wrap: nowrap;
+				justify-content: space-between;
+			}
+		}
+	}
+}
+
+// Get Quest Forward form overrides
+#gform_wrapper_2 {
+
+	// Some labels die annoying
+	#field_2_4,
+	#field_2_6 {
+		.gfield_label {
+			display: none;
+		}
+	}
+
+	.gfield_label {
+		@extend %u-text--heading-tiny;
+
+		@include PSJ_proportion(margin-bottom, tiny);
+
+		display: block;
+		font-family: PSJ_font-family(meta-serif);
+
+		.gfield_required {
+			display: none;
+		}
+	}
+
+	.ginput_complex {
+		span {
+			label {
+				display: none;
+			}
+		}
+	}
+}
+
+// Newsletter subscribe form overrides
+#gform_wrapper_3 {
+
+	.gform_anchor {
+		display: none;
+	}
+
+	.validation_error {
+		display: none;
+	}
+
+	form {
+		@include PSJ_breakpoint(lg) {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	.gform_body {
+
+		@include PSJ_breakpoint(lg) {
+			@include PSJ_proportion(margin-right, tiny);
+
+			flex-grow: 1;
+			margin-bottom: 0;
+		}
+	}
+
+	// Some labels die annoying
+	#field_3_1 {
+		.gfield_label {
+			display: none;
+		}
+	}
+
+	.gform_footer {
+
+		.gform_ajax_spinner {
+			right: calc(50% - 0.65rem);
+			top: calc(50% - 0.65rem);
+		}
+	}
+}

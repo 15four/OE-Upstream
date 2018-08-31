@@ -1,0 +1,84 @@
+// ================================================= /
+// ======   CONTAINER MODULE   ===================== /
+// ================================================= /
+
+// - DESCRIPTION ----------------------------------- /
+//
+//   Provides a content container that changes its
+//   width depending on the viewport width.
+//   Meant to act as a maximum width for content.
+//
+// - Configuration --------------------------------- /
+//
+//   Parameter: centered (bool)
+//
+//   Description: Determines if the container element
+//   is to be centered on the page.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: container-map (map)
+//
+//   Description: Determines which container map is
+//   used to set the widths of the container.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: breakpoint-map (map)
+//
+//   Description: Determines which breakpoint map will
+//   be used to set the responsive classes.
+//
+// ------------------------------------------------- /
+
+// Default container map
+$PSJ_container-map: (
+	default: 90%,
+	xs: 90%,
+	sm: 85%,
+	md: 680px,
+	lg: 940px,
+	xl: 1080px,
+	xxl: 1280px,
+	xxxl: 1344px,
+	longboi: 1440px
+);
+
+// Container mixin
+@mixin PSJ_container($config: ()) {
+
+	// ------   Default Configuration   ------------ /
+
+	$config: map-merge((
+		centered: true,
+		container-map: $PSJ_container-map,
+		breakpoint-map: $PSJ_breakpoint-map
+	), $config);
+
+	$id: unique-id();
+
+
+	// ------   Registration   --------------------- /
+
+	$registration: PSJ_register-module(container, #{&}, $config);
+
+
+	// ------   Generated CSS   -------------------- /
+
+	// Center container if instructed
+	@if map-get($config, centered) == true {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	// User-generated styling
+	@content;
+
+	// Container for other screen sizes
+	@each $breakpoint-label in map-keys(map-get($config, container-map)) {
+
+		@include PSJ_breakpoint($breakpoint-label, map-get($config, breakpoint-map)) {
+			width: PSJ_map-deep-get($config, container-map, $breakpoint-label);
+		}
+	}
+}

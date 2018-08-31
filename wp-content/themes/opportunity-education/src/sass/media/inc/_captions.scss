@@ -1,0 +1,39 @@
+// ================================================= /
+// ======   CAPTIONS  ============================== /
+// ================================================= /
+
+.wp-caption {
+	@include PSJ_proportion(margin-bottom, tiny);
+
+	max-width: 100%;
+
+	img[class*="wp-image-"] {
+		@include center-block;
+	}
+
+	.wp-caption-text {
+		@include PSJ_proportion((margin-top, margin-bottom), tiny);
+	}
+}
+
+.wp-standalone-caption {
+	@include PSJ_proportion((margin-top, margin-bottom), tiny);
+
+	position: relative;
+	z-index: 1;
+
+	// If this immediately follows a launcher, make the top margin negative
+	.c-launcher + & {
+		margin-top: -0.75rem;
+	}
+}
+
+// Captions are smaller and italic
+.wp-caption-text {
+	@extend %u-text--caption;
+
+	position: relative;
+	font-family: PSJ_font-family(meta-serif);
+	font-style: oblique;
+	display: inline-flex;
+}

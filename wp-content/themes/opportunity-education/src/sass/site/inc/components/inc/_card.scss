@@ -1,0 +1,193 @@
+// ================================================= /
+// ======   CARD COMPONENT  ======================== /
+// ================================================= /
+
+.c-card {
+	$block: &;
+
+	@extend %small-margin-element;
+
+	border-radius: border(lg);
+	overflow: hidden;
+	box-shadow: map-get($box-shadow-map, std);
+
+	@at-root {
+
+		// Cards that have links grow a little on hover and focus
+		&--has-link {
+			transition: transform transition(std);
+
+			// The whole card pretty much grows when this is hovered
+			&:hover {
+				transform: scale(1.01);
+			}
+		}
+
+		// Inners and content are padded elements
+		&__header-inner,
+		&__content {
+			@extend %padded-element;
+		}
+
+		&__header {
+			@include PSJ_proportion(padding, sm);
+
+			border-bottom: border(sm) solid;
+
+			// Children of white backgrounds have lighter borders
+			.u-background--light & {
+				border-color: PSJ_color(light-mid-gray);
+			}
+		}
+
+		&__image-container {
+			overflow: hidden;
+
+			// When the child of an image card with the image on the left or right, make the image 33% wide
+			#{$block}--image-left &,
+			#{$block}--image-right & {
+
+				@include PSJ_breakpoint(lg) {
+					flex: 0 0 33.33333333%;
+					height: auto;
+				}
+			}
+
+			// When the child of a card link, these have an overlay
+			#{$block}__link & {
+				position: relative;
+
+				&::after {
+					@extend %floating-pseudo-element;
+
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: PSJ_color(victoria);
+					opacity: 0;
+					transition: opacity transition(std);
+
+					// The overlay becomes zesty when the card is victoria
+					#{$block}.u-background--victoria & {
+						background-color: PSJ_color(zest);
+					}
+				}
+			}
+
+			// When the child of a hovered or focused link, the overlay becomes visible
+			#{$block}__link:hover &,
+			#{$block}__link:focus & {
+				&::after {
+					opacity: 0.65;
+				}
+			}
+		}
+
+		&__image {
+			background-position: center;
+			background-size: cover;
+			padding-top: 50%;
+			transition: transform transition(std);
+
+			// When the child of an image card with the image on the left or right, remove the padding on larger devices
+			#{$block}--image-left &,
+			#{$block}--image-right & {
+				@include PSJ_breakpoint(lg) {
+					padding-top: 0;
+				}
+			}
+
+			// When the child of a hovered or focused card link, these gow a touch
+			#{$block}__link:hover &,
+			#{$block}__link:focus & {
+				transform: scale(1.05);
+			}
+
+			// At larger breakpoints, the image sizes change
+			@include PSJ_breakpoint(lg) {
+				padding-top: 40%;
+			}
+
+			// For tall images, the padding is larger
+			&--tall {
+				@include PSJ_breakpoint(lg) {
+					padding-top: 80%;
+				}
+			}
+		}
+
+		&__belt {
+			margin-top: -22%;
+			margin-bottom: -3.125%;
+		}
+
+		&__belt-image {
+			width: 33.33333333%;
+		}
+
+		&__content {
+			@include PSJ_proportion(padding-top, tiny);
+			@include PSJ_proportion(padding-right, std);
+			@include PSJ_proportion(padding-bottom, std);
+			@include PSJ_proportion(padding-left, std);
+		}
+	}
+}
+
+// Number cards
+.c-card {
+	@at-root {
+
+		&__number {
+			@include PSJ_proportion(margin-right, std);
+
+			position: relative;
+			flex: 0 0 4.5rem;
+
+			// Numbers are always victoria unless the cards are also victoria
+			background-color: PSJ_color(victoria);
+			color: PSJ_color(rich-white);
+			border-radius: 50%;
+			margin-left: -3rem;
+
+			&::after {
+				content: '';
+				display: block;
+				padding-top: 100%;
+			}
+
+			// Descendants of victoria backgrounds, but not a descendant of any other background
+			.u-background--victoria :not([class*='u-background-']) & {
+				background-color: PSJ_color(zest);
+			}
+
+			@include PSJ_breakpoint(md) {
+				flex: 0 0 6rem;
+			}
+
+			// These break on landscape tablets
+			@include PSJ_breakpoint(lg) {
+				flex: 0 0 8rem;
+				margin-left: -6.5rem;
+			}
+		}
+
+		&__number-inner {
+			position: absolute;
+			top: calc(50% - 0.5em);
+			font-size: 3em;
+			line-height: 1;
+			text-align: center;
+
+			@include PSJ_breakpoint(lg) {
+				font-size: 5rem;
+			}
+		}
+
+		&__number-content {
+			@extend %padded-element;
+		}
+
+	}
+}

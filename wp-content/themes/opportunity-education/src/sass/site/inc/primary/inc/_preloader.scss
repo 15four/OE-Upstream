@@ -1,0 +1,39 @@
+// ================================================= /
+// ======   PRELOADER ============================== /
+// ================================================= /
+
+.preloader {
+	$block: &;
+
+	@include transition(opacity, slow);
+
+	pointer-events: none;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	opacity: 0;
+
+	@at-root {
+
+		// Opaque and clickable when active
+		&.is-active {
+			pointer-events: auto;
+			opacity: 1;
+		}
+
+		&__inner {
+			width: 80px;
+			animation-name: fade-up;
+			animation-duration: transition(std);
+
+			@include PSJ_breakpoint(lg) {
+				width: 100px;
+			}
+		}
+
+		&__icon {
+			animation: blink transition(sloth) infinite reverse ease-in-out;
+		}
+	}
+}

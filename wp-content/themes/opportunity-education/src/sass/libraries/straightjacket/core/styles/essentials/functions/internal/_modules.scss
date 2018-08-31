@@ -1,0 +1,41 @@
+// ================================================= /
+// ======   Internal Module Functions   ============ /
+// ================================================= /
+
+
+// Module registration
+@function PSJ_register-module($module-name, $module-namespace, $module-config: () ) {
+
+	// Construct a new entry
+	$new-entry: (
+		namespace: $module-namespace,
+		config: $module-config
+	);
+
+	// Construct a new registry from the old
+	$new-registry: map-merge(
+		$PSJ_module-registry,
+		($module-name: append(map-get($PSJ_module-registry, $module-name), $new-entry))
+	);
+
+	// Assign the new registry as the global
+	$PSJ_module-registry: $new-registry !global;
+	@return $PSJ_module-registry;
+}
+
+
+// Check to see if a module is registered
+@function PSJ_is-module-registered($module-name) {
+	@return length(map-get($PSJ_module-registry, $module-name)) > 0;
+}
+
+
+// Get instance of a module
+@function PSJ_get-module-instance($module-name, $index: 1) {
+	@return nth(map-get($PSJ_module-registry, $module-name), $index);
+}
+
+// Get namespace of a module
+@function PSJ_get-module-namespace($module-name, $index: 1) {
+	@return map-get(PSJ_get-module-instance($module-name, $index), namespace);
+}

@@ -1,0 +1,142 @@
+// ------   Tooltip Module   ---------------- /
+// ------------------------------------------ /
+
+
+@mixin PSJ_tooltip($config: ()) {
+
+	// ------   Default Configuration   ----- /
+
+	$config: map-merge((
+		margin: 1.5em,
+		opinionated: true
+	), $config);
+
+	$id: unique-id();
+	$parent: &;
+
+
+	// ------   Registration   -------------- /
+
+	$registration: PSJ_register-module(tooltip, #{&}, $config);
+
+
+	// ------   Generated CSS   -------------- /
+
+	position: absolute;
+	z-index: -999;
+	pointer-events: none;
+
+	// Default horizontal alignment
+	left: 50%;
+
+	// Default vertical alignment
+	bottom: 100%;
+	margin-bottom: map-get($config, margin);
+
+	// Defualt Size
+	width: 200px;
+
+	// Initial visibility
+	opacity: 0;
+	visibility: hidden;
+
+	// Basic visual styling & animation
+	@if map-get($config, opinionated) {
+		background: red;
+		text-align: center;
+		padding: 1.5em;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+		transform: translate(-50%, 1em);
+		transition: opacity 0.2s ease-out, visibility 0s 0.2s, z-index 0s 0.2s, transform 0.2s ease-out;
+
+		// Triangle guy
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -4px;
+			left: 50%;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 4px 6px 0;
+			border-color: red transparent transparent;
+			margin-left: -3px;
+		}
+	}
+
+	@else {
+		transform: translate(-50%, 0);
+	}
+
+	// User-generated styling
+	@content;
+
+	@at-root {
+
+		// Placeholder
+		%#{$id}-tooltip--active {
+			z-index: 10;
+			visibility: visible;
+			opacity: 1;
+
+			@if map-get($config, opinionated) {
+				transform: translate(-50%, 0);
+				transition: opacity 0.2s ease-out, visibility 0s, z-index 0s, transform 0.2s ease-out;
+			}
+		}
+
+		// Active tooltip
+		&--active {
+			@extend %#{$id}-tooltip--active;
+		}
+
+		// Sizes
+		&--sm {
+			width: 100px;
+		}
+		&--lg {
+			width: 300px;
+		}
+		&--full {
+			width: 100%;
+		}
+
+		// Alignments
+		&--align-left {
+			left: 0;
+			right: auto;
+		}
+		&--align-right {
+			right: 0;
+			left: auto;
+		}
+
+		// Side
+		&--left {
+			right: 100%;
+			margin-right: map-get($config, margin);
+		}
+		&--right {
+			left: 0;
+			margin-left: map-get($config, margin);
+		}
+		&--bottom {
+			top: 100%;
+			bottom: auto;
+			margin-top: map-get($config, margin);
+			margin-bottom: 0;
+		}
+
+		// Trigger
+		&__trigger {
+			position: relative;
+
+			&:hover,
+			&:focus {
+				#{ $parent } {
+					@extend %#{$id}-tooltip--active;
+				}
+			}
+		}
+	}
+}

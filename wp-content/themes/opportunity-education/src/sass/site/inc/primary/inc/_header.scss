@@ -1,0 +1,428 @@
+// ================================================= /
+// ======   HEADER  ================================ /
+// ================================================= /
+
+.site-header {
+	$block: &;
+
+	// This part is a touch messy but who gives a fuck, it saves valuable CSS real-estate
+	$proportion-mobile: PSJ_map-deep-get($proportion-map, sm, default);
+
+	pointer-events: none;
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+
+	// Overlay exists on small screens
+	&::before {
+		@extend %floating-pseudo-element;
+
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: PSJ_color(victoria);
+		transform: translate(100%, 0);
+		transition: transform transition(slow) transition(bezier);
+
+		@include PSJ_breakpoint(lg) {
+			display: none;
+		}
+	}
+
+	// When the menu is toggled, the overlay comes in
+	&.is-toggled {
+		&::before {
+			transform: translate(0, 0);
+		}
+
+		&::before {
+			opacity: 1;
+		}
+	}
+
+	// At larger breakpoints, this has auto height and padding on the sides
+	@include PSJ_breakpoint(lg) {
+		@include PSJ_proportion(padding, sm);
+
+		pointer-events: auto;
+		height: auto;
+		overflow: visible;
+	}
+
+	@at-root {
+
+		// When the nav is sticky, it has fixed positioning
+		&.is-sticky {
+			position: fixed;
+			opacity: 0;
+			z-index: 3;
+
+			&.is-sticky-coming {
+				opacity: 1;
+				transition: opacity transition(std);
+			}
+
+			&.is-sticky-leaving {
+				opacity: 0;
+				transition: opacity transition(std);
+			}
+
+			@include PSJ_breakpoint(lg) {
+				background-color: PSJ_color(victoria);
+			}
+		}
+
+		// When the nav is sticky on mobile devices, branding and controls have a victoria background
+		&__branding,
+		&__controls {
+			pointer-events: auto;
+
+			#{$block}.is-sticky & {
+				background-color: PSJ_color(victoria);
+
+				@include PSJ_breakpoint(lg) {
+					background-color: transparent;
+					transition: none;
+				}
+			}
+		}
+
+		&__branding {
+			width: 200px;
+			padding-top: $proportion-mobile;
+			padding-bottom: $proportion-mobile;
+			padding-left: $proportion-mobile;
+
+			@include PSJ_breakpoint(md) {
+				width: 225px;
+			}
+			@include PSJ_breakpoint(lg) {
+				padding: 0;
+			}
+			@include PSJ_breakpoint(xxl) {
+				width: 250px;
+			}
+		}
+
+		&__controls {
+			flex: 1 1 auto;
+			align-self: stretch;
+			padding-top: $proportion-mobile;
+			padding-right: $proportion-mobile;
+			padding-bottom: $proportion-mobile;
+
+			@include PSJ_breakpoint(lg) {
+				flex: 0 0 auto;
+				align-self: auto;
+				padding: 0;
+			}
+		}
+
+		&__navigation {
+			@include PSJ_proportion(padding-top, section);
+
+			pointer-events: auto;
+			width: 100%;
+			height: 100%;
+			padding-left: $proportion-mobile;
+			padding-right: $proportion-mobile;
+			overflow-y: auto;
+			border-top: border(sm) solid PSJ_color(mid-gray);
+			transform: translate(100%, 0);
+			transition: transform transition(slow) transition(bezier);
+
+			// When the menu is toggled, this comes in
+			#{$block}.is-toggled & {
+				transform: translate(0, 0);
+			}
+
+			// At larger breakpoints, this goes back in line with the header
+			@include PSJ_breakpoint(lg) {
+				position: relative;
+				width: auto;
+				height: auto;
+				padding: 0;
+				overflow-y: visible;
+				border: none;
+				margin-left: auto;
+				transform: none;
+				transition: none;
+			}
+		}
+
+		// On small screens, the menu container gets enough padding on the bottom to compensate for the nav going off the screen
+		&__menu-container {
+			padding-bottom: 12rem;
+
+			@include PSJ_breakpoint(lg) {
+				padding-bottom: 0;
+			}
+		}
+
+		&__search-form {
+			overflow: hidden;
+			max-height: 0;
+			transition: max-height transition(slow);
+
+			#{$block}.is-search-toggled & {
+				max-height: 100px;
+			}
+
+			// At large viewports, this becomes a floaty boi
+			@include PSJ_breakpoint(lg) {
+				pointer-events: none;
+				position: absolute;
+				z-index: 1;
+				overflow-y: visible;
+				max-height: none;
+				opacity: 0;
+				transform: translate(-1rem, 0);
+				transition: opacity transition(std), transform transition(std);
+
+				// Then it becomes visible when you toggle it
+				#{$block}.is-search-toggled & {
+					pointer-events: auto;
+					opacity: 1;
+					transform: translate(0, 0);
+				}
+			}
+		}
+
+		&__sub-menu {
+			@include reset-list();
+			@include PSJ_proportion(padding-top, sm);
+			@include PSJ_proportion(margin-bottom, sm);
+
+			// On larger viewports, these become dropdowns
+			@include PSJ_breakpoint(lg) {
+				@include PSJ_proportion(padding, sm);
+
+				pointer-events: none;
+				position: absolute;
+				top: calc(100% + 1rem);
+				left: 50%;
+				background-color: PSJ_color(rich-white);
+				color: PSJ_color(dark-gray);
+				border-radius: border(std);
+				box-shadow: map-get($box-shadow-map, sm);
+				margin-bottom: 0;
+				opacity: 0;
+				transform: translate(-50%, 1rem);
+				transition: opacity transition(std), transform transition(std);
+
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+				}
+
+				// A little duder that helps with interactions
+				&::before {
+					top: -1rem;
+					left: 0;
+					width: 100%;
+					height: 1.5rem;
+				}
+
+				// The little triangle guy
+				&::after {
+					top: -0.5rem;
+					left: calc(50% - 0.5rem);
+					width: 1rem;
+					height: 1rem;
+					background-color: PSJ_color(rich-white);
+					transform: rotate(45deg);
+				}
+
+				// These appear when the parent menu item is interacted with
+				#{$block}__menu-item:hover > &,
+				#{$block}__menu-item.has-focus > &,
+				#{$block}__menu-link:focus + &
+				&:hover {
+					pointer-events: auto;
+					opacity: 1;
+					transform: translate(-50%, 0);
+				}
+			}
+		}
+
+		&__menu-item {
+			@include PSJ_proportion(margin-right, sm);
+			@include PSJ_proportion(margin-bottom, std);
+
+			width: 100%;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+			// Current page items are zesty
+			&.current-page-item:not(.current-page-ancestor) {
+				color: PSJ_color(zest);
+			}
+
+			@include PSJ_breakpoint(lg) {
+				position: relative;
+				width: auto;
+				margin-bottom: 0;
+
+				// Current page ancestor items are zesty
+				&.current-page-ancestor,
+				&.current-page-parent,
+				&.current-page-parent,
+				&.current-page-item {
+					color: PSJ_color(zest);
+				}
+			}
+
+			// When the child of a sub-menu, these have smaller margins
+			#{$block}__sub-menu & {
+				@include PSJ_proportion(margin-bottom, tiny);
+
+				color: inherit;
+				margin-right: 0;
+
+				// On larger viewports, the margins get smaller again
+				@include PSJ_breakpoint(lg) {
+					@include PSJ_proportion(margin-bottom, micro);
+
+					position: static;
+					white-space: nowrap;
+					border-bottom: border(sm) solid PSJ_color(light-gray);
+
+					&:last-of-type {
+						border-bottom: none;
+					}
+
+					// Current page items have a border
+					&.current-page-item {
+						&::before {
+							content: '';
+							position: absolute;
+							left: 0;
+							height: 1.6666666em;
+							border-left: border(lg) solid PSJ_color(zest);
+						}
+					}
+				}
+			}
+		}
+
+		&__menu-link {
+			font-size: 2rem;
+			line-height: 1;
+			font-weight: 400;
+			text-decoration: none;
+
+			@include PSJ_breakpoint(lg) {
+				font-size: 1rem;
+				font-weight: 700;
+			}
+			@include PSJ_breakpoint(xl) {
+				font-size: 1.125rem;
+			}
+			@include PSJ_breakpoint(xxl) {
+				font-size: 1.11111111rem;
+			}
+
+			// When the child of a sub menu, these are smaller
+			#{$block}__sub-menu & {
+				font-size: 1.25rem;
+
+				@include PSJ_breakpoint(lg) {
+					font-size: 1rem;
+					font-weight: 400;
+				}
+			}
+		}
+
+		// The search and toggle buttons
+		&__search-button,
+		&__toggle-button {
+			position: relative;
+
+			// Both buttons have a pseudo element covering them for the sake of event delegation
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			// SVGs here are treated a bit differently
+			.c-svg {
+				transition: opacity transition(std), transform transition(std);
+			}
+
+			.c-svg--x {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				transform: rotate(180deg);
+			}
+		}
+
+		&__search-button {
+			width: 1.333333333rem;
+
+			@include PSJ_breakpoint(lg) {
+				width: 1.25rem;
+				margin-right: 0;
+
+				// Magnifying glass
+				.c-svg--magnifying-glass {
+
+					// When the menu is toggled, this becomes invisible
+					#{$block}.is-search-toggled & {
+						opacity: 0;
+						transform: rotate(180deg);
+					}
+				}
+
+				// X
+				.c-svg--x {
+
+					// When the menu is toggled, this becomes visible
+					#{$block}.is-search-toggled & {
+						opacity: 1;
+						transform: rotate(0deg);
+					}
+				}
+			}
+		}
+
+		&__toggle-button {
+			width: 1.4rem;
+
+			// Hamburger
+			.c-svg--hamburger {
+
+				// When the menu is toggled, this becomes invisible
+				#{$block}.is-toggled & {
+					opacity: 0;
+					transform: rotate(180deg);
+				}
+			}
+
+			// X
+			.c-svg--x {
+
+				// When the menu is toggled, this becomes visible
+				#{$block}.is-toggled & {
+					opacity: 1;
+					transform: rotate(0deg);
+				}
+			}
+		}
+	}
+}

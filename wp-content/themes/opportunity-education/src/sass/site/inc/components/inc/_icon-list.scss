@@ -1,0 +1,103 @@
+// ================================================= /
+// ======   ICON LIST COMPONENT  =================== /
+// ================================================= /
+
+.c-icon-list {
+	$block: &;
+
+	@extend %standard-margin-element;
+	@extend %padded-element;
+
+	@include reset-list;
+
+	@at-root {
+
+		&--numbered {
+			counter-reset: icon-list;
+
+			// Children of numbered icon lists have smaller bottoms
+			.c-grid__column {
+				@include PSJ_proportion(margin-bottom, tiny);
+			}
+		}
+
+		&__item {
+
+			// Children of artifact icon lists have padding
+			#{$block}--artifact & {
+				@include PSJ_proportion(padding, sm);
+
+				border: border(tiny) solid;
+				border-radius: border(lg);
+
+				// Children of white backgrounds have lighter borders
+				.u-background--light :not(.u-background--dark) & {
+					border-color: PSJ_color(light-mid-gray);
+				}
+
+				// Children of quest cards have smaller padding
+				.c-card--quest & {
+					@include PSJ_proportion(padding, tiny);
+				}
+			}
+		}
+
+		&__item-icon-container {
+			flex: 0 0 2.5rem;
+
+			// Children of artifact icon lists are a wee bit smaller
+			#{$block}--artifact & {
+				@include PSJ_proportion(padding-right, sm);
+
+				flex: 0 0 2.2rem;
+
+				// Children of quest cards have smaller padding
+				.c-card--quest & {
+					@include PSJ_proportion(padding-right, tiny);
+				}
+			}
+		}
+
+		&__icon {
+
+			&--numbered {
+				position: relative;
+				padding-top: 100%;
+				background-color: PSJ_color(zest);
+				color: PSJ_color(rich-white);
+				border-radius: 50%;
+				counter-increment: icon-list;
+
+				&::after {
+					content: counter(icon-list);
+					position: absolute;
+					top: calc( 50% - 0.5em );
+					width: 100%;
+					line-height: 1;
+					text-align: center;
+				}
+			}
+		}
+
+		&__item-content {
+			@extend %padded-element;
+
+			@include PSJ_proportion(padding-left, tiny);
+
+			// Children of artifact lists have a border on the left
+			#{$block}--artifact & {
+				border-left: border(tiny) solid;
+
+				// Children of white backgrounds have lighter borders
+				.u-background--light :not(.u-background--dark) & {
+					border-color: PSJ_color(light-mid-gray);
+				}
+
+				// Artifact lists inside of quest cards have less padding
+				.c-card--quest & {
+					@include PSJ_proportion(padding-left, tiny);
+				}
+			}
+		}
+	}
+}

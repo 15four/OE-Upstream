@@ -1,0 +1,408 @@
+{
+    "key": "group_5af9c7ccc8b96",
+    "title": "Page Fields",
+    "fields": [
+        {
+            "key": "field_5af9c7cee61a4",
+            "label": "Sections",
+            "name": "sections",
+            "type": "repeater",
+            "instructions": "Add sections here",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 12,
+            "layout": "block",
+            "button_label": "Add Section",
+            "sub_fields": [
+                {
+                    "key": "field_5af9c7f4e61a5",
+                    "label": "Background Color",
+                    "name": "background_color",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "rich_white": "White (Default)",
+                        "light_gray": "Light Gray",
+                        "victoria": "Victoria",
+                        "zest": "Zest"
+                    },
+                    "default_value": [
+                        "rich_white"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5af9c8aee61a6",
+                    "label": "Padding",
+                    "name": "padding",
+                    "type": "checkbox",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "top": "Top",
+                        "right": "Right",
+                        "bottom": "Bottom",
+                        "left": "Left"
+                    },
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "default_value": [
+                        "top",
+                        "bottom"
+                    ],
+                    "layout": "horizontal",
+                    "toggle": 0,
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_5af9c8fce61a7",
+                    "label": "Padding Style",
+                    "name": "padding_style",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "section": "Section (Default)",
+                        "std": "Standard Element (Smaller)"
+                    },
+                    "default_value": [
+                        "section"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5b438847d80be",
+                    "label": "Include Background Image",
+                    "name": "include_background_image",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_5af9c92b54da5",
+                    "label": "Background Image",
+                    "name": "background_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b438847d80be",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_5af9c94e54da7",
+                    "label": "Background Image Style",
+                    "name": "background_image_style",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5b438847d80be",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "cover": "Cover (Default)",
+                        "contain": "Contain",
+                        "repeat": "Repeat"
+                    },
+                    "default_value": [
+                        "cover"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_5af9c9d346005",
+                    "label": "Background Layers",
+                    "name": "background_layers",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "collapsed": "",
+                    "min": 0,
+                    "max": 11,
+                    "layout": "table",
+                    "button_label": "Add Layer",
+                    "sub_fields": [
+                        {
+                            "key": "field_5af9c9e246006",
+                            "label": "Type",
+                            "name": "type",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33.33333333",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "squiggly_line_1": "Squiggly Line 1",
+                                "squiggly_line_2": "Squiggly Line 2",
+                                "squiggly_line_3": "Squiggly Line 3",
+                                "pen": "Pen",
+                                "highlighter": "Highlighter",
+                                "scissors": "Scissors",
+                                "chemistry_instruments": "Chemistry Instruments",
+                                "micro_controller": "Micro Controller",
+                                "pencil_with_line": "Pencil with Line",
+                                "lab_goggles": "Lab Goggles",
+                                "ruler_and_protractor": "Ruler and Protractor",
+                                "molecule": "Molecule",
+                                "compass": "Compass",
+                                "tape": "Tape",
+                                "batteries": "Batteries"
+                            },
+                            "default_value": [
+                                "squiggly_line_1"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5afc3d514171d",
+                            "label": "Position",
+                            "name": "position",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33.33333333",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "top_left": "Top Left",
+                                "top_center": "Top Center",
+                                "top_right": "Top Right",
+                                "right_center": "Right Center",
+                                "bottom_right": "Bottom Right",
+                                "bottom_center": "Bottom Center",
+                                "bottom_left": "Bottom Left",
+                                "left_center": "Left Center",
+                                "left_third": "Left Third",
+                                "center": "Center",
+                                "right_third": "Right Third"
+                            },
+                            "default_value": [
+                                "top_left"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_5afc5b55de484",
+                            "label": "Color",
+                            "name": "color",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33.33333333",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "auto": "Auto (Translucent over selected background color — Default)",
+                                "rich_white": "White",
+                                "light_gray": "Light Gray",
+                                "victoria": "Victoria",
+                                "zest": "Zest",
+                                "translucent_light": "Translucent (Light)",
+                                "translucent_dark": "Translucent (Dark)"
+                            },
+                            "default_value": [
+                                "auto"
+                            ],
+                            "allow_null": 0,
+                            "multiple": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "return_format": "value",
+                            "placeholder": ""
+                        }
+                    ]
+                },
+                {
+                    "key": "field_5af9ca1b46007",
+                    "label": "Constrain Content",
+                    "name": "constrain_content",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                },
+                {
+                    "key": "field_5af9ca2b46008",
+                    "label": "Additional Classes",
+                    "name": "additional_classes",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5af9ca3e46009",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 1
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "posts_page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1531152752
+}

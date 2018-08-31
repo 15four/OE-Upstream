@@ -1,0 +1,283 @@
+// ================================================= /
+// ======   BUTTON OBJECT  ========================= /
+// ================================================= /
+
+// Placeholder
+%o-button {
+	$block: &;
+
+	@include transition((color, background-color, border-color, box-shadow, opacity, transform), std);
+
+	cursor: pointer;
+	display: inline-flex;
+	flex: 0 0 auto;
+	position: relative;
+	z-index: 0;
+	padding: $button-vertical-padding 2.5em;
+	line-height: 1;
+	font-weight: 700;
+	color: inherit;
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	border: border(sm) solid;
+	border-radius: 2em;
+	overflow: hidden;
+	box-shadow: none;
+	transform: translate3d(0, 0, 0);
+
+	// Buttons that are descendants of zesty backgrounds, but not a descendant of any other background
+	.u-background--zest :not([class*='u-background-']) &:not([class*='o-button--style-']) {
+
+		&:hover,
+		&:focus {
+			border-color: PSJ_color(rich-white);
+		}
+
+		&::before {
+			background-color: PSJ_color(rich-white);
+		}
+	}
+
+	// Buttons that are the only child of the last paragraph in a series have a micro top margin
+	p + p > &:only-child {
+		@include PSJ_proportion(margin-top, micro);
+	}
+
+	// Little circle guys inside
+	&::before {
+		@extend %floating-pseudo-element;
+
+		@include transition((opacity, transform), std);
+
+		z-index: -1;
+		top: 50%;
+		left: 1.25em;
+		width: calc(200% - 1.25em - 1rem);
+		padding-top: calc(200% - 1.25em - 1rem);
+		border-radius: 50%;
+		background-color: PSJ_color(zest);
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0);
+	}
+
+	// Color changes, background expands, line comes out when hovered and focused
+	&:hover,
+	&:focus {
+		color: PSJ_color(victoria);
+		background-color: PSJ_color(zest);
+		border-color: PSJ_color(zest);
+		outline: none;
+		box-shadow: 0 0.25rem 0.25rem rgba(PSJ_color(rich-black), 0.1);
+		transform: translate3d(0, -0.125rem, 0);
+
+		// Background guy
+		&::before {
+			opacity: 1;
+			transform: translate(-50%, -50%) scale(1);
+		}
+	}
+
+	// Shrinks a touch when active
+	&:active {
+		transform: translate3d(0, 0, 0) scale3d(0.98, 0.98, 1);
+	}
+
+	// Buttons that are descendants of a button container have margins
+	.o-button-container & {
+		@include PSJ_proportion(margin-right, tiny);
+
+		text-align: center;
+
+		&:not(.o-button--unstyled):not(.o-button--even-padding) {
+			@include PSJ_proportion(margin-bottom, tiny);
+
+			display: block;
+			width: 100%;
+			margin-right: 0;
+		}
+
+		&:last-of-type {
+			margin-right: 0;
+			margin-bottom: 0;
+		}
+
+		@include PSJ_breakpoint(md) {
+
+			&:not(.o-button--unstyled):not(.o-button--even-padding) {
+				@include PSJ_proportion(margin-right, tiny);
+
+				display: inline-flex;
+				width: auto;
+			}
+		}
+	}
+
+	.o-button-container--vertical & {
+		@include PSJ_proportion(margin-bottom, micro);
+
+		margin-right: 0;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	// Children of spacious button containers have a bit of a larger margin
+	.o-button-container--spacious & {
+		@include PSJ_proportion(margin-right, sm);
+	}
+
+	.o-button-container--spacious.o-button-container--vertical & {
+		@include PSJ_proportion(margin-bottom, tiny);
+	}
+
+	// Buttons that are descendants of single row button containers do not wrap their white space
+	.o-button-container--single-row & {
+		white-space: nowrap;
+	}
+}
+
+// Class
+.o-button {
+	$block: &;
+
+	@extend %o-button;
+
+	@at-root {
+
+		// Even padding
+		&--even-padding {
+			padding: 0.875rem;
+		}
+
+		// Solid buttons
+		&--solid {
+			background-color: PSJ_color(zest);
+			border: none;
+
+			&:before {
+				display: none;
+			}
+
+			// Buttons that are descendants of zesty backgrounds, but not a descendant of any other background
+			.u-background--zest :not([class*='u-background-']) &:not([class*='o-button--style-']) {
+				background-color: PSJ_color(victoria);
+
+				&:hover,
+				&:focus,
+				&:active {
+					color: PSJ_color(zest);
+				}
+			}
+		}
+
+		// White on solid zest
+		&--style-white-on-solid-zest {
+			background-color: PSJ_color(zest);
+			color: PSJ_color(rich-white);
+			border-color: PSJ_color(zest);
+		}
+
+		// White and victoria-on-white buttons look the same when they are solid
+		&--style-white,
+		&--style-victoria-on-white {
+			&#{$block}--solid {
+				background-color: PSJ_color(rich-white);
+				color: PSJ_color(victoria);
+
+				&:hover,
+				&:focus {
+					background-color: PSJ_color(rich-white);
+					color: PSJ_color(zest);
+					border-color: PSJ_color(zest);
+				}
+			}
+		}
+
+		// White buttons
+		&--style-white {
+			color: PSJ_color(rich-white);
+
+			&::before {
+				background-color: PSJ_color(rich-white);
+			}
+
+			&:hover,
+			&:focus {
+				color: PSJ_color(victoria);
+				background-color: PSJ_color(rich-white);
+				border-color: PSJ_color(rich-white);
+			}
+		}
+
+		// Victoria on white
+		&--style-victoria-on-white {
+			color: PSJ_color(victoria);
+			border-color: PSJ_color(rich-white);
+
+			&::before {
+				background-color: PSJ_color(rich-white);
+			}
+
+			&:hover,
+			&:focus {
+				background-color: PSJ_color(rich-white);
+				border-color: PSJ_color(rich-white);
+			}
+		}
+
+		// Zest on white
+		&--style-zest-on-white {
+			color: PSJ_color(zest);
+			border-color: PSJ_color(rich-white);
+
+			&::before {
+				background-color: PSJ_color(rich-white);
+			}
+
+			&:hover,
+			&:focus {
+				color: PSJ_color(victoria);
+				background-color: PSJ_color(rich-white);
+				border-color: PSJ_color(rich-white);
+			}
+
+			// Solid zest on white
+			&#{$block}--solid {
+				background-color: PSJ_color(rich-white);
+
+				&:hover,
+				&:focus {
+					color: PSJ_color(victoria);
+				}
+			}
+		}
+
+		&--unstyled {
+			display: inline-block;
+			padding: 0;
+			border: none;
+			border-radius: 0;
+
+			// No strange hover states
+			&:hover,
+			&:focus,
+			&:active {
+				background: none;
+				color: PSJ_color(zest);
+				transform: none;
+				box-shadow: none;
+
+				// When the child of zesty backgrounds, these turn victoria
+				.u-background--zest :not([clas*="u-background--"]) & {
+					color: PSJ_color(victoria);
+				}
+			}
+
+			// No animated button
+			&::before {
+				display: none;
+			}
+		}
+	}
+}

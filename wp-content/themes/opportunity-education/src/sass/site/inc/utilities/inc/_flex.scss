@@ -1,0 +1,26 @@
+// ================================================= /
+// ======   FLEX UTILITIES  ======================== /
+// ================================================= /
+
+// Additional flex utilities
+$additional_flex_utilities: (
+	order-0: (
+		order: 0
+	),
+	order-1: (
+		order: 1
+	),
+	wrap: (
+		flex-wrap: wrap
+	),
+	shrink-0: (
+		flex-shrink: 0
+	)
+);
+
+.u-flex {
+	@include PSJ_flex-helpers((
+		include-responsive-classes: (md, lg, xl),
+		additional-class-map: $additional_flex_utilities
+	));
+}

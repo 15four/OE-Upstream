@@ -1,0 +1,88 @@
+// ================================================= /
+// ======   DISPLAY HELPERS MODULE   =============== /
+// ================================================= /
+
+// - DESCRIPTION ----------------------------------- /
+//
+//   Outputs helper classes related to how
+//   elements display.
+//
+//   Uses static responsive classes.
+//
+// - Configuration --------------------------------- /
+//
+//   Parameter: include-responsive-classes (bool/list)
+//
+//   Description: Determines which responsive classes
+//   to include with each helper class in the module.
+//   Passing a bool assumes either all or no responsive
+//   classes are to be included.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: breakpoint-map (map)
+//
+//   Description: Determines which breakpoint map will
+//   be used to set the responsive classes.
+//
+//   ----------------------------------------------- /
+//
+//   Parameter: additional-class-map (map)
+//
+//   Description: Additional classes and styles to add.
+//
+// ------------------------------------------------- /
+
+
+@mixin PSJ_display-helpers($config: ()) {
+
+	// ------   Default Configuration   ------------ /
+
+	$config: map-merge((
+		include-responsive-classes: true,
+		breakpoint-map: $PSJ_breakpoint-map,
+		additional-class-map: ()
+	), $config);
+
+	// Set up helper classes
+	$helper-classes: (
+		visible: (
+			visibility: visible,
+			opacity: 1
+		),
+		invisible: (
+			visibility: hidden,
+			opacity: 0
+		),
+		none: (
+			display: none
+		),
+		inline: (
+			display: inline
+		),
+		block: (
+			display: block
+		),
+		inline-block: (
+			display: inline-block
+		),
+		flex: (
+			display: flex
+		)
+	);
+
+	// Merge additional classes into helper classes
+	$helper-classes: map-merge($helper-classes, map-get($config, additional-class-map));
+
+
+	// ------   Registration   --------------------- /
+
+	$registration: PSJ_register-module(display-helpers, #{&}, ());
+
+
+	// ------   Generated CSS   -------------------- /
+
+	@at-root {
+		@include PSJ_static-responsive-classes($helper-classes, map-get($config, include-responsive-classes), map-get($config, breakpoint-map));
+	}
+}

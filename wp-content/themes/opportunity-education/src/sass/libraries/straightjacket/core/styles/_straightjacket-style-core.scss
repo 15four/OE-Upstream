@@ -1,0 +1,341 @@
+// ================================================= /
+// ======   PHANTASM STRAIGHTJACKET   ============== /
+// ================================================= /
+// ======   RESPONSIVE SCSS FRAMEWORK   ============ /
+// ================================================= /
+
+// - DESCRIPTION ----------------------------------- /
+//
+//   A lightweight and powerful framework designed
+//   for maximum customizability.
+//
+//   Straightjacket aims to substantiate complex css
+//   into a system of awesome features and functions
+//   that are presented as a collection of modules.
+//
+//   Straightjacket's modules can be created, destroyed,
+//   duplicated, and modified at your will to suit the
+//   project at hand. Tweak your configurations to
+//   perfection or just jump right in and start firing
+//   off some defaults. It's all up to you.
+//
+//   In order to keep your code clean and your project
+//   fast, Straightjacket makes no assumptions and
+//   will not act unless called upon, thus keeping
+//   all of the power where it belongs: in the
+//   hands of the developer.
+//
+//   Normalizing styles would be impossible without
+//   Nicolas Gallagher and Jonathan Neal
+//   http://necolas.github.com/normalize.css/
+//
+// - BLAH BLAH BLAH -------------------------------- /
+//
+//   VERSION: 0.7 ---------------------------------- /
+//   RELEASE: MAY 7, 2018 -------------------------- /
+//   AUTHOR: NICK PATTERSON ------------------------ /
+//
+//   PHANTASM: phantasm.io ------------------------- /
+//   FIFTEEN FOUR: fifteenfour.com ----------------- /
+//
+// ------------------------------------------------- /
+
+
+
+
+
+// TODOS ------------------------------------------- /
+//
+//   1. TEST. TEST. TEST.
+//
+//   2. Expand the number of helpers
+//
+//   3. Clean up the scripts - use ES2015 and event delegation
+//
+//   4. Consider incorporating proportions idea into framework
+//
+//   5. Provide helper functions for encapsulating parts
+//      of responsive classes elsewhere
+//
+//   6. Extract helpful stuff and documentation into a README
+//
+//   7. Add ability to change gutter on grid at different viewport sizes —
+//      probably by accepting either a CSS value or a 1D map
+//
+//   8. Related to the above point: Add helper functions to
+//      unify all of these data types in configuration
+//      so that they all speak the same language and
+//      are parsed the same way predictably
+//
+//   9. Attempt to enforce responsive class paradigm
+//       within all modules. E.g. the grid would generate
+//       maps to pass to functions that map dynamic classes
+//
+//   10. Make 'include-breakpoints' argument a little more clearly named
+//       in the cases of responsive classes and such
+//
+//   11: Consolidate error handling with new function
+//
+//   12: Clean up math functions
+//
+//   13: Clean up grid module and include responsive pushes and restrictions
+//
+// ------------------------------------------------- /
+
+
+
+
+
+// - A WORD ON RESPONSIVE CLASSES ------------------ /
+//
+//   Straightjacket uses two different flavors of
+//   responsive classes in its modules
+//
+//   STATIC and DYNAMIC
+//
+// - Static ---------------------------------------- /
+//
+//   Static responsive classes always have the same
+//   exact property values for each breakpoint.
+//   This is useful in the case of utility classes
+//   in which the goal is to discretely change properties
+//   across different breakpoints. An example is
+//   aligning text to the center on smartphones,
+//   then switching it to left for tablets or laptops
+//   by applying two static responsive classes at
+//   their respective breakpoints.
+//
+//   Schema:
+//
+//   $static-class-map: (
+//       static-class-name: (
+//           CSS-property: CSS-value,
+//           CSS-property: CSS-value
+//       ),
+//       // More static class names
+//   )
+//
+// - Dynamic --------------------------------------- /
+//
+//   Dynamic responsive classes can do the same, but their
+//   property values themselves change at each breakpoint,
+//   requiring a map of breakpoints with which to dictate
+//   that. An example of this would be setting up a system
+//   of paddings for <section> tags that increases in
+//   size as the viewport grows.
+//
+//   Schema:
+//
+//   $dynamic-class-map: (
+//       dynamic-class-name: (
+//           breakpoint-name: (
+//               CSS-property: CSS-value,
+//               CSS-property: CSS-value
+//           ),
+//           // More breakpoint names
+//       )
+//       // More dynamic class names
+//   )
+//
+// - Important notes ------------------------------- /
+//
+//   No matter which type of responsive class
+//   a module runs on, the CSS values of a class
+//   (at any breakpoint for dynamic classes)
+//   can be pulled via a helper function that can
+//   encapsulate said styles somewhere else if needed,
+//   but still maintaining the usability of keeping
+//   all properties and property values in the same place.
+//
+// ------------------------------------------------- /
+
+
+// - TABLE OF CONTENTS ----------------------------- /
+//
+//   #0 Global Module Registration ----------------- /
+//
+//   #1 Normalization ------------------------------ /
+//   #2 Mixins & Functionality --------------------- /
+//   #3 General ------------------------------------ /
+//   #4 Structure ---------------------------------- /
+//   #5 Text --------------------------------------- /
+//   #6 Buttons ----------------- WORK IN PROGRESS - /
+//   #7 Popover Modals ----------------------------- /
+//   #8 Dropdowns ---------------------------------- /
+//   #9 Tooltips ----------------------------------- /
+//
+// ------------------------------------------------- /
+
+
+
+
+
+// ================================================= /
+// ======   #0 GLOBAL MODULE REGISTRATION   ======== /
+// ================================================= /
+
+// ------------------------------------------------- /
+
+//   Global registration keeps track of all
+//   modules that are currently registered,
+//   allowing for dynamically namespaced and
+//   numbered mixins for each module.
+//
+// ------------------------------------------------- /
+
+$PSJ_module-registry: (
+
+	display-helpers: (),
+
+	container: (),
+	grid: (),
+	block-helpers: (),
+	flex-helpers: (),
+
+	text-styling: (),
+	text-helpers: (),
+
+	popover-modal: (),
+
+	tooltip: ()
+
+) !global;
+
+
+
+
+
+// ================================================= /
+// ======   #1 NORMALIZATION   ===================== /
+// ================================================= /
+
+// ------------------------------------------------- /
+//
+//   This one is pretty self explanatory.
+//   CSS Normalization is good.
+//
+// ------------------------------------------------- /
+
+@import 'modules/normalization/normalization';
+
+
+
+
+
+// ================================================= /
+// ======   #2 MIXINS & FUNCTIONS   ============ /
+// ================================================= /
+
+@import 'essentials/functions/functions';
+@import 'essentials/mixins/mixins';
+
+
+
+
+
+// ================================================= /
+// ======   #3 GENERAL  ============================ /
+// ================================================= /
+
+// ------------------------------------------------- /
+//
+//   General modules are here
+//
+// ------------------------------------------------- /
+
+// ------   Display Helpers Module   -------- /
+// ------------------------------------------ /
+@import 'modules/general/display-helpers/display-helpers';
+
+
+
+
+
+// ================================================= /
+// ======   #4 STRUCTURE   ========================= /
+// ================================================= /
+
+
+// ------   Container Module   -------------- /
+// ------------------------------------------ /
+@import 'modules/structure/container/container';
+
+
+// ------   Grid Module   ------------------- /
+// ------------------------------------------ /
+@import 'modules/structure/grid/grid';
+
+// ------   Structure Helpers Modules   ----- /
+// ------------------------------------------ /
+
+// Block helpers
+@import 'modules/structure/structure-helpers/block-helpers';
+
+// Flex helpers
+@import 'modules/structure/structure-helpers/flex-helpers';
+
+// ------   Proportion Helpers Modules   ---- /
+// ------------------------------------------ /
+
+// Padding helpers
+@import 'modules/structure/structure-helpers/proportion-helpers/padding-helpers';
+
+// Margin helpers
+@import 'modules/structure/structure-helpers/proportion-helpers/margin-helpers';
+
+
+
+
+// ================================================= /
+// ======   #5 TEXT   ============================== /
+// ================================================= /
+
+
+// ------   Text Styles Module   ------------ /
+// ------------------------------------------ /
+@import 'modules/text/text-styles/text-styles';
+
+// ------   Text Helpers Module   ----------- /
+// ------------------------------------------ /
+@import 'modules/text/text-helpers/text-helpers';
+
+
+
+
+// ================================================= /
+// ======   #6 Buttons   =========================== /
+// ================================================= /
+
+// TODO: Add button module
+
+
+
+
+// ================================================= /
+// ======   #7 Popover Modals   ==================== /
+// ================================================= /
+
+
+// ------   Popover Modals Module   --------- /
+// ------------------------------------------ /
+@import 'modules/popover-modal/popover-modal';
+
+
+
+
+// ================================================= /
+// ======   #8 Dropdowns   ========================= /
+// ================================================= /
+
+// TODO: Add dropdown module
+
+
+
+
+// ================================================= /
+// ======   #9 Tooltips   ========================= /
+// ================================================= /
+
+// ------   Tooltips Module   --------------- /
+// ------------------------------------------ /
+@import 'modules/tooltip/tooltip';

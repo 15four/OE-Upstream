@@ -1,0 +1,63 @@
+// ================================================= /
+// ======   FOOTER  ================================ /
+// ================================================= /
+
+.site-footer {
+	position: relative;
+
+	.menu {
+		margin-bottom: 0;
+	}
+
+	// Menu items in the footer don't have margins
+	.menu-item {
+		margin-bottom: 0;
+
+		a {
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	@at-root {
+
+		&__logo {
+			width: 225px;
+
+			@include PSJ_breakpoint(xxl) {
+				width: 252px;
+			}
+		}
+
+		&__secondary-info {
+			@extend %padded-element;
+		}
+
+		&__subfooter {
+
+			// Menus in the subfooter aren't stacked
+			.menu {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				margin-bottom: 0;
+
+				@include PSJ_breakpoint(lg) {
+					justify-content: flex-start;
+				}
+
+				.menu-item {
+					@include PSJ_proportion(margin-right, tiny);
+
+					&:last-of-type {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+}

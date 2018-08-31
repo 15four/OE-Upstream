@@ -1,0 +1,165 @@
+// ================================================= /
+// ======   BRANDSCAPE COMPONENT  ================== /
+// ================================================= /
+
+.c-brandscape {
+	$block: &;
+	$scroll-listener-throttle: 42ms;
+
+	position: relative;
+
+	@at-root {
+
+		&__background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-size: auto 100%;
+			background-position: top center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+
+			#{$block}.is-landscape & {
+				background-size: 100% auto;
+			}
+
+			// Since iOS devices suck, revert to fixed position element over fixed background
+			body._device--ios & {
+				position: fixed;
+				background-size: cover;
+				background-attachment: scroll;
+			}
+		}
+
+		&__section {
+			@include PSJ_proportion(padding-top, absolute-unit, $special-proportion-map);
+			@include PSJ_proportion(padding-bottom, large-section, $special-proportion-map);
+
+			position: relative;
+			z-index: 0;
+			min-height: 420px;
+			height: 100vh;
+
+			// If there's only one section or this is the non-first section in a blurscape, let the height run free!
+			&:only-of-type,
+			#{$block}--blurscape &:not(:first-of-type) {
+				height: auto;
+			}
+		}
+
+		&__section-background {
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			overflow: hidden;
+		}
+
+		&__section-background-subject-container {
+			position: absolute;
+			z-index: -1;
+			top: -10%;
+			left: -10%;
+			width: 120%;
+			height: 120%;
+		}
+
+		// Improve performance for elements that are transformed on scroll
+		&__section-background-subject,
+		&__content {
+			backface-visibility: hidden;
+			perspective: 1000;
+		}
+
+		&__section-background-subject {
+			width: auto;
+			max-width: none;
+			height: 100%;
+			will-change: transform;
+
+			&--video {
+				object-fit: cover;
+			}
+
+			// When the child of a landscape brandscape (tehe)
+			#{$block}.is-landscape & {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		&__section-background-overlay {
+			opacity: 0;
+			will-change: opacity;
+		}
+
+		&__inner {
+			position: relative;
+			z-index: 1;
+		}
+
+		&__content {
+			will-change: transform, filter;
+		}
+
+		// Scroll indicator
+		&__scroll-indicator {
+			@include PSJ_proportion(height, large-section, $special-proportion-map);
+
+			position: absolute;
+			top: 100%;
+			left: 0;
+		}
+
+		&__scroll-indicator-arrow {
+			width: 1.5rem;
+			animation: blink transition(sloth) infinite;
+		}
+
+		// Controls
+		&__controls {
+			pointer-events: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			transition: opacity transition(std);
+
+			&.is-active {
+				opacity: 1;
+			}
+		}
+
+		&__controls-inner {
+			pointer-events: none;
+			width: 1rem;
+
+			// When the controls are active, these are clickable
+			#{$block}__controls.is-active & {
+				pointer-events: auto;
+			}
+		}
+
+		&__control {
+			width: 1rem;
+			height: 1.25rem;
+
+			&::after {
+				content: '';
+				width: 0;
+				height: 100%;
+				color: inherit;
+				border-right: border(lg) solid;
+				margin: 0 auto;
+			}
+
+			&.is-active {
+				color: PSJ_color(zest);
+
+				// When the child of a zesty background, these turn victoria
+				.u-background--zest :not([class*="u-background--"]) & {
+					color: PSJ_color(victoria);
+				}
+			}
+		}
+	}
+}

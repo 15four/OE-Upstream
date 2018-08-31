@@ -1,0 +1,75 @@
+// ================================================= /
+// ======   HEADING TYPOGRAPHY  ==================== /
+// ================================================= /
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: PSJ_font-family(meta-serif);
+	font-weight: 400;
+	clear: both;
+	margin-top: 0;
+
+	// Headings that come right after paragraphs have a small top margin
+	p + &:not(:last-child) {
+		@include PSJ_proportion(margin-top, sm);
+	}
+
+	// Headings that do not have a margin class get the sm margin on the bottom
+	&:not([class*='u-margin-']) {
+		@include PSJ_proportion(margin-bottom, sm);
+	}
+
+	// Headers that are children of light backgrounds only
+	.u-background--light :not([class*='u-background--dark']) &:not([class*='u-text--color-']) {
+		color: PSJ_color(victoria);
+	}
+
+	// Headers that are children of dark backgrounds only
+	.u-background--dark :not([class*='u-background--light']) &:not([class*='u-text--color-']) {
+		color: inherit;
+	}
+
+	// Headers that are the children of hovered and focused links
+	.site-main [class*="u-background--"] a:link:not(:hover):not(:focus) > & {
+		transition: color transition(std);
+	}
+
+	.site-main [class*="u-background--"] a:hover > &,
+	.site-main [class*="u-background--"] a:focus > & {
+		color: inherit;
+	}
+}
+
+// H1s are absolute units
+h1 {
+	@extend %u-text--heading-absolute-unit;
+}
+
+// H2s are large
+h2 {
+	@extend %u-text--heading-lg;
+}
+
+// H3s are medium
+h3 {
+	@extend %u-text--heading-md;
+}
+
+// H4s are small
+h4 {
+	@extend %u-text--heading-sm;
+}
+
+// H5s are tiny
+h5 {
+	@extend %u-text--heading-tiny;
+}
+
+// H6s are micro
+h6 {
+	@extend %u-text--heading-micro;
+}

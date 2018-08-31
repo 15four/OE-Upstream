@@ -1,0 +1,845 @@
+// ================================================= /
+// ======   SECTION COMPONENT  ===================== /
+// ================================================= /
+
+.c-section {
+	position: relative;
+	background-position: center;
+
+	@at-root {
+
+		// Bordered sections have an absolute unit of a border
+		&--bordered {
+
+			// Sides that can be bordered
+			$sides: (top, bottom);
+
+			// Loop through sides and colors
+			@each $side in $sides {
+				@each $color in map-keys($color-map) {
+					&-#{$side}-#{$color} {
+						border-#{$side}: border(absolute-unit) solid PSJ_color($color);
+					}
+				}
+			}
+		}
+
+		// Background layers container and background layers are absolutely positioned
+		&__background-layers,
+		&__background-layer {
+			position: absolute;
+		}
+
+		&__background-layers {
+			pointer-events: none;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		&__background-layer {
+			$layer: &;
+
+			// Set up background layer styles
+			$background-layer-property-map: (
+
+				// Squiggly line 1
+				squiggly-line-1: (
+					width: 1100px,
+					positions: (
+						top-left: (
+							top: -90px,
+							left: -550px
+						),
+						top-center: (
+							top: -90px,
+							left: calc(50% - 550px)
+						),
+						top-right: (
+							top: -20px,
+							right: -275px
+						),
+						right-center: (
+							top: calc(50% - 500px),
+							right: -450px
+						),
+						bottom-right: (
+							right: -450px,
+							bottom: -90px
+						),
+						bottom-center: (
+							bottom: -90px,
+							left: calc(50% - 550px),
+						),
+						bottom-left: (
+							bottom: -90px,
+							left: -450px
+						),
+						left-center: (
+							top: calc(50% - 500px),
+							left: -450px
+						),
+						left-third: (
+							top: calc(50% - 500px),
+							left: calc(33.33333333% - 550px)
+						),
+						center: (
+							top: calc(50% - 500px),
+							left: calc(50% - 550px),
+						),
+						right-third: (
+							top: calc(50% - 500px),
+							right: calc(33.33333333% - 550px)
+						)
+					)
+				),
+
+				// Squiggly line 2
+				squiggly-line-2: (
+					width: 400px,
+					positions: (
+						top-left: (
+							top: -360px,
+							left: -150px
+						),
+						top-center: (
+							top: -360px,
+							left: calc(50% - 200px)
+						),
+						top-right: (
+							top: -260px,
+							right: -83px
+						),
+						right-center: (
+							top: calc(50% - 554px),
+							right: -83px
+						),
+						bottom-right: (
+							right: -83px,
+							bottom: -360px
+						),
+						bottom-center: (
+							bottom: -360px,
+							left: calc(50% - 200px)
+						),
+						bottom-left: (
+							bottom: -360px,
+							left: -150px
+						),
+						left-center: (
+							top: calc(50% - 554px),
+							left: -50px
+						),
+						left-third: (
+							top: calc(50% - 554px),
+							left: calc(33.33333333% - 200px)
+						),
+						center: (
+							top: calc(50% - 554px),
+							left: calc(50% - 200px)
+						),
+						right-third: (
+							top: calc(50% - 554px),
+							right: calc(33.33333333% - 200px)
+						)
+					)
+				),
+
+				// Squiggly line 2
+				squiggly-line-3: (
+					width: 425px,
+					positions: (
+						top-left: (
+							top: -585px,
+							left: -135px
+						),
+						top-center: (
+							top: -585px,
+							left: calc(50% - 212px)
+						),
+						top-right: (
+							top: -400px,
+							right: -135px
+						),
+						right-center: (
+							top: calc(50% - 460px),
+							right: -200px
+						),
+						bottom-right: (
+							right: -100px,
+							bottom: -100px
+						),
+						bottom-center: (
+							bottom: -100px,
+							left: calc(50% - 212px)
+						),
+						bottom-left: (
+							bottom: -100px,
+							left: -135px
+						),
+						left-center: (
+							top: calc(50% - 460px),
+							left: -135px
+						),
+						left-third: (
+							top: calc(50% - 460px),
+							left: calc(33.33333333% - 212px)
+						),
+						center: (
+							top: calc(50% - 460px),
+							left: calc(50% - 212px)
+						),
+						right-third: (
+							top: calc(50% - 460px),
+							right: calc(33.33333333% - 212px)
+						)
+					)
+				),
+
+				// Pen
+				pen: (
+					width: 300px,
+					positions: (
+						top-left: (
+							top: -60px,
+							left: 10px
+						),
+						top-center: (
+							top: -60px,
+							left: calc(50% - 150px)
+						),
+						top-right: (
+							top: -60px,
+							right: 10px
+						),
+						right-center: (
+							top: calc(50% - 166px),
+							right: -50px
+						),
+						bottom-right: (
+							bottom: -60px,
+							right: 10px
+						),
+						bottom-center: (
+							bottom: -60px,
+							left: calc(50% - 150px)
+						),
+						bottom-left: (
+							bottom: -60px,
+							left: 10px
+						),
+						left-center: (
+							top: calc(50% - 166px),
+							left: -50px
+						),
+						left-third: (
+							top: calc(50% - 166px),
+							left: calc(33.33333333% - 150px)
+						),
+						center: (
+							top: calc(50% - 166px),
+							left: calc(50% - 150px)
+						),
+						right-third: (
+							top: calc(50% - 166px),
+							right: calc(33.33333333% - 150px)
+						)
+					)
+				),
+
+				// Highlighter
+				highlighter: (
+					width: 275px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: -75px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 137px)
+						),
+						top-right: (
+							top: 40px,
+							right: -75px
+						),
+						right-center: (
+							top: calc(50% - 128px),
+							right: -75px
+						),
+						bottom-right: (
+							bottom: 40px,
+							right: -75px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 137px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -75px
+						),
+						left-center: (
+							top: calc(50% - 128px),
+							left: -75px
+						),
+						left-third: (
+							top: calc(50% - 128px),
+							left: calc(33.33333333% - 137px)
+						),
+						center: (
+							top: calc(50% - 128px),
+							left: calc(50% - 137px)
+						),
+						right-third: (
+							top: calc(50% - 128px),
+							right: calc(33.33333333% - 137px)
+						)
+					)
+				),
+
+				// Scissors
+				scissors: (
+					width: 400px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: -100px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 200px)
+						),
+						top-right: (
+							top: 40px,
+							right: -100px
+						),
+						right-center: (
+							top: calc(50% - 150px),
+							right: -100px
+						),
+						bottom-right: (
+							right: -100px,
+							bottom: 40px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 200px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -100px
+						),
+						left-center: (
+							top: calc(50% - 150px),
+							left: -100px
+						),
+						left-third: (
+							top: calc(50% - 150px),
+							left: calc(33.33333333% - 200px)
+						),
+						center: (
+							top: calc(50% - 150px),
+							left: calc(50% - 200px)
+						),
+						right-third: (
+							top: calc(50% - 150px),
+							left: calc(33.33333333% - 200px)
+						)
+					)
+				),
+
+				// Chemistry instruments
+				chemistry-instruments: (
+					width: 300px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: 60px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 150px)
+						),
+						top-right: (
+							top: 40px,
+							right: 60px
+						),
+						right-center: (
+							top: calc(50% - 220px),
+							right: 40px
+						),
+						bottom-right: (
+							right: 60px,
+							bottom: 40px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 150px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: 60px
+						),
+						left-center: (
+							top: calc(50% - 220px),
+							left: 60px
+						),
+						left-third: (
+							top: calc(50% - 220px),
+							left: calc(33.33333333% - 150px)
+						),
+						center: (
+							top: calc(50% - 220px),
+							left: calc(50% - 150px)
+						),
+						right-third: (
+							top: calc(50% - 220px),
+							right: calc(33.33333333% - 150px)
+						)
+					)
+				),
+
+				// Micro controller
+				micro-controller: (
+					width: 480px,
+					positions: (
+						top-left: (
+							top: -275px,
+							left: -275px
+						),
+						top-center: (
+							top: -275px,
+							left: calc(50% - 240px)
+						),
+						top-right: (
+							top: -275px,
+							right: -275px
+						),
+						right-center: (
+							top: calc(50% - 237px),
+							right: -275px
+						),
+						bottom-right: (
+							right: -250px,
+							bottom: -250px,
+							transform: scaleX(-1)
+						),
+						bottom-center: (
+							bottom: -275px,
+							left: calc(50% - 240px)
+						),
+						bottom-left: (
+							bottom: -275px,
+							left: -275px
+						),
+						left-center: (
+							top: calc(50% - 237px),
+							left: -275px
+						),
+						left-third: (
+							top: calc(50% - 237px),
+							left: calc(33.33333333% - 240px)
+						),
+						center: (
+							top: calc(50% - 237px),
+							left: calc(50% - 240px)
+						),
+						right-third: (
+							top: calc(50% - 237px),
+							right: calc(33.33333333% - 240px)
+						)
+					)
+				),
+
+				// Pencil with line
+				pencil-with-line: (
+					width: 375px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: 40px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 188px)
+						),
+						top-right: (
+							top: 40px,
+							right: 40px
+						),
+						right-center: (
+							top: calc(50% - 258px),
+							right: 40px
+						),
+						bottom-right: (
+							right: 40px,
+							bottom: -215px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 188px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: 40px
+						),
+						left-center: (
+							top: calc(50% - 258px),
+							left: -150px
+						),
+						left-third: (
+							top: calc(50% - 387px),
+							right: 45%,
+							width: 450px,
+						),
+						center: (
+							top: calc(50% - 258),
+							left: calc(50% - 188px)
+						),
+						right-third: (
+							top: calc(50% - 387px),
+							left: 45%,
+							width: 450px
+						)
+					)
+				),
+
+				// Lab goggles
+				lab-goggles: (
+					width: 440px,
+					positions: (
+						top-left: (
+							top: 100px,
+							left: -170px
+						),
+						top-center: (
+							top: 100px,
+							left: calc(50% - 220px)
+						),
+						top-right: (
+							top: 40px,
+							right: -170px
+						),
+						right-center: (
+							top: calc(50% - 120px),
+							right: -170px
+						),
+						bottom-right: (
+							right: -175px,
+							bottom: 40px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 220px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -170px
+						),
+						left-center: (
+							top: calc(50% - 120px),
+							left: -170px
+						),
+						left-third: (
+							top: calc(50% - 120px),
+							left: calc(33.33333333% - 220px)
+						),
+						center: (
+							top: calc(50% - 120px),
+							left: calc(50% - 220px)
+						),
+						right-third: (
+							top: calc(50% - 120px),
+							right: calc(33.33333333% - 220px)
+						)
+					)
+				),
+
+				// Ruler and Protractor
+				ruler-and-protractor: (
+					width: 500px,
+					positions: (
+						top-left: (
+							top: -100px,
+							left: -200px
+						),
+						top-center: (
+							top: -100px,
+							left: calc(50% - 255px)
+						),
+						top-right: (
+							top: -100px,
+							right: -200px
+						),
+						right-center: (
+							top: calc(50% - 255px),
+							right: -250px
+						),
+						bottom-right: (
+							right: -200px,
+							bottom: -100px
+						),
+						bottom-center: (
+							bottom: -100px,
+							left: calc(50% - 255px)
+						),
+						bottom-left: (
+							bottom: -100px,
+							left: -200px
+						),
+						left-center: (
+							top: calc(50% - 255px),
+							left: -110px
+						),
+						left-third: (
+							top: calc(50% - 255px),
+							left: calc(33.33333333% - 255px),
+						),
+						center: (
+							top: calc(50% - 255px),
+							left: calc(50% - 255px)
+						),
+						right-third: (
+							top: calc(50% - 255px),
+							right: calc(33.33333333% - 255px),
+						)
+					)
+				),
+
+				// Molecule
+				molecule: (
+					width: 625px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: -150px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 312px)
+						),
+						top-right: (
+							top: 40px,
+							right: -150px
+						),
+						right-center: (
+							top: calc(50% - 195px),
+							right: -225px
+						),
+						bottom-right: (
+							right: -150px,
+							bottom: 40px,
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 312px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -150px
+						),
+						left-center: (
+							top: calc(50% - 195px),
+							left: -225px
+						),
+						left-third: (
+							top: calc(50% - 195px),
+							left: calc(33.33333333% - 312px)
+						),
+						center: (
+							top: calc(50% - 195px),
+							left: calc(50% - 312px)
+						),
+						right-third: (
+							top: calc(50% - 195px),
+							right: calc(33.33333333% - 312px)
+						)
+					)
+				),
+
+				// Compass
+				compass: (
+					width: 425px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: -90px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 212px)
+						),
+						top-right: (
+							top: 40px,
+							right: -90px
+						),
+						right-center: (
+							top: calc(50% - 193px),
+							right: -90px
+						),
+						bottom-right: (
+							right: -90px,
+							bottom: 40px,
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 212px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -90px
+						),
+						left-center: (
+							top: calc(50% - 193px),
+							left: -90px
+						),
+						left-third: (
+							top: calc(50% - 193px),
+							left: calc(33.33333333% - 212px)
+						),
+						center: (
+							top: calc(50% - 193px),
+							left: calc(50% - 212px)
+						),
+						right-third: (
+							top: calc(50% - 193px),
+							left: calc(33.33333333% - 212px)
+						)
+					)
+				),
+
+				// Tape
+				tape: (
+					width: 380px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: -100px
+						),
+						top-center: (
+							top: 40px,
+							left: calc(50% - 165px)
+						),
+						top-right: (
+							top: 40px,
+							right: -100px
+						),
+						right-center: (
+							top: calc(50% - 165px),
+							right: -80px
+						),
+						bottom-right: (
+							right: -100px,
+							bottom: 40px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 165px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -100px
+						),
+						left-center: (
+							top: calc(50% - 165px),
+							left: -80px
+						),
+						left-third: (
+							top: calc(50% - 165px),
+							left: calc(33.33333333% - 165px)
+						),
+						center: (
+							top: calc(50% - 165px),
+							left: calc(50% - 165px)
+						),
+						right-third: (
+							top: calc(50% - 165px),
+							right: calc(33.33333333% - 165px)
+						)
+					)
+				),
+
+				// Batteries
+				batteries: (
+					width: 260px,
+					positions: (
+						top-left: (
+							top: 40px,
+							left: -40px
+						),
+						top-center: (
+
+						),
+						top-right: (
+							top: 40px,
+							right: -40px
+						),
+						right-center: (
+							top: calc(50% - 190px),
+							right: -50px,
+							width: 320px,
+							transform: rotate(-50deg)
+						),
+						bottom-right: (
+							right: -40px,
+							bottom: 40px
+						),
+						bottom-center: (
+							bottom: 40px,
+							left: calc(50% - 130px)
+						),
+						bottom-left: (
+							bottom: 40px,
+							left: -40px
+						),
+						left-center: (
+							top: calc(50% - 190px),
+							left: -50px,
+							width: 320px,
+							transform: rotate(-50deg)
+						),
+						left-third: (
+							top: calc(50% - 170px),
+							left: calc(33.33333333% - 130px)
+						),
+						center: (
+							top: calc(50% - 170px),
+							left: calc(50% - 130px)
+						),
+						right-third: (
+							top: calc(50% - 170px),
+							right: calc(33.33333333% - 130px)
+						)
+					)
+				)
+			);
+
+			// Loop through each background layer
+			@each $background-layer-name, $property-map in $background-layer-property-map {
+
+				// Set modifier class
+				&--#{$background-layer-name} {
+					width: map-get($property-map, width);
+
+					// Loop through positions
+					@each $position-name, $style-map in map-get($property-map, positions) {
+
+						// Add the combined position class
+						&#{$layer}--#{$position-name} {
+
+							// Output styles
+							@include PSJ_map-styles($style-map);
+						}
+					}
+				}
+			}
+		}
+
+		&__content {
+			@extend %padded-element;
+		}
+	}
+}

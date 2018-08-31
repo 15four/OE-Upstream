@@ -1,0 +1,17 @@
+// ================================================= /
+// ======   BUTTON CONTAINER OBJECT  =============== /
+// ================================================= /
+
+.o-button-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+
+	@at-root {
+
+		&--single-row {
+			width: auto;
+			flex-wrap: nowrap;
+		}
+	}
+}

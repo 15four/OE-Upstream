@@ -1,0 +1,41 @@
+// ================================================= /
+// ======   FONTS  ================================= /
+// ================================================= /
+
+// Meta Serif
+@font-face {
+	font-family: 'Meta Serif';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../assets/fonts/meta-serif/book/meta-serif-book.eot?#iefix');
+	src:
+		url('../assets/fonts/meta-serif/book/meta-serif-book.eot?#iefix') format('eot'),
+		url('../assets/fonts/meta-serif/book/meta-serif-book.woff2') format('woff2'),
+		url('../assets/fonts/meta-serif/book/meta-serif-book.woff') format('woff'),
+		url('../assets/fonts/meta-serif/book/meta-serif-book.ttf') format('truetype');
+}
+
+// Meta Serif Bold
+@font-face {
+	font-family: 'Meta Serif';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../assets/fonts/meta-serif/bold/meta-serif-bold.eot?#iefix');
+	src:
+		url('../assets/fonts/meta-serif/bold/meta-serif-bold.eot?#iefix') format('eot'),
+		url('../assets/fonts/meta-serif/bold/meta-serif-bold.woff2') format('woff2'),
+		url('../assets/fonts/meta-serif/bold/meta-serif-bold.woff') format('woff'),
+		url('../assets/fonts/meta-serif/bold/meta-serif-bold.ttf') format('truetype');
+}
+
+// Meta Serif Italic
+@font-face {
+	font-family: 'Meta Serif';
+	font-style: italic;
+	src: url('../assets/fonts/meta-serif/italic/meta-serif-italic.eot?#iefix');
+	src:
+		url('../assets/fonts/meta-serif/italic/meta-serif-italic.eot?#iefix') format('eot'),
+		url('../assets/fonts/meta-serif/italic/meta-serif-italic.woff2') format('woff2'),
+		url('../assets/fonts/meta-serif/italic/meta-serif-italic.woff') format('woff'),
+		url('../assets/fonts/meta-serif/italic/meta-serif-italic.ttf') format('truetype');
+}

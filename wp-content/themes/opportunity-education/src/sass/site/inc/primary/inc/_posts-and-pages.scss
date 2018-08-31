@@ -1,0 +1,46 @@
+// ================================================= /
+// ======   POSTS & PAGES  ========================= /
+// ================================================= /
+
+.site {
+	overflow: hidden;
+}
+
+.site-content {
+	transition: transform transition(slow) transition(bezier);
+
+	// This all slides over when the menu is toggled
+	.site-header.is-toggled ~ & {
+		transform: translate(-16rem, 0);
+		transition-delay: transition(fast);
+	}
+
+	// But then it isn't on larger screens
+	@include PSJ_breakpoint(lg) {
+		transform: none;
+		transition: none;
+
+		.site-header.is-toggled ~ & {
+			transform: none;
+		}
+	}
+}
+
+.sticky {
+	display: block;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}

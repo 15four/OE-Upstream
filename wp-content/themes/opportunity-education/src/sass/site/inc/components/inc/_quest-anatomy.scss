@@ -1,0 +1,119 @@
+// ================================================= /
+// ======   QUEST ANATOMY COMPONENT  =============== /
+// ================================================= /
+
+.c-quest-anatomy {
+	$block: &;
+
+	@extend %standard-margin-element;
+
+	position: relative;
+
+	// At large breakpoints, this overflows its container
+	@include PSJ_breakpoint(lg) {
+		width: 200%;
+		margin-left: -50%;
+	}
+
+	@at-root {
+
+		&__device {
+			position: relative;
+			z-index: 0;
+			overflow: hidden;
+
+			// At larger breakpoints, this becomes half width and centered
+			@include PSJ_breakpoint(lg) {
+				width: 62.5%;
+			}
+		}
+
+		&__device-screen {
+			position: absolute;
+			z-index: -1;
+			top: 12.625%;
+			left: 15.5%;
+			width: 69%;
+		}
+
+		&__attributes {
+			@include PSJ_proportion(padding-top, std);
+
+			border-top: border(sm) solid;
+			border-color: PSJ_color(light-mid-gray);
+
+			// At larger breakpoints, this becomes an overlay
+			@include PSJ_breakpoint(lg) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding-top: 0;
+				border-top: 0;
+			}
+		}
+
+		&__attribute {
+
+			// At larger breakpoints, these are floated on top of the device
+			@include PSJ_breakpoint(lg) {
+				position: absolute;
+				transform: translate(0, -50%);
+
+				// Reviews
+				&--reviews {
+					left: 3%;
+					width: 28%;
+				}
+
+				// Effort
+				&--effort {
+					right: 0;
+					width: 30.5%;
+				}
+
+				// Artifacts
+				&--artifacts {
+					left: 2%;
+					width: 28%;
+				}
+
+				// Driving question
+				&--driving-question {
+					right: 5%;
+					width: 31%;
+				}
+			}
+		}
+
+		&__attribute-line {
+			flex-grow: 1;
+			border-bottom: border(std) solid PSJ_color(zest);
+		}
+
+		&__attribute-card {
+			@include PSJ_proportion(margin-bottom, sm);
+
+			width: 100%;
+			padding: 1rem 1.5rem;
+			line-height: 1.5;
+			border-radius: 5px;
+			box-shadow: 0 0 1rem rgba(PSJ_color(victoria), 0.15);
+
+			#{$block}__attribute:last-of-type & {
+				margin-bottom: 0;
+			}
+
+			// These have a fixed width at larger viewports
+			@include PSJ_breakpoint(lg) {
+				width: 280px;
+				margin-bottom: 0;
+			}
+
+			@include PSJ_breakpoint(xxl) {
+				width: 325px;
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+// ================================================= /
+// ======   BACKGROUND UTILITIES  ================== /
+// ================================================= /
+
+.u-background {
+	$block: &;
+
+	@at-root {
+
+		// Placeholders for setting text props for light and dark backgrounds
+		&--light {
+			& > :not([class*='u-text--color-']):not(#{$block}--dark) {
+				color: PSJ_color(dark-gray);
+			}
+		}
+		&--dark {
+			& > :not([class*='u-text--color-']):not(#{$block}--light) {
+				color: PSJ_color(rich-white);
+				-webkit-font-smoothing: antialiased;
+				font-smoothing: antialiased;
+			}
+		}
+
+		// Add all colors
+		@each $color, $value in $color-map {
+			&--#{$color} {
+				background-color: $value;
+			}
+		}
+	}
+}

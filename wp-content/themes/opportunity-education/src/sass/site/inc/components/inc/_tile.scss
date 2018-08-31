@@ -1,0 +1,75 @@
+// ================================================= /
+// ======   TILE COMPONENT  ======================== /
+// ================================================= /
+
+.c-tile {
+	$block: &;
+
+	@extend %small-margin-element;
+
+	@at-root {
+
+		&__header {
+			position: relative;
+			overflow: hidden;
+		}
+
+		&__image-container {
+
+			@include transition((opacity, transform), std);
+
+			#{$block}__link:hover &,
+			#{$block}__link:focus & {
+				transform: scale(1.1);
+
+				&::after {
+					opacity: 0.75;
+				}
+			}
+
+			// Little overlay over the image
+			&::after {
+				@extend %floating-pseudo-element;
+
+				@include transition(opacity, std);
+
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: PSJ_color(victoria);
+				opacity: 0.6;
+			}
+		}
+
+		&__text-container {
+			@extend %padded-element;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&__subtitle,
+		&__title {
+			width: 100%;
+		}
+
+		&__subtitle {
+			@include transition((opacity, transform), std);
+
+			opacity: 0;
+			transform: translate(0, 0.5rem);
+
+			#{$block}__link:hover &,
+			#{$block}__link:focus & {
+				opacity: 1;
+				transform: translate(0, 0);
+			}
+		}
+
+		&__content {
+			@extend %padded-element;
+		}
+	}
+}

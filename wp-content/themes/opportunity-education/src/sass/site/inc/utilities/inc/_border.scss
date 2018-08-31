@@ -1,0 +1,36 @@
+// ================================================= /
+// ======   BORDER UTILITIES  ====================== /
+// ================================================= /
+
+.u-border {
+	$block: &;
+
+	@at-root {
+
+		// Add styles
+		@each $style in (solid, dashed) {
+			&--style-#{$style} {
+				border-style: $style;
+			}
+		}
+
+		// Add all colors
+		@each $color, $value in $color-map {
+			&--color-#{$color} {
+				border-color: $value;
+			}
+		}
+
+		// Add all sides with styles and weights
+		@each $side in (top, right, bottom, left) {
+			@each $style in (solid, dashed) {
+				@each $weight, $value in $border-map {
+					&-#{$side}--#{$style}-#{$weight} {
+						border-#{$side}-width: $value;
+						border-#{$side}-style: $style;
+					}
+				}
+			}
+		}
+	}
+}

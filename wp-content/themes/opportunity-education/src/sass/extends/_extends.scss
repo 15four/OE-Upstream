@@ -1,0 +1,33 @@
+// ================================================= /
+// ======   EXTENDS  =============================== /
+// ================================================= /
+
+// Absolutely positions pseudo elements used for all sorts of tricks
+%floating-pseudo-element {
+	content: '';
+	display: block;
+	position: absolute;
+}
+
+// Removes margins from first and last children
+%padded-element {
+	& > :first-child:not([class*="u-margin-"]),
+	& > [class*="u-text--heading"]:first-child:not([class*="u-margin-"]),
+	& > .c-popover-modal + :nth-child(2):not([class*="u-margin-"]) {
+		margin-top: 0;
+	}
+	& > :last-child:not([class*="u-margin-"]),
+	& > [class*="u-text--heading"]:last-child:not([class*="u-margin-"]) {
+		margin-bottom: 0;
+	}
+}
+
+// Elements with a standard margin on the bottom
+%standard-margin-element {
+	@include PSJ_proportion(margin-bottom, std);
+}
+
+// Elements with a small margin on the bottom
+%small-margin-element {
+	@include PSJ_proportion(margin-bottom, sm);
+}

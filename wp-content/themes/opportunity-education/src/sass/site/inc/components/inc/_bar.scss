@@ -1,0 +1,33 @@
+// ================================================= /
+// ======   BAR COMPONENT  ========================= /
+// ================================================= /
+
+.c-bar {
+	$block: &;
+
+	@extend %small-margin-element;
+	@extend %padded-element;
+
+	border-bottom: border(sm) solid;
+
+	// Children of light backgrounds have slightly lighter borders
+	.u-background--light :not(.u-background--dark) & {
+		border-color: PSJ_color(light-mid-gray);
+	}
+
+	@at-root {
+
+		// Subtitle
+		&__subtitle {
+
+			// Children of light backgrounds have slightly lighter subtitles
+			.u-background--light :not(.u-background--dark) & {
+				color: PSJ_color(mid-gray);
+			}
+		}
+
+		&__link {
+			@extend %padded-element;
+		}
+	}
+}
