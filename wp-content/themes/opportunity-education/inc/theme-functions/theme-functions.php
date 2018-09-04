@@ -15,6 +15,7 @@ require __DIR__ . '/inc/sidebars-widgets.php';
 require __DIR__ . '/inc/styles-scripts.php';
 require __DIR__ . '/inc/walkers.php';
 require __DIR__ . '/inc/plugin-overrides.php';
+require __DIR__ . '/inc/google-analytics.php';
 
 // Custom post types and taxonomies
 require __DIR__ . '/inc/custom-post-types/custom-post-types.php';

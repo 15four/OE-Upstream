@@ -7,14 +7,30 @@
 
 // Set attributes
 $attributes = array(
-	'class'                    => 'c-slider c-slider--regular js-slider ' . $args['additional_classes'],
+	'class'                    => 'c-slider c-slider--regular js-slider '
+		. ( $args['dynamic_height'] === true
+			? 'c-slider--dynamic-height'
+			: '' )
+		. $args['additional_classes'],
 	'data-slider-index'        => '0',
 	'data-slider-slide-count'  => count( $args['slides'] )
 );
 
 // Set slides attributes
 $slides_attributes = array(
-	'class' => 'c-slider__slides js-slider__slides o-dynamic-height-guy js-dynamic-height-guy js-dynamic-height-guy--loading ' . $args['slides_additional_classes']
+	'class' => 'c-slider__slides js-slider__slides '
+		. ( $args['dynamic_height'] === true
+			? 'o-dynamic-height-guy js-dynamic-height-guy js-dynamic-height-guy--loading'
+			: '' ) . ' '
+		. $args['slides_additional_classes']
+);
+
+// Set slides inner attributes
+$slides_inner_attributes = array(
+	'class' => 'c-slider__slides-inner js-slider__slides-inner '
+		. ( $args['dynamic_height'] === true
+			? 'o-dynamic-height-guy__inner js-dynamic-height-guy__inner'
+			: '' ) . ' '
 );
 
 // Set controls attributes
@@ -33,7 +49,7 @@ $control_attributes = array(
 
 	<<?php echo $args['slides_tag'] . ' ' . \fifteen_four\helpers\get_attributes_from_array( $slides_attributes ); ?>>
 
-		<div class="c-slider__slides-inner js-slider__slides-inner o-dynamic-height-guy__inner js-dynamic-height-guy__inner">
+		<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $slides_inner_attributes ); ?>>
 
 			<?php
 

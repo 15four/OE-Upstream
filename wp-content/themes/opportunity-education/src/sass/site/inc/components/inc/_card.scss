@@ -46,10 +46,9 @@
 			// When the child of an image card with the image on the left or right, make the image 33% wide
 			#{$block}--image-left &,
 			#{$block}--image-right & {
-
 				@include PSJ_breakpoint(lg) {
 					flex: 0 0 33.33333333%;
-					height: auto;
+					height: 100%;
 				}
 			}
 
@@ -94,6 +93,7 @@
 			#{$block}--image-left &,
 			#{$block}--image-right & {
 				@include PSJ_breakpoint(lg) {
+					height: 100%;
 					padding-top: 0;
 				}
 			}

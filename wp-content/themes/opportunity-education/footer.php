@@ -62,11 +62,23 @@
 		</div><!-- .site-info -->
 		<div class="site-footer__subfooter u-background--dark u-background--dark-victoria u-padding-top--tiny u-padding-bottom--tiny">
 			<div class="c-container">
-				<div class="site-footer__secondary-info u-display--flex@lg u-text--align-center u-text--align-left@lg">
-					<div class="site-footer__copyright-info u-text--caption u-margin-right--sm@lg">
-						<strong>&copy; 2018 Opportunity Education Foundation, Inc.<br class="u-display--none@md" /></strong> All rights reserved.
+				<div class="u-display--flex u-flex--wrap u-flex--justify-center u-flex--justify-between@lg u-flex--align-center">
+					<div class="site-footer__secondary-info u-display--flex@lg u-text--align-center u-text--caption u-text--align-left@lg u-block--full-width u-block--auto-width@lg u-margin-bottom--micro u-margin-bottom--none@lg">
+						<div class="site-footer__copyright-info u-margin-right--sm@lg">
+							<strong>&copy; 2018 Opportunity Education Foundation, Inc.<br class="u-display--none@md" /></strong> All rights reserved.
+						</div>
+						<?php dynamic_sidebar( 'sidebar-subfooter' ); ?>
 					</div>
-					<?php dynamic_sidebar( 'sidebar-subfooter' ); ?>
+
+					<?php
+						// Main menu
+						wp_nav_menu( array(
+							'theme_location'  => 'menu-2',
+							'menu_id'         => 'social-menu',
+							'menu_class'      => 'menu u-display--flex',
+							'container_class' => 'site-footer__social-menu'
+						) );
+					?>
 				</div>
 			</div>
 		</div>

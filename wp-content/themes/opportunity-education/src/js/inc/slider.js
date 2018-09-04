@@ -2,9 +2,11 @@
 
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-invalid-this */
+/* eslint-disable no-magic-numbers */
 
 /* global jQuery */
 
+import helpers from './helpers';
 import { theDynamicHeightGuy } from './dynamic-height-guy';
 
 ( function( $ ) {
@@ -89,15 +91,15 @@ import { theDynamicHeightGuy } from './dynamic-height-guy';
 			// Set next index
 			nextIndex = direction
 				? direction === 'next'
-					? ( index + 1 ) % slideCount
-					: ( index - 1 ) % slideCount
+					? helpers.wrapAround( index + 1, 0, slideCount - 1 )
+					: helpers.wrapAround( index - 1, 0, slideCount - 1 )
 				: controlIndex;
 
 			// If the current index and the next index are not the same and the window has focus, change the slide
 			if ( index !== nextIndex && document.hasFocus() ) {
 
 				// Change slide
-				object.setActiveSlide( parentSlider, nextIndex, nextIndex > index );
+				object.setActiveSlide( parentSlider, nextIndex );
 
 				// If there is not a direction specified, set the active control
 				object.setActiveControl( parentSlider, nextIndex );
@@ -115,20 +117,24 @@ import { theDynamicHeightGuy } from './dynamic-height-guy';
 		};
 
 		// Set active slide
-		object.setActiveSlide = function( targetSlider, newIndex, isGoingForward ) {
+		object.setActiveSlide = function( targetSlider, newIndex ) {
 
 			// Get slides
 			const slides = targetSlider.closestChild( '.' + object.config.sliderClass + '__slide' );
 
-			// Give parent the correct slide direction class
-			targetSlider.removeClass( object.config.sliderClass + '--forwards ' + object.config.sliderClass + '--backwards' );
-			targetSlider.addClass( isGoingForward ? object.config.sliderClass + '--forwards' : object.config.sliderClass + '--backwards' );
+			// Get slides inner
+			const slidesInner = targetSlider.closestChild( '.' + object.config.sliderClass + '__slides-inner' );
+
+			// Set transform for slides inner
+			slidesInner.css(
+				{
+					transform: 'translate(-' + newIndex * 100 + '%, 0)'
+				}
+			);
 
 			// Remove active class from active slide, add recently active class
 			const currentSlide = object.getActiveSlide( targetSlider );
-			slides.not( currentSlide ).removeClass( 'was-just-active' );
 			currentSlide.removeClass( 'is-active' );
-			currentSlide.addClass( 'was-just-active' );
 
 			// Get new slide
 			const newSlide = slides.eq( newIndex );

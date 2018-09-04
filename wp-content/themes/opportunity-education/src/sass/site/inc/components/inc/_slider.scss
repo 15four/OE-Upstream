@@ -39,44 +39,35 @@
 			}
 		}
 
+		&__slides-inner {
+			display: flex;
+			transition: transform transition(slow) ease-out;
+		}
+
 		&__slide {
 			@extend %padded-element;
 
-			position: absolute;
 			z-index: 0;
 			pointer-events: none;
-			top: 0;
-			left: 0;
 			width: 100%;
+			flex-shrink: 0;
 			opacity: 0;
-			transform: translate(12.5%, 0);
+			transition: opacity transition(slow) ease-out;
 
-			#{$js-block}--backwards &:not(.is-active) {
-				transform: translate(-12.5%, 0);
-
-				&.was-just-active {
-					transform: translate(12.5%, 0);
-				}
+			// When the direct child of a dynamic hight slider, start the height off as 0
+			#{$block}__slides-inner.o-dynamic-height-guy__inner > & {
+				height: 0;
 			}
 
-			&.was-just-active,
-			&.is-active {
-				@include transition((opacity, transform), slow);
-			}
-
-			&.was-just-active {
-				z-index: 1;
-				transform: translate(-12.5%, 0);
-			}
-
+			// Changes a bit when active
 			&.is-active {
 				pointer-events: auto;
-				z-index: 2;
-				position: relative;
-				top: auto;
-				left: auto;
 				opacity: 1;
-				transform: translate(0, 0);
+
+				// When the direct child of a dynamic hight slider, height becomes auto
+				#{$block}__slides-inner.o-dynamic-height-guy__inner > & {
+					height: auto;
+				}
 
 				// If this happens to be the child of another slide that is not active, remove these pointer events
 				#{$block}__slide:not(.is-active) & {

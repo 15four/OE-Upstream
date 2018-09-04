@@ -32,6 +32,23 @@ const helpers = {
 	// Clamp a number
 	clamp: function( number, min, max ) {
 		return Math.min( Math.max( number, min ), max );
+	},
+
+	// Wraparound numbers
+	wrapAround: function( number, min, max ) {
+
+		// If the number is negative, return the max
+		if ( number < 0 ) {
+			return max;
+		}
+
+		// Otherwise, if the number is greater than the max, return the min
+		else if ( number > max ) {
+			return min;
+		}
+
+		// Otherwise, return the number
+		return number;
 	}
 };
 

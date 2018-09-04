@@ -16,6 +16,7 @@ class Slider extends \ui\UI_Component {
 	protected $_arg_schema = array(
 		'type'                        => 'regular',
 		'tag'                         => 'div',
+		'dynamic_height'              => true,
 		'slides'                      => [],
 		'slides_tag'                  => 'div',
 		'slides_additional_classes'   => '',

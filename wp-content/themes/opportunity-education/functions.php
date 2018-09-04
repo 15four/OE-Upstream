@@ -8,6 +8,11 @@
  */
 
 /**
+ * Include Theme Config
+ */
+require __DIR__ . '/theme-config.php';
+
+ /**
  * Include constants
  */
 require __DIR__ . '/inc/constants/constants.php';

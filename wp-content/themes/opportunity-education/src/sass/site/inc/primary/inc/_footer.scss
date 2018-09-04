@@ -59,5 +59,14 @@
 				}
 			}
 		}
+
+		&__social-menu {
+			font-size: 1.125rem;
+
+			a,
+			svg {
+				display: block;
+			}
+		}
 	}
 }

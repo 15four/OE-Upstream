@@ -41,6 +41,8 @@ $preloader_attributes = array(
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
+	<?php echo \theme\get_google_analytics_code( true ); ?>
+
 	<?php wp_head(); ?>
 </head>
 

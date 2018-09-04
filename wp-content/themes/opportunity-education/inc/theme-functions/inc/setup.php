@@ -43,9 +43,10 @@ function setup() {
 	*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'opportunity-education' ),
+		'menu-2' => esc_html__( 'Social', 'opportunity-education' )
 	) );
 
 	/*
@@ -69,8 +70,8 @@ function setup() {
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
 	add_theme_support( 'custom-logo', array(
-		'height'      => 504,
-		'width'       => 128,
+		'height'      => CUSTOM_LOGO_HEIGHT,
+		'width'       => CUSTOM_LOGO_WIDTH,
 		'flex-width'  => true,
 		'flex-height' => true,
 	) );

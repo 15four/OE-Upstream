@@ -45,6 +45,7 @@ function slider_shortcode( $atts, $content ) {
 	$atts = shortcode_atts(
 		array(
 			'tag'                         => 'div',
+			'dynamic_height'              => true,
 			'slides_additional_classes'   => '',
 			'active_slide'                => 0,
 			'slide_additional_classes'    => '',
@@ -80,6 +81,7 @@ function tabs_shortcode( $atts, $content ) {
 	$atts = shortcode_atts(
 		array(
 			'tag'                         => 'div',
+			'dynamic_height'              => true,
 			'tabs_additional_classes'     => '',
 			'active_tab'                  => 0,
 			'tab_additional_classes'      => '',
