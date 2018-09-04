@@ -144,3 +144,34 @@ function block_shortcode( $atts, $content ) {
 	);
 }
 add_shortcode( 'block', '\admin\block_shortcode' );
+
+// Menu shortcode
+function menu_shortcode( $atts ) {
+
+	// Atts
+	$atts = shortcode_atts(
+		array(
+			'theme_location'  => null,
+			'menu_id'         => '',
+			'menu_class'      => 'menu',
+			'container_class' => ''
+		),
+		$atts
+	);
+
+	// If the theme location is not specified, return false
+	if ( is_null( $atts['theme_location'] ) ) {
+		return false;
+	}
+
+	// Return the menu
+	return wp_nav_menu(
+		array_merge(
+			$atts,
+			array(
+				'echo'  => false,
+			)
+		)
+	);
+}
+add_shortcode( 'menu', '\admin\menu_shortcode' );

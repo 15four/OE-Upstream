@@ -27,6 +27,17 @@ function widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 
+	// Register footer main sidebar
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Main', 'opportunity-education' ),
+		'id'            => 'sidebar-footer-main',
+		'description'   => esc_html__( 'Add widgets here.', 'opportunity-education' ),
+		'before_widget' => '<article id="%1$s" class="widget %2$s u-text--caption">',
+		'after_widget'  => '</article>',
+		'before_title'  => '<h2 class="widget-title u-text--caption u-text--family-roboto u-text--compact u-text--bold u-text--color-zest u-text--uppercase u-margin-bottom--tiny">',
+		'after_title'   => '</h2>',
+	) );
+
 	// Register footer 1 sidebar
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer 1', 'opportunity-education' ),

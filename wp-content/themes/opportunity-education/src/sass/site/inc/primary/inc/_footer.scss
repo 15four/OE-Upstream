@@ -46,22 +46,41 @@
 				justify-content: center;
 				margin-bottom: 0;
 
-				@include PSJ_breakpoint(lg) {
-					justify-content: flex-start;
+				.menu {
+					.menu-item {
+						@include PSJ_proportion(margin-right, tiny);
+
+						&:last-of-type {
+							margin-right: 0;
+						}
+					}
 				}
 
-				.menu-item {
-					@include PSJ_proportion(margin-right, tiny);
-
-					&:last-of-type {
-						margin-right: 0;
-					}
+				@include PSJ_breakpoint(lg) {
+					justify-content: flex-start;
 				}
 			}
 		}
 
 		&__social-menu {
 			font-size: 1.125rem;
+
+			.menu {
+				.menu-item {
+					@include PSJ_proportion((padding-right, padding-left), micro);
+
+					border-right: 1px solid rgba(PSJ_color(rich-white), 0.25);
+
+					&:first-of-type {
+						padding-left: 0;
+					}
+
+					&:last-of-type {
+						padding-right: 0;
+						border-right: none;
+					}
+				}
+			}
 
 			a,
 			svg {

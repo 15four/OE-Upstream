@@ -34,6 +34,11 @@
 			}
 		}
 
+		// Translucent text
+		&--translucent {
+			opacity: 0.75;
+		}
+
 		// Smaller line-height
 		&--compact {
 			line-height: 1.5;

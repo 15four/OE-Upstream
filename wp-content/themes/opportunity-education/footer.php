@@ -33,12 +33,7 @@
 				<div class="c-grid c-grid--single-row@xl">
 
 					<div class="c-grid__column c-grid__column--12 c-grid__column--4@xl">
-						<div class="site-footer__logo u-block--centered u-block--centered u-margin-bottom--std u-margin-bottom--section@lg u-margin-left--none@lg">
-							<?php the_custom_logo(); ?>
-						</div>
-						<p class="u-text--align-center u-text--align-left@lg u-margin-bottom--std u-margin-bottom--none@xl">
-							<a class="o-button o-button--style-zest-on-white u-text--caption" href="<?php echo get_the_permalink( \constants\IMPORTANT_PAGES['get_quest_forward'] ); ?>">Get Quest Forward</a>
-						</p>
+						<?php dynamic_sidebar( 'sidebar-footer-main' ); ?>
 					</div>
 
 					<div class="c-grid__column c-grid__column--6 c-grid__column--2@xl">
@@ -69,16 +64,6 @@
 						</div>
 						<?php dynamic_sidebar( 'sidebar-subfooter' ); ?>
 					</div>
-
-					<?php
-						// Main menu
-						wp_nav_menu( array(
-							'theme_location'  => 'menu-2',
-							'menu_id'         => 'social-menu',
-							'menu_class'      => 'menu u-display--flex',
-							'container_class' => 'site-footer__social-menu'
-						) );
-					?>
 				</div>
 			</div>
 		</div>
