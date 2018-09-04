@@ -41,6 +41,7 @@ pantheon.upstream.yml
 ######################
 *.log
 *.sql
+.data/
 
 # OS generated files #
 ######################
@@ -57,3 +58,13 @@ Thumbs.db
 # SASS #
 ##########
 .sass-cache
+
+# Node, Gulp and Webpack #
+##########
+# *.config.js
+node_modules/
+bower_components/
+
+# OE Theme #
+##########
+wp-content/themes/opportunity-education/theme-config.php
