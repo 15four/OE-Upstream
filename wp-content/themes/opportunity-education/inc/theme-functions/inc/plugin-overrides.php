@@ -77,44 +77,53 @@ function add_header_nocache() {
 // add_action( 'send_headers', '\theme\add_header_nocache', 15 );
 
 /**
- * Enable clearing of Redis cache from back end (only when active)
+ * Add toolbar item to clear Redis cache
  */
-if ( \extension_loaded( 'redis' ) && \is_plugin_active( 'wp-redis/wp-redis.php' ) ) {
+function add_redis_cache_clear_link( $admin_bar ) {
 
-	// Add toolbar item to clear cache
-	function add_redis_cache_clear_link( $admin_bar ) {
-
-		// Add menu to bar
-		$admin_bar->add_node( array(
-			'id'    => 'clear-redis-cache',
-			'title' => 'Clear Redis Cache',
-			'href'  => admin_url( '?clear-redis-object-cache=true' ),
-			'meta'  => array(
-				'title' => __( 'Clear Redis Cache' ),
-			),
-		));
-	}
-	add_action( 'admin_bar_menu', '\theme\add_redis_cache_clear_link', 150 );
-
-	// Add cache clear notice
-	function add_redis_cache_clear_notice() {
-		echo '<div class="notice notice-success is-dismissible">'
-			. '<p>' . __( 'Redis cache successfully purged!', 'opportunity_education' ) . '</p>'
-			. '</div>';
-	}
-
-	// Clear redis cache
-	function clear_redis_cache() {
-
-		// If there is a query string for 'clear-redis-object-cache' and it is true, flush the cache and add the notice
-		if ( isset( $_REQUEST['clear-redis-object-cache'] ) && $_REQUEST['clear-redis-object-cache'] === 'true' ) {
-
-			// Clear the cache
-			\wp_cache_flush();
-
-			// Add the notice
-			add_action( 'admin_notices', '\theme\add_redis_cache_clear_notice' );
-		}
-	}
-	add_action( 'init', '\theme\clear_redis_cache' );
+    // Add menu to bar
+    $admin_bar->add_node( array(
+        'id'    => 'clear-redis-cache',
+        'title' => 'Clear Redis Cache',
+        'href'  => admin_url( '?clear-redis-object-cache=true' ),
+        'meta'  => array(
+            'title' => __( 'Clear Redis Cache' ),
+        ),
+    ));
 }
+
+/**
+ * Add Redis cache clear notice
+ */
+function add_redis_cache_clear_notice() {
+    echo '<div class="notice notice-success is-dismissible">'
+        . '<p>' . __( 'Redis cache successfully purged!', 'opportunity_education' ) . '</p>'
+        . '</div>';
+}
+
+/**
+ * Enable Redis cache manipulation
+ */
+function enable_redis_cache_manipulation() {
+
+    // If Redis is enabled, allow the cache to be manipulated
+    if ( \extension_loaded( 'redis' ) && \is_plugin_active( 'wp-redis/wp-redis.php' ) ) {
+
+        // Add Admin bar cache clear link
+        add_action( 'admin_bar_menu', '\theme\add_redis_cache_clear_link', 150 );
+
+        // If there is a query string for 'clear-redis-object-cache' and it is true, flush the cache and add the notice
+        if ( isset( $_REQUEST['clear-redis-object-cache'] ) && $_REQUEST['clear-redis-object-cache'] === 'true' ) {
+
+            // Clear the cache
+            \wp_cache_flush();
+
+            // Add the notice
+            add_action( 'admin_notices', '\theme\add_redis_cache_clear_notice' );
+        }
+    }
+
+    // Otherwise, return false
+    return false;
+}
+add_action( 'admin_init', '\theme\enable_redis_cache_manipulation' );
