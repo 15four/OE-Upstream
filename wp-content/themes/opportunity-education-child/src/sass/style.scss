@@ -1,0 +1,71 @@
+/*!
+Theme Name: Opportunity Education Spawn
+Theme URI: http://underscores.me/
+Author: Nick Patterson
+Author URI: http://fifteen4.com
+Description: A child theme for the fine folks at Opportunity Education
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: opportunity-education
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Opportunity Education Spawn is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
+
+// - TABLE OF CONTENTS ----------------------------- /
+//
+//   #1 Variables ---------------------------------- /
+//   #2 Libraries ---------------------------------- /
+//   #3 Functions ---------------------------------- /
+//   #4 Mixins ------------------------------------- /
+//   #5 Extends ------------------------------------ /
+//   #6 Child Theme Overrides ---------------------- /
+//
+// ------------------------------------------------- /
+
+
+// ================================================= /
+// ======   #1 VARIABLES   ========================= /
+// ================================================= /
+
+@import "../../../opportunity-education/src/sass/variables/variables";
+
+// ================================================= /
+// ======   #2 LIBRARIES   ========================= /
+// ================================================= /
+
+// The one and only Phantasm Straightjacket
+@import "../../../opportunity-education/src/sass/libraries/straightjacket/straightjacket";
+
+
+// ================================================= /
+// ======   #3 FUNCTIONS   ========================= /
+// ================================================= /
+
+@import "../../../opportunity-education/src/sass/functions/functions";
+
+
+// ================================================= /
+// ======   #4 MIXINS   ============================ /
+// ================================================= /
+
+@import "../../../opportunity-education/src/sass/mixins/mixins";
+
+
+// ================================================= /
+// ======   #5 EXTENDS   =========================== /
+// ================================================= /
+
+@import "../../../opportunity-education/src/sass/extends/extends";
+
+
+// ================================================= /
+// ======   #6 CHILD THEME OVERRIDES   ============= /
+// ================================================= /
+
+@import "child-theme-overrides/child-theme-overrides";

@@ -15,19 +15,17 @@ function scripts() {
 	// Main Fonts
 	wp_enqueue_style( 'opportunity-education-fonts', 'https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i' );
 
-	// Fot Awesome
-
 	// Move jQuery to footer
     wp_scripts()->add_data( 'jquery', 'group', 1 );
     wp_scripts()->add_data( 'jquery-core', 'group', 1 );
     wp_scripts()->add_data( 'jquery-migrate', 'group', 1 );
 
 	// Main styles
-	wp_enqueue_style( 'opportunity-education-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'opportunity-education-style', get_template_directory_uri() . '/style.css' );
 
 	// Main scripts
-	wp_register_script( 'opportunity-education-scripts-vendor', get_stylesheet_directory_uri() . '/assets/js/vendor.js', array(), '20180510', true );
-	wp_register_script( 'opportunity-education-scripts-main', get_stylesheet_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '20180510', true );
+	wp_register_script( 'opportunity-education-scripts-vendor', get_template_directory_uri() . '/assets/js/vendor.js', array(), '20180510', true );
+	wp_register_script( 'opportunity-education-scripts-main', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '20180510', true );
 
 	// Font Awesome scripts
 	wp_register_script( 'opportunity-education-font-awesome-brands', 'https://use.fontawesome.com/releases/v5.2.0/js/brands.js', array(), '20180510', true );
@@ -75,10 +73,10 @@ function admin_scripts() {
 	if ( is_admin() && current_user_can( 'edit_posts' ) ) {
 
 		// Admin styles
-		wp_enqueue_style( 'opportunity-education-admin-style', get_stylesheet_directory_uri() . '/assets/css/admin.css' );
+		wp_enqueue_style( 'opportunity-education-admin-style', get_template_directory_uri() . '/assets/css/admin.css' );
 
 		// Admin scripts
-		wp_register_script( 'opportunity-education-scripts-admin', get_stylesheet_directory_uri() . '/assets/js/admin.js', array(), '20180510', true );
+		wp_register_script( 'opportunity-education-scripts-admin', get_template_directory_uri() . '/assets/js/admin.js', array(), '20180510', true );
 		wp_enqueue_script( 'opportunity-education-scripts-admin' );
 	}
 }
