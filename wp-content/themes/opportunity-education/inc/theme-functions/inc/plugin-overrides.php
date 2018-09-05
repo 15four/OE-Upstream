@@ -79,7 +79,7 @@ function add_header_nocache() {
 /**
  * Enable clearing of Redis cache from back end (only when active)
  */
-if ( extension_loaded( 'redis' ) && is_plugin_active( 'wp-redis/wp-redis.php' ) ) {
+if ( \extension_loaded( 'redis' ) && \is_plugin_active( 'wp-redis/wp-redis.php' ) ) {
 
 	// Add toolbar item to clear cache
 	function add_redis_cache_clear_link( $admin_bar ) {
