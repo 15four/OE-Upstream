@@ -318,8 +318,16 @@ import debounce from 'throttle-debounce/debounce';
 			// Gets first section element
 			const firstSection = $( '#section-1' );
 
+			// Get the offset of the first element
+			const firstSectionOffset = firstSection.offset();
+
 			// Sets sticky nav threshold to be the lesser of windowHeight or the first section's offset
-			object.stickyNavScrollThreshold = Math.min( window.innerHeight, firstSection.offset().top );
+			object.stickyNavScrollThreshold = Math.min(
+				window.innerHeight,
+				firstSectionOffset
+					? firstSectionOffset.top
+					: Infinity
+			);
 		};
 
 		// Remove toggle on menu and search if the screen size changes

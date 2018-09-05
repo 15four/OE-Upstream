@@ -2,6 +2,7 @@
 
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-invalid-this */
+/* eslint-disable no-magic-numbers */
 
 /* global jQuery */
 
@@ -22,7 +23,7 @@ import debounce from 'throttle-debounce/debounce';
 				brandscapeClass: 'js-brandscape',
 				scrollListenerThrottle: 46,
 				resizeListenerDebounce: 25,
-				landscapeThreshold: 1.77777778,
+				landscapeThreshold: 1500 / 844,
 				blurReset: 0,
 				parentToDelegateEvents: $( '.site-main' ),
 

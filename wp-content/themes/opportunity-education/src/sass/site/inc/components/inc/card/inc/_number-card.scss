@@ -1,0 +1,29 @@
+// ================================================= /
+// ======   NUMBER CARD VARIATION  ================= /
+// ================================================= /
+
+.c-card {
+	@at-root {
+
+		&__number {
+			align-content: center;
+
+			@include PSJ_breakpoint(lg) {
+				flex: 0 0 15%;
+				height: 100%;
+			}
+		}
+
+		&__number-number {
+			font-size: 2rem;
+			line-height: 1;
+
+			@include PSJ_breakpoint(lg) {
+				font-size: 3rem;
+			}
+			@include PSJ_breakpoint(xl) {
+				font-size: 4rem;
+			}
+		}
+	}
+}
