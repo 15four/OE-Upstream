@@ -70,10 +70,8 @@ function setup() {
 	 * @link https://codex.wordpress.org/Theme_Logo
 	 */
 	add_theme_support( 'custom-logo', array(
-		'height'      => CUSTOM_LOGO_HEIGHT,
-		'width'       => CUSTOM_LOGO_WIDTH,
 		'flex-width'  => true,
-		'flex-height' => true,
+		'flex-height' => true
 	) );
 
 	/*

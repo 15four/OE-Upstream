@@ -7,11 +7,6 @@
  * @package Opportunity_Education
  */
 
-/**
- * Include Theme Config
- */
-require __DIR__ . '/theme-config.php';
-
  /**
  * Include constants
  */
