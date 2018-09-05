@@ -250,3 +250,67 @@ function belt_card_shortcode( $atts, $content ) {
 	return \ui\get_card( $atts );
 }
 add_shortcode( 'belt_card', '\ui\belt_card_shortcode' );
+
+/*
+ * Number card shortcode
+ */
+function number_card_shortcode( $atts, $content ) {
+
+	// Atts
+	$atts = shortcode_atts(
+		array(
+
+			// Abstracted args
+			'attachment'                         => null,
+			'image_size'                         => 'large',
+
+			// Number card args
+			'number_label'                       => '',
+			'number'                             => 1,
+			'number_tag'                         => 'h3',
+
+			// Card args
+			'tag'                                => 'div',
+			'link'                               => null,
+			'background_color'                   => 'rich_white',
+			'image_side'                         => 'left',
+			'image_container_additional_classes' => '',
+			'image_additional_classes'           => '',
+			'content_additional_classes'         => '',
+			'additional_classes'                 => ''
+		),
+		$atts
+	);
+
+	// Set image
+	$image = null;
+
+	// If the attachment is not null, get the attachment
+	if ( !is_null( $atts['attachment'] ) ) {
+
+		// Get attachment
+		$attachment = get_post( $atts['attachment'] );
+
+		// Get image
+		$image = wp_get_attachment_image_src( $attachment->ID, $atts['image_size'] );
+		$image = $image
+			? $image[0]
+			: null;
+	}
+
+	// Add the image, image side, type and content to the atts
+	$atts['image'] = $image;
+	$atts['image_side'] = 'right';
+	$atts['type'] = 'number';
+	$atts['content'] = do_shortcode( $content );
+
+	// Remove abstracted atts
+	unset(
+		$atts['attachment'],
+		$atts['image_size']
+	);
+
+	// Get and return the number card
+	return \ui\get_card( $atts );
+}
+add_shortcode( 'number_card', '\ui\number_card_shortcode' );

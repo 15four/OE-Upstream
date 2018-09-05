@@ -21,6 +21,13 @@ class Card extends \ui\UI_Component {
 		'link'                               => null,
 		'background_color'                   => 'rich_white',
 
+		// For cards with numbers
+		'number_label'                       => '',
+		'number'                             => 1,
+		'number_tag'                         => 'h4',
+		'number_background_color'            => 'victoria',
+		'number_additional_classes'          => '',
+
 		// For cards with headers
 		'header_content'                     => '',
 		'header_background_color'            => 'victoria',

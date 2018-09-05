@@ -1,0 +1,52 @@
+// ================================================= /
+// ======   CARD COMPONENT  ======================== /
+// ================================================= /
+
+.c-card {
+	$block: &;
+
+	@extend %small-margin-element;
+
+	border-radius: border(lg);
+	overflow: hidden;
+	box-shadow: map-get($box-shadow-map, std);
+
+	@at-root {
+
+		// Cards that have links grow a little on hover and focus
+		&--has-link {
+			transition: transform transition(std);
+
+			// The whole card pretty much grows when this is hovered
+			&:hover {
+				transform: scale(1.01);
+			}
+		}
+
+		// Inners and content are padded elements
+		&__header-inner,
+		&__content {
+			@extend %padded-element;
+		}
+
+		&__header {
+			@include PSJ_proportion(padding, sm);
+
+			border-bottom: border(sm) solid;
+
+			// Children of white backgrounds have lighter borders
+			.u-background--light & {
+				border-color: PSJ_color(light-mid-gray);
+			}
+		}
+
+		&__content {
+			@include PSJ_proportion(padding, std);
+		}
+	}
+}
+
+// Include variations
+@import '/inc/image-card';
+@import '/inc/belt-card';
+@import '/inc/number-card';

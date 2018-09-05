@@ -14,9 +14,6 @@ namespace ui;
 // Quest card
 require __DIR__ . '/inc/quest-card/quest-card.php';
 
-// Number card
-require __DIR__ . '/inc/number-card/number-card.php';
-
 // Quote card
 require __DIR__ . '/inc/quote-card/quote-card.php';
 

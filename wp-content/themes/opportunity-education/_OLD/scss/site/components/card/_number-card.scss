@@ -1,0 +1,58 @@
+// ================================================= /
+// ======   NUMBER CARD ABSTRACTION  =============== /
+// ================================================= /
+
+.c-card {
+	@at-root {
+
+		&__number {
+			@include PSJ_proportion(margin-right, std);
+
+			position: relative;
+			flex: 0 0 4.5rem;
+
+			// Numbers are always victoria unless the cards are also victoria
+			background-color: PSJ_color(victoria);
+			color: PSJ_color(rich-white);
+			border-radius: 50%;
+			margin-left: -3rem;
+
+			&::after {
+				content: '';
+				display: block;
+				padding-top: 100%;
+			}
+
+			// Descendants of victoria backgrounds, but not a descendant of any other background
+			.u-background--victoria :not([class*='u-background-']) & {
+				background-color: PSJ_color(zest);
+			}
+
+			@include PSJ_breakpoint(md) {
+				flex: 0 0 6rem;
+			}
+
+			// These break on landscape tablets
+			@include PSJ_breakpoint(lg) {
+				flex: 0 0 8rem;
+				margin-left: -6.5rem;
+			}
+		}
+
+		&__number-inner {
+			position: absolute;
+			top: calc(50% - 0.5em);
+			font-size: 3em;
+			line-height: 1;
+			text-align: center;
+
+			@include PSJ_breakpoint(lg) {
+				font-size: 5rem;
+			}
+		}
+
+		&__number-content {
+			@extend %padded-element;
+		}
+	}
+}

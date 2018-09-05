@@ -1,0 +1,87 @@
+// ================================================= /
+// ======   IMAGE CARD VARIATION  ================== /
+// ================================================= /
+
+.c-card {
+	$block: &;
+
+	@at-root {
+
+		&__image-container {
+			overflow: hidden;
+
+			// When the child of an image card with the image on the left or right, make the image 33% wide
+			#{$block}--image-left &,
+			#{$block}--image-right & {
+				@include PSJ_breakpoint(lg) {
+					flex: 0 0 25%;
+					height: 100%;
+				}
+			}
+
+			// When the child of a card link, these have an overlay
+			#{$block}__link & {
+				position: relative;
+
+				&::after {
+					@extend %floating-pseudo-element;
+
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: PSJ_color(victoria);
+					opacity: 0;
+					transition: opacity transition(std);
+
+					// The overlay becomes zesty when the card is victoria
+					#{$block}.u-background--victoria & {
+						background-color: PSJ_color(zest);
+					}
+				}
+			}
+
+			// When the child of a hovered or focused link, the overlay becomes visible
+			#{$block}__link:hover &,
+			#{$block}__link:focus & {
+				&::after {
+					opacity: 0.65;
+				}
+			}
+		}
+
+		&__image {
+			background-position: center;
+			background-size: cover;
+			padding-top: 50%;
+			transition: transform transition(std);
+
+			// When the child of an image card with the image on the left or right, remove the padding on larger devices
+			#{$block}--image-left &,
+			#{$block}--image-right & {
+				@include PSJ_breakpoint(lg) {
+					height: 100%;
+					padding-top: 0;
+				}
+			}
+
+			// When the child of a hovered or focused card link, these gow a touch
+			#{$block}__link:hover &,
+			#{$block}__link:focus & {
+				transform: scale(1.05);
+			}
+
+			// At larger breakpoints, the image sizes change
+			@include PSJ_breakpoint(lg) {
+				padding-top: 40%;
+			}
+
+			// For tall images, the padding is larger
+			&--tall {
+				@include PSJ_breakpoint(lg) {
+					padding-top: 80%;
+				}
+			}
+		}
+	}
+}
