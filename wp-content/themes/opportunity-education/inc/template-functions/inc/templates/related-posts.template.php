@@ -33,6 +33,7 @@ $related_posts = get_posts(
 	array(
 		'posts_per_page' => $args['post_count'],
 		'post_type'      => $post_type,
+		'exclude'        => $post->ID,
 		'tag__in'        => $tag_ids,
 		'category_in'    => empty( $tag_ids )
 			? $category_ids
