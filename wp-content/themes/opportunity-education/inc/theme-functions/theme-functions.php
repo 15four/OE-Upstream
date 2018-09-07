@@ -20,3 +20,6 @@ require __DIR__ . '/inc/google-analytics.php';
 // Custom post types and taxonomies
 require __DIR__ . '/inc/custom-post-types/custom-post-types.php';
 require __DIR__ . '/inc/custom-taxonomies/custom-taxonomies.php';
+
+// REST API
+require __DIR__ . '/inc/rest-api/rest-api.php';
