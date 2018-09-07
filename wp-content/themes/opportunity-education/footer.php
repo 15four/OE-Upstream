@@ -17,9 +17,10 @@
 
 		// Set up newsletter subscribe section
 		$newsletter_subscribe_section_args = array(
-			'index'            => 'newsletter',
-			'background_color' => 'zest',
-			'content'          => \fifteen_four\helpers\get_include( get_template_directory() . '/template-parts/content/newsletter-subscribe.php' )
+			'index'              => 'newsletter',
+			'background_color'   => 'zest',
+			'content'            => \fifteen_four\helpers\get_include( get_template_directory() . '/template-parts/content/newsletter-subscribe.php' ),
+			'additional_classes' => 's-no-print'
 		);
 
 		// Echo the section
@@ -27,7 +28,7 @@
 
 	?>
 
-	<footer id="colophon" class="site-footer">
+	<footer id="colophon" class="site-footer s-no-print">
 		<div class="site-footer__info u-background--dark u-background--victoria u-padding-top--section u-padding-bottom--section">
 			<div class="c-container">
 				<div class="c-grid c-grid--single-row@xl">

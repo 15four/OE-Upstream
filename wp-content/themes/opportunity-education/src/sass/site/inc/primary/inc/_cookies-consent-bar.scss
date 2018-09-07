@@ -1,0 +1,17 @@
+// ================================================= /
+// ======   COOKIES CONSENT BAR =================== /
+// ================================================= /
+
+.cookies-consent-bar {
+	$block: &;
+
+	@include PSJ_proportion((padding-top, padding-bottom), micro);
+	@include PSJ_proportion((padding-right, padding-left), sm);
+
+	@at-root {
+
+		&__closer {
+			width: 1rem;
+		}
+	}
+}

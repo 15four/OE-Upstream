@@ -39,6 +39,11 @@
 			opacity: 0.75;
 		}
 
+		// Wider tracking
+		&--tracked {
+			letter-spacing: 0.125em;
+		}
+
 		// Smaller line-height
 		&--compact {
 			line-height: 1.5;
@@ -47,6 +52,11 @@
 		// Tiny line height
 		&--squished {
 			line-height: 1.375;
+		}
+
+		// Regular text
+		&--regular {
+			font-weight: 400;
 		}
 
 		// Medium text
@@ -63,11 +73,6 @@
 		// Italic text
 		&--italic {
 			font-style: italic;
-		}
-
-		// Centered text
-		&--centered {
-			text-align: center;
 		}
 	}
 }

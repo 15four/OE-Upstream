@@ -10,7 +10,7 @@
 
 			@include PSJ_breakpoint(lg) {
 				flex: 0 0 15%;
-				height: 100%;
+				align-self: stretch;
 			}
 		}
 

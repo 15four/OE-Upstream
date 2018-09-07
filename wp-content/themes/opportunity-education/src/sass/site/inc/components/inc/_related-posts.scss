@@ -1,0 +1,23 @@
+// ================================================= /
+// ======   RELATED POSTS COMPONENT  =============== /
+// ================================================= /
+
+.c-related-posts {
+	$block: &;
+
+	@at-root {
+
+		&__post-list {
+			margin-left: 0.85em;
+		}
+
+		&__post {
+			@extend %padded-element;
+		}
+
+		&__post-title {
+			font-size: inherit;
+			line-height: inherit;
+		}
+	}
+}

@@ -7,16 +7,6 @@ namespace ui;
  * @package Opportunity_Education
  */
 
-// Get user avatar URL
-$avatar = array( 'src' => [null] );
-
-// If the wp user avatar function exists, get the avatar
-if ( function_exists( '\get_wp_user_avatar' ) ) {
-	$avatar = new \SimpleXMLElement( \get_wp_user_avatar( $args['user']->ID, 'square' ) );
-}
-
-$avatar_url = $avatar['src'];
-
 // Set title attributes
 $title_attributes = array(
 	'class' => 'u-text--heading-md'
@@ -29,12 +19,7 @@ $title_attributes = array(
 	<div class="c-grid__column c-grid__column--4 c-grid__column--3@lg">
 		<?php
 
-			// Set up circle guy args
-			$circle_guy_args = array(
-				'image' => $avatar_url[0]
-			);
-
-			\ui\circle_guy( $circle_guy_args );
+			\ui\circle_guy_from_user( $args['user']->ID, 'square' );
 		?>
 	</div>
 

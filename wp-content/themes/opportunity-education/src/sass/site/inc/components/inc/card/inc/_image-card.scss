@@ -15,7 +15,7 @@
 			#{$block}--image-right & {
 				@include PSJ_breakpoint(lg) {
 					flex: 0 0 25%;
-					height: 100%;
+					align-self: stretch;
 				}
 			}
 

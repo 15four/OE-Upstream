@@ -15,7 +15,7 @@ $is_front_page = is_front_page();
 // Set header attributes
 $attributes = array(
 	'id'    => 'masthead',
-	'class' => 'site-header u-display--flex u-flex--wrap u-flex--align-start u-flex--align-center@lg '
+	'class' => 'site-header s-no-print u-display--flex u-flex--wrap u-flex--align-start u-flex--align-center@lg '
 		. 'u-background--dark u-background--custom-dark js-site-header'
 );
 
@@ -47,8 +47,12 @@ $preloader_attributes = array(
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="page" class="site">
+
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'opportunity-education' ); ?></a>
+
+	<?php \template\the_cookies_consent_bar(); ?>
 
 	<!-- #masthead -->
 	<header <?php echo \fifteen_four\helpers\get_attributes_from_array( $attributes ); ?>>

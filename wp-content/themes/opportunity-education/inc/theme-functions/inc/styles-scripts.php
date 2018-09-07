@@ -28,12 +28,14 @@ function scripts() {
 	wp_register_script( 'opportunity-education-scripts-main', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), '20180510', true );
 
 	// Font Awesome scripts
+	wp_register_script( 'opportunity-education-font-awesome-solid', 'https://use.fontawesome.com/releases/v5.3.1/js/solid.js', array(), '20180510', true );
 	wp_register_script( 'opportunity-education-font-awesome-brands', 'https://use.fontawesome.com/releases/v5.2.0/js/brands.js', array(), '20180510', true );
 	wp_register_script( 'opportunity-education-font-awesome-main', 'https://use.fontawesome.com/releases/v5.2.0/js/fontawesome.js', array(), '20180510', true );
 
 	// Enqueue scripts
 	wp_enqueue_script( 'opportunity-education-scripts-vendor' );
 	wp_enqueue_script( 'opportunity-education-scripts-main' );
+	wp_enqueue_script( 'opportunity-education-font-awesome-solid' );
 	wp_enqueue_script( 'opportunity-education-font-awesome-brands' );
 	wp_enqueue_script( 'opportunity-education-font-awesome-main' );
 
@@ -49,6 +51,7 @@ function fix_font_awesome_scripts( $tag, $handle, $src ) {
 
 	// Set Font Awesome script integrities
 	$font_awesome_script_integrities = array(
+		'opportunity-education-font-awesome-solid'  => 'sha384-GJiigN/ef2B3HMj0haY+eMmG4EIIrhWgGJ2Rv0IaWnNdWdbWPr1sRLkGz7xfjOFw',
 		'opportunity-education-font-awesome-brands' => 'sha384-4BRtleJgTYsMKIVuV1Z7lNE29r4MxwKR7u88TWG2GaXsmSljIykt/YDbmKndKGID',
 		'opportunity-education-font-awesome-main'   => 'sha384-QcnrgQuRmocjIBY6ByWMmDvUg3HO4MSdVjY7ynJwZfvTDhVPPQOUI9TRzc6/7ZO1'
 	);

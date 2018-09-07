@@ -1,0 +1,17 @@
+// ================================================= /
+// ======   SHARES COMPONENT  ====================== /
+// ================================================= /
+
+.c-shares {
+	$block: &;
+
+	@extend %standard-margin-element;
+
+	@at-root {
+
+		&__method {
+			text-decoration: none;
+			color: PSJ_color(mid-gray);
+		}
+	}
+}

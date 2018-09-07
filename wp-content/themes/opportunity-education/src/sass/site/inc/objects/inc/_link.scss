@@ -15,7 +15,7 @@
 		// Adding different link styles for body copy
 		&--body {
 			text-decoration: none;
-			
+
 			// Body link hover state
 			&:hover {
 				@extend %small-margin-element;

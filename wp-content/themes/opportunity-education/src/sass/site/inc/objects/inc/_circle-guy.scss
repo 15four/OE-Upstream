@@ -3,6 +3,8 @@
 // ================================================= /
 
 .o-circle-guy {
+	$block: &;
+
 	@extend %small-margin-element;
 
 	position: relative;
@@ -17,7 +19,15 @@
 
 	@at-root {
 
+		// Bare circle guys don't have borders
+		&--bare {
+			border: none;
+		}
+
 		// Sizes
+		&--micro {
+			width: 42px;
+		}
 		&--tiny {
 			width: 82px;
 		}
@@ -60,6 +70,12 @@
 			height: 90%;
 			overflow: hidden;
 			border-radius: 50%;
+
+			// Children of bare circle guys don't have the padding around the image
+			#{$block}--bare & {
+				width: 100%;
+				height: 100%;
+			}
 
 			// Since Safari sucks at rendering, we have to add an image mask to get the overflow to render properly
 			body._browser--safari & {

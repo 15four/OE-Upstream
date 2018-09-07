@@ -20,5 +20,6 @@ import './inc/scroll-shadow-guy';
 import './inc/timeline';
 import './inc/horizontal-timeline';
 import './inc/tooltip';
+import './inc/cookies-consent-bar';
 
 console.log( 'Main JS Loaded' );

@@ -281,3 +281,91 @@ function get_the_hero_brandscape() {
 function the_hero_brandscape() {
 	echo \template\get_the_hero_brandscape();
 }
+
+/**
+ * Gets or echoes markup for the cookie consent bar
+ */
+function get_the_cookies_consent_bar( $args = array() ) {
+
+	// If the cookie for the consent bar is set, return false
+	if ( isset( $_COOKIE['opportunity-education-cookie-consent'] ) ) {
+		return false;
+	}
+
+	// Merge args with default args
+	$args = array_merge(
+		array(
+			'background_color' => 'zest',
+			'content'          => 'We use cookies to analyze traffic and improve your experience. Just wanted to let you know!'
+		)
+	);
+
+	// Otherwise, get and return the template
+	return \fifteen_four\helpers\get_include( __DIR__ . '/templates/cookies-consent-bar.template.php', $args );
+}
+
+function the_cookies_consent_bar( $args = array() ) {
+	echo \template\get_the_cookies_consent_bar( $args );
+}
+
+/**
+ * Gets or echoes markup for shares
+ */
+function get_the_shares( $args = array() ) {
+
+	// Merge args with default args
+	$args = array_merge(
+		array(
+			'methods'            => ['linkedin', 'facebook', 'twitter', 'email', 'print'],
+			'additional_classes' => ''
+		)
+	);
+
+	// Get and return the template
+	return \fifteen_four\helpers\get_include( __DIR__ . '/templates/shares.template.php', $args );
+}
+
+function the_shares( $args = array() ) {
+	echo \template\get_the_shares( $args );
+}
+
+/**
+ * Gets or echoes markup for related posts
+ */
+function get_the_related_posts( $args = array() ) {
+
+	// Merge args with default args
+	$args = array_merge(
+		array(
+			'post_count'         => 4,
+			'additional_classes' => ''
+		)
+	);
+
+	// Get and return the template
+	return \fifteen_four\helpers\get_include( __DIR__ . '/templates/related-posts.template.php', $args );
+}
+
+function the_related_posts( $args = array() ) {
+	echo \template\get_the_related_posts();
+}
+
+/**
+ * Gets or echoes markup for byline
+ */
+function get_the_byline( $args = array() ) {
+
+	// Merge args with default args
+	$args = array_merge(
+		array(
+			'additional_classes' => ''
+		)
+	);
+
+	// Get and return the template
+	return \fifteen_four\helpers\get_include( __DIR__ . '/templates/byline.template.php', $args );
+}
+
+function the_byline( $args = array() ) {
+	echo \template\get_the_byline();
+}

@@ -14,7 +14,7 @@ $previous_post = get_previous_post();
 ?>
 
 
-<div class="o-button-container u-flex--justify-center">
+<div class="o-button-container s-no-print u-flex--justify-center">
 
 <?php if ( $previous_post ): ?>
 	<a class="o-button" href="<?php echo get_the_permalink( $previous_post ); ?>">Previous Post</a>

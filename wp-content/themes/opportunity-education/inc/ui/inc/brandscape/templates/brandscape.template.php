@@ -11,7 +11,7 @@ namespace ui;
 $attributes = array(
 
 	// Classes
-	'class' => 'c-brandscape js-brandscape '
+	'class' => 'c-brandscape s-no-print js-brandscape '
 
 		// Type
 		. ( $args['type'] === 'blurscape'
