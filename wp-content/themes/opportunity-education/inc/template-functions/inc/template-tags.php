@@ -287,20 +287,15 @@ function the_hero_brandscape() {
  */
 function get_the_cookies_consent_bar( $args = array() ) {
 
-	// If the cookie for the consent bar is set, return false
-	if ( isset( $_COOKIE['opportunity-education-cookie-consent'] ) ) {
-		return false;
-	}
-
 	// Merge args with default args
 	$args = array_merge(
 		array(
 			'background_color' => 'zest',
-			'content'          => 'We use cookies to analyze traffic and improve your experience. Just wanted to let you know!'
+			'content'          => 'This site uses cookies to improve your experience. By continuing to browse the site, you are agreeing to our use of cookies. Please review our ' . '<a href="' . get_the_permalink( \constants\IMPORTANT_PAGES['privacy_policy'] ) . '">Privacy Policy</a> for more details.'
 		)
 	);
 
-	// Otherwise, get and return the template
+	// Get and return the template
 	return \fifteen_four\helpers\get_include( __DIR__ . '/templates/cookies-consent-bar.template.php', $args );
 }
 

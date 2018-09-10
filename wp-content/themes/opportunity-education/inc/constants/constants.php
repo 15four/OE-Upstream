@@ -31,7 +31,8 @@ CONST DARK_BACKGROUND_CLASS_NAMES = array(
 // Important pages
 CONST IMPORTANT_PAGES = array(
 	'contact_us'        => 174,
-	'get_quest_forward' => 1329
+	'get_quest_forward' => 1329,
+	'privacy_policy'    => 180
 );
 
 // Default images

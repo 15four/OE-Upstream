@@ -19,7 +19,9 @@ $section = array_merge(
 $attributes = array(
 
 	// Classes
-	'class' => 'c-brandscape__section js-brandscape__section u-display--flex u-flex--align-end '
+	'class' => 'c-brandscape__section c-brandscape__section--'
+		. $section['background_subject_type'] . ' '
+		. 'js-brandscape__section u-display--flex u-flex--align-end '
 
 		// Additional classes
 		. $args['section_additional_classes']
@@ -45,8 +47,7 @@ $attributes = array(
 
 						// Set up background subject attributes
 						$background_subject_attributes = array(
-							'class' => 'c-brandscape__section-background-subject c-brandscape__section-background-subject--' . $section['background_subject_type'] . ' '
-								. 'js-brandscape__section-background-subject'
+							'class' => 'c-brandscape__section-background-subject js-brandscape__section-background-subject'
 						);
 
 						// If the subject is a video, output it
@@ -71,11 +72,13 @@ $attributes = array(
 						else {
 							echo \fifteen_four\helpers\wrap_with_tag(
 								'',
-								'img',
+								'div',
 								array_merge(
 									$background_subject_attributes,
 									array(
-										'src' => $section['background_subject']
+										'style' => array(
+											'background-image' => 'url(' . $section['background_subject'] . ')'
+										)
 									)
 								)
 							);

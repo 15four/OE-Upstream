@@ -12,7 +12,8 @@
 		const object = {
 			config: {
 				initEvent: 'setupfinish',
-				cookiesConsentBarClass: 'js-cookies-consent-bar',
+				cookiesConsentBarClass: 'cookies-consent-bar',
+				cookiesConsentBarJsClass: 'js-cookies-consent-bar',
 				parentToDelegateEvents: $( '.site' )
 			},
 			cookiesConsentBars: []
@@ -30,6 +31,11 @@
 			// If there are cookies consent bars on the page, initialize
 			if ( object.cookiesConsentBars.length ) {
 
+				// If the cookie for the consent bar does not exist, remove the hidden class
+				if ( document.cookie.indexOf( 'opportunity-education-cookie-consent=true' ) === -1 ) {
+					object.cookiesConsentBars.removeClass( object.config.cookiesConsentBarClass + '--hidden' );
+				}
+
 				// Initialize everything on the correct event
 				$( window ).on( object.config.initEvent, function() {
 
@@ -43,7 +49,7 @@
 		object.events = function() {
 
 			// Closer click listener
-			object.config.parentToDelegateEvents.one( 'click', '.' + object.config.cookiesConsentBarClass + '__closer', function( event ) {
+			object.config.parentToDelegateEvents.one( 'click', '.' + object.config.cookiesConsentBarJsClass + '__closer', function( event ) {
 
 				// jQueryatize closer
 				const closer = $( event.target );
@@ -51,8 +57,8 @@
 				// Set cookie
 				document.cookie = 'opportunity-education-cookie-consent=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
 
-				// Remove the cookies consent bar
-				closer.closest( '.' + object.config.cookiesConsentBarClass ).remove();
+				// Hide the cookies consent bar
+				closer.closest( '.' + object.config.cookiesConsentBarJsClass ).addClass( object.config.cookiesConsentBarClass + '--hidden' );
 			} );
 		};
 
