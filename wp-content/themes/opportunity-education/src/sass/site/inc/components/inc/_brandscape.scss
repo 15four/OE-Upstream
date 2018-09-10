@@ -71,19 +71,28 @@
 		}
 
 		&__section-background-subject {
-			width: auto;
-			max-width: none;
 			height: 100%;
 			will-change: transform;
 
-			&--video {
-				object-fit: cover;
+			// Image subjects
+			#{$block}__section--image & {
+				width: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
 			}
 
-			// When the child of a landscape brandscape (tehe)
-			#{$block}.is-landscape & {
-				width: 100%;
-				height: auto;
+			// Video subjects
+			#{$block}__section--video & {
+				object-fit: cover;
+				width: auto;
+				max-width: none;
+
+				// When the child of a landscape brandscape (tehe)
+				#{$block}.is-landscape & {
+					width: 100%;
+					height: auto;
+				}
 			}
 		}
 

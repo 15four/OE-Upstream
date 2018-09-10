@@ -9,7 +9,7 @@ namespace template;
 
 // Set attributes
 $attributes = array(
-	'class' => 'cookies-consent-bar js-cookies-consent-bar u-display--flex u-flex--justify-between u-flex--align-center '
+	'class' => 'cookies-consent-bar cookies-consent-bar--hidden js-cookies-consent-bar '
 		. \helpers\prepare_background_class_names( $args['background_color'] ) . ' '
 		. 'u-text--caption'
 );

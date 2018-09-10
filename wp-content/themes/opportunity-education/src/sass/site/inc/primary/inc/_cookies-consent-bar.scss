@@ -8,7 +8,15 @@
 	@include PSJ_proportion((padding-top, padding-bottom), micro);
 	@include PSJ_proportion((padding-right, padding-left), sm);
 
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
 	@at-root {
+
+		&--hidden {
+			display: none;
+		}
 
 		&__closer {
 			width: 1rem;
