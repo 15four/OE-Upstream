@@ -287,13 +287,24 @@ function the_hero_brandscape() {
  */
 function get_the_cookies_consent_bar( $args = array() ) {
 
+	// Get the cookies consent bar text option
+	$cookies_consent_bar_text = get_option( 'cookies_consent_bar_text' );
+
 	// Merge args with default args
 	$args = array_merge(
 		array(
-			'background_color' => 'zest',
-			'content'          => 'This site uses cookies to improve your experience. By continuing to browse the site, you are agreeing to our use of cookies. Please review our ' . '<a href="' . get_the_permalink( \constants\IMPORTANT_PAGES['privacy_policy'] ) . '">Privacy Policy</a> for more details.'
-		)
+			'background_color' => 'zest'
+		),
+		$args
 	);
+
+	// If the cookies consent bar text is not set, return false
+	if ( empty( $cookies_consent_bar_text ) ) {
+		return false;
+	}
+
+	// Otherwise, add the text to the content arg
+	$args['content'] = $cookies_consent_bar_text;
 
 	// Get and return the template
 	return \fifteen_four\helpers\get_include( __DIR__ . '/templates/cookies-consent-bar.template.php', $args );
