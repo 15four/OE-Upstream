@@ -48,9 +48,9 @@ $post_type = get_post_type();
 
 				<?php \template\the_shares(); ?>
 
-				<div class="c-grid u-flex--justify-between">
+				<div class="c-grid c-grid--single-row@lg u-flex--justify-between">
 
-					<div class="c-grid__column c-grid__column--12 c-grid__column--7@lg">
+					<div class="main-content-column c-grid__column c-grid__column--12 c-grid__column--7@lg">
 
 						<div class="o-block s-long-form">
 							<?php the_content(); ?>
@@ -70,7 +70,7 @@ $post_type = get_post_type();
 
 					</div>
 
-					<div class="c-grid__column c-grid__column--12 c-grid__column--4@lg s-no-print">
+					<div class="sidebar-column c-grid__column c-grid__column--12 c-grid__column--4@lg s-no-print">
 						<?php \template\the_related_posts(); ?>
 					</div>
 
@@ -116,7 +116,7 @@ $post_type = get_post_type();
 				. 'View More News'
 				. '</a>'
 				. '</p>',
-			'additional_classes' => 's-no-print'
+			'additional_classes' => 's-no-print u-display--none u-display--block@lg'
 		);
 
 		// Add recent news section

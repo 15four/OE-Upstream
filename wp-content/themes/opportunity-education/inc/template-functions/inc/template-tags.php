@@ -343,7 +343,7 @@ function get_the_related_posts( $args = array() ) {
 	// Merge args with default args
 	$args = array_merge(
 		array(
-			'post_count'         => 4,
+			'post_count'         => 5,
 			'additional_classes' => ''
 		)
 	);

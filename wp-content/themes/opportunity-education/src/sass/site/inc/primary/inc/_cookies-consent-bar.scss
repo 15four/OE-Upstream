@@ -8,14 +8,18 @@
 	@include PSJ_proportion((padding-top, padding-bottom), micro);
 	@include PSJ_proportion((padding-right, padding-left), sm);
 
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	position: fixed;
+	z-index: 1;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	transition: transform transition(std);
 
 	@at-root {
 
 		&--hidden {
-			display: none;
+			pointer-events: none;
+			transform: translate(0, 100%);
 		}
 
 		&__closer {

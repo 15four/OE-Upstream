@@ -14,22 +14,22 @@ $title_attributes = array(
 
 ?>
 
-<div class="c-grid c-grid--single-row@lg u-flex--justify-center">
+<div class="c-grid c-grid--compact c-grid--single-row@lg u-flex--justify-center">
 
-	<div class="c-grid__column c-grid__column--4 c-grid__column--3@lg">
+	<div class="c-grid__column c-grid__column--4 c-grid__column--2@lg">
 		<?php
 
-			\ui\circle_guy_from_user( $args['user']->ID, 'square' );
+			\ui\circle_guy_from_user( $args['user']->ID, 'square', array( 'size' => 'sm' ) );
 		?>
 	</div>
 
-	<div class="c-grid__column c-grid__column--12 c-grid__column--9@lg">
+	<div class="c-grid__column c-grid__column--12 c-grid__column--10@lg">
 
 		<<?php echo $args['title_tag'] . ' ' . \fifteen_four\helpers\get_attributes_from_array( $title_attributes ); ?>>
 			<?php echo $args['user']->display_name; ?>
 		</<?php echo $args['title_tag']; ?>>
 
-		<p>
+		<p class="u-text--caption">
 			<?php echo $args['user']->description; ?>
 		</p>
 

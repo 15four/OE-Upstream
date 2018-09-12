@@ -268,9 +268,9 @@
 				transform: none;
 				box-shadow: none;
 
-				// When the child of zesty backgrounds, these turn victoria
-				.u-background--zest :not([clas*="u-background--"]) & {
-					color: PSJ_color(victoria);
+				// When the child of zesty backgrounds, these turn white
+				.u-background--zest :not([class*="u-background--"]) & {
+					color: PSJ_color(rich-white);
 				}
 			}
 
