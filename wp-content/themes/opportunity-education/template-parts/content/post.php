@@ -18,7 +18,6 @@ $post_type = get_post_type();
 
 		// Set hero image brandscape section args
 		$brandscape_section_args = array(
-			'is_static' => true,
 			'content'   => '<div class="u-text--caption u-text--family-roboto u-text--bold u-text--uppercase u-underline u-underline--small u-underline--animated u-margin-bottom--tiny js-animation--scroll">'
 				. get_the_date()
 				. '</div>'
@@ -37,7 +36,8 @@ $post_type = get_post_type();
 		// Add brandscape
 		\ui\brandscape(
 			array(
-				'sections' => [$brandscape_section_args]
+				'has_overlay' => true,
+				'sections'    => [$brandscape_section_args]
 			)
 		);
 	?>

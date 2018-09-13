@@ -23,6 +23,11 @@ $attributes = array(
 			? 'c-brandscape--static js-brandscape--static'
 			: '' ) . ' '
 
+		// Overlay
+		. ( $args['has_overlay']
+			? 'c-brandscape--has-overlay'
+			: '' ) . ' '
+
 		// Background
 		. \helpers\prepare_background_class_names( 'victoria' ) . ' '
 

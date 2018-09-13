@@ -45,7 +45,7 @@ $content_atts = array(
 				<span class="filling-line" aria-hidden="true"></span>
 			</div> <!-- .events -->
 		</div> <!-- .events-wrapper -->
-			
+
 		<ul class="cd-timeline-navigation">
 			<li>
                 <a href="#0" class="prev inactive">
@@ -63,19 +63,14 @@ $content_atts = array(
 		<ol style="list-style-type:none;">
 			<li class="selected" data-date="01/01/2005">
             <h3 class="u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">Ameritrade Founder and CEO Joe Ricketts travels to Tanzania</h3>
-            <?php echo do_shortcode('[popover_modal id="2005-1-popover-modal"]
-[embed_guy tag="figure" source="https://www.youtube.com/embed/-HtDSqRp9F8"]
-[/popover_modal]
-[popover_modal id="2005-3-popover-modal"]
-[embed_guy tag="figure" source="https://www.youtube.com/embed/mbSUk42v3tI"]
-[/popover_modal][animation][header_card header_content="Ameritrade Founder and CEO Joe Ricketts travels to Tanzania" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"][launcher target="2005-1-popover-modal"]<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/2005-1-1-1480x474.png" alt="" width="1480" height="474" class="u-display--block u-margin-bottom--std alignnone size-bleed wp-image-1481" />
+            <?php echo do_shortcode('[animation][header_card header_content="Ameritrade Founder and CEO Joe Ricketts travels to Tanzania" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"][launcher target="2005-1-popover-modal"]<img src="https://opportunityeducation.org/wp-content/uploads/2018/09/2005-1-1-900x288.png" alt="" width="1480" height="474" class="u-display--block u-margin-bottom--std alignnone size-bleed wp-image-1481" />
 [/launcher]Ameritrade Founder and CEO Joe Ricketts travels to Tanzania​ for holiday. While there, he meets safari guide Shangi Wilson and learns that Wilson is building a nursery and primary school. Ricketts visits the school and donates $1,400 to Wilson for its construction. Later, Ricketts sends off-the-shelf video and other educational materials to Wilson’s school in Tanzania and begins to consider how he might help other schools in Tanzania and the developing world.[/header_card][/animation]'); ?>
 
             <?php echo do_shortcode('[animation][header_card header_content="Opportunity Education Foundation is Established" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Copy-of-OENGL_RGB_forLiteBkgd_SM.png" alt="" width="452" height="147" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1495" />Opportunity Education Foundation is established​ with Joe Ricketts serving as CEO. Our mission is “to make quality education accessible to children indeveloping nations so they can improve their standards of living and work towards a brighter future.”[/header_card][/animation]'); ?>
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Copy-of-OENGL_RGB_forLiteBkgd_SM.png" alt="" width="452" height="147" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1495" />Opportunity Education Foundation is established​ with Joe Ricketts serving as CEO. Our mission is “to make quality education accessible to children indeveloping nations so they can improve their standards of living and work towards a brighter future.”[/header_card][/animation]'); ?>
 
 <?php echo do_shortcode('[animation][header_card header_content="OE establishes the Primary School Student Program in Tanzania and Uganda" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"][launcher target="2005-3-popover-modal"]
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/2005-3-1480x474.png" alt="" width="1480" height="474" class="u-display--block u-margin-bottom--std alignnone size-bleed wp-image-1483" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/09/2005-3-900x288.png" alt="" width="1480" height="474" class="u-display--block u-margin-bottom--std alignnone size-bleed wp-image-1483" />
 [/launcher]OE establishes the Primary School Student Program in Tanzania and Uganda​, hiring Alan Barkley as executive director. Barkley begins to develop partnerships with government and private schools throughout Africa. In Uganda, OE partners with World Vision.[/header_card][/animation]'); ?>
 
             </li>
@@ -92,14 +87,14 @@ OE expands the Primary School Student Program.​ We begin to​​produce “Le
 <?php echo do_shortcode('[animation]
 [header_card header_content="Working with Thembalethu Development, OE expands our work to South Africa. We also begin work in Sri Lanka," header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/South-Africa-for-2006-section-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignleft size-medium wp-image-1784" /><img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Sri-Lanka-for-2006-section.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1785" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/South-Africa-for-2006-section-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignleft size-medium wp-image-1784" /><img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Sri-Lanka-for-2006-section.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1785" />
 
 Working with Thembalethu Development, OE expands our work to South Africa. We also begin work in Sri Lanka, ​increasing our reach to 4 countries, 30 schools, and 18,600 students.
 
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2007">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">Jim Ricketts begins work with OE in various capacities</h3>
             <?php echo do_shortcode('[animation]
@@ -112,7 +107,7 @@ Jim Ricketts ​begins work with OE in various capacities, overseeing the establ
 <?php echo do_shortcode('[animation]
 [header_card header_content="OE begins to work in Nepal, partnering with United Missions to Nepal, and in India, partnering with World Vision." header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/2007-2-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-card wp-image-1486" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/2007-2-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-card wp-image-1486" />
 
 OE begins to work in Nepal, partnering with United Missions to Nepal, andin India, partnering with World Vision. ​We increasing our reach to 6 countries, 67 schools, and 41,450 students.​
 
@@ -127,7 +122,7 @@ OE begins to work in Nepal, partnering with United Missions to Nepal, andin Indi
 
 OE establishes its Sister School Program ​to facilitate cross-culturalunderstanding between developed and developing countries by conducting penpal correspondences between students at paired schools. In addition to letter writing, US-based schools provide much-needed educational resources and materials to their partner schools.
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/2008-1-300x236.jpg" alt="" width="300" height="236" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1489" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/2008-1-300x236.jpg" alt="" width="300" height="236" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1489" />
 
 We also begin running ​Sister School Trips​, a cultural exchange program, which once a year takes teachers from OE sister schools to different parts of the developing world where OE operates. Participants travel, visit, and teach in OE partner schools, and learn about the culture and people of host countries. US teachers visit Tanzania, India, Ghana, and Uganda.
 
@@ -136,26 +131,26 @@ We also begin running ​Sister School Trips​, a cultural exchange program, wh
 <?php echo do_shortcode('[animation]
 [header_card header_content="OE expands our work in Africa, partnering with the Students and Youth Travel Organization in Ghana" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Ghana-for-2008-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1776" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Ghana-for-2008-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1776" />
 
 OE expands our work in Africa, partnering with the Students and Youth Travel Organization in Ghana​, increasing our reach to 7 countries, 281 schools, and 174,220 students.
 
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2009">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE begins to work in Lesotho and Sierra Leone</h3>
             <?php echo do_shortcode('[animation]
 [header_card header_content="OE begins to work in Lesotho and Sierra Leone" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Lesotho-for-2009.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignleft size-full wp-image-1779" /><img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Sierra-Leonne-for-2009.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1782" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Lesotho-for-2009.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignleft size-full wp-image-1779" /><img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Sierra-Leonne-for-2009.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1782" />
 
 OE begins to work in Lesotho and Sierra Leone, introducing our curricula to 15 and 10 schools respectively, increasing our reach to 9 countries and 413 schools, supporting 256,060 students.
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2010">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE increases our reach to 646 schools and 400,520 students</h3>
             <?php echo do_shortcode('[animation]
@@ -166,7 +161,7 @@ OE increases our reach to 646 schools and 400,520 students.
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2011">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">In partnership with Louisiana College, OE inaugurates the OE Teacher Training Program</h3>
             <?php echo do_shortcode('[animation]
@@ -193,13 +188,13 @@ OE increases our reach to 835 schools and 517,700 students.
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2012">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE begins work in Cameroon with 10 primary programs in 4 Catholic dioceses</h3>
             <?php echo do_shortcode('[animation]
 [header_card header_content="Partnering with the Catholic Church, OE begins work in Cameroon with 10 primary programs in 4 Catholic dioceses – Kumbo, Bamenda, Mamfe and Buea" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Cameroon-for-2012-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignleft size-medium wp-image-1774" /><img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Uganda-for-2012.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1788" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Cameroon-for-2012-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignleft size-medium wp-image-1774" /><img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Uganda-for-2012.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1788" />
 
 Partnering with the Catholic Church, OE begins work in Cameroon with 10 primary programs in 4 Catholic dioceses – Kumbo, Bamenda, Mamfe and Buea. Our Teacher Training Program expands to Uganda, serving approximately 200 teachers there.
 
@@ -213,7 +208,7 @@ Joe Ricketts considers the use of tablets in providing educational resources to 
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2013">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE initiates the Tablet Program</h3>
             <?php echo do_shortcode('[animation]
@@ -259,7 +254,7 @@ administer eye examinations and distribute glasses to students and teachers in n
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2014">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE redesigns our Teacher Training Program</h3>
             <?php echo do_shortcode('[animation]
@@ -278,7 +273,7 @@ OE expands our reach to 1,434 schools supporting 889,080 students.
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2015">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE expands our reach</h3>
             <?php echo do_shortcode('[animation]
@@ -320,7 +315,7 @@ OE identifies locals to work as designers for Tanzanian curriculum. We begin tra
 <?php echo do_shortcode('[animation]
 [header_card header_content="In the United States OE runs a program" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Pittsburgh-PA-for-2015-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1780" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Pittsburgh-PA-for-2015-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1780" />
 
 In the United States OE runs a program in Pittsburgh, PA to test the efficacy of our Quest! designs in providing students with course content that is engaging, skills-based, and relevant. Twenty-three eleventh graders and 3 mentors participate in exploring 33 quests. The feedback is overwhelmingly positive.<br /><br />
 OE begins to explore the possibility of opening NGL academies in the United State to showcase the Quest! model of education.
@@ -337,7 +332,7 @@ OE expands our reach to 1,625 schools and 1,007,500 students.
 [/animation]'); ?>
 
             </li>
-            
+
             <li data-date="01/01/2016">
             <h3 class="u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">OE begins to develop the Quest! app</h3>
             <?php echo do_shortcode('[animation]
@@ -377,13 +372,13 @@ with OE schools in Africa and Asia.
 [/header_card]
 [/animation]'); ?>
             </li>
-            
+
             <li data-date="01/01/2017">
             <h3 class=" u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">Pilot program of quests using tablets and newly developed NGL curriculum is conducted</h3>
             <?php echo do_shortcode('[animation]
 [header_card header_content="Pilot program of quests using tablets and newly developed NGL curriculum is conducted" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/2017-1-300x200.jpg" alt="" width="300" height="200" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1499" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/2017-1-300x200.jpg" alt="" width="300" height="200" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1499" />
 
 Pilot program of quests using tablets and newly developed NGL curriculum
 is conducted at ten schools in Tanzania; plans to expand to six additional schools in January 2018 are in the works.
@@ -393,7 +388,7 @@ is conducted at ten schools in Tanzania; plans to expand to six additional schoo
 <?php echo do_shortcode('[animation]
 [header_card header_content="NGL Academies are opened in Omaha, NE and Santa Rosa, CA" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/2017-2-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1501" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/2017-2-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1501" />
 
 NGL Academies are opened in Omaha, NE and Santa Rosa, CA. The
 academies showcase singular curricula and Quests!, promoting an innovative, student-led educational model that promotes maximum opportunities for individual exploration and inquiry.
@@ -404,7 +399,7 @@ academies showcase singular curricula and Quests!, promoting an innovative, stud
 <?php echo do_shortcode('[animation]
 [header_card header_content="OE expands our work" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-<img src="http://dev-opportunityeducation.pantheonsite.io/wp-content/uploads/2018/07/Bethesda-for-2017-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1773" />
+<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Bethesda-for-2017-300x225.jpg" alt="" width="300" height="225" class="u-display--block u-margin-bottom--std alignnone size-medium wp-image-1773" />
 
 OE expands our work, partnering with Glasgow, Fairfax, VA; Upward Bound, Bethesda, MD; and Maya Angelou Public Charter School in Washington, DC.
 
@@ -419,7 +414,7 @@ OE begins to explore opportunities to partner with vulnerable schools in the US 
 [/header_card]
 [/animation]'); ?>
 </li>
-            
+
             <li data-date="01/01/2018">
             <h3 class="u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">Next Generation Learning becomes Quest Forward Learning</h3>
             <?php echo do_shortcode('[animation]
@@ -434,8 +429,8 @@ Thus, Quest Forward Learning was proposed. A name that both highlights a key phr
 			</li>
 		</ol>
 	</div> <!-- .events-content -->
-                
-    
+
+
         <div class="c-container">
             <div class="c-grid">
                 <div class="c-grid__column c-grid__column--12@xxs c-grid__column--6@lg">

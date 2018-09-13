@@ -44,6 +44,8 @@ function brandscape_shortcode( $atts, $content ) {
 			'type'                        => 'brandscape',
 			'tag'                         => 'div',
 			'is_static'                   => false,
+			'background_image'            => null,
+			'has_overlay'                 => false,
 			'section_tag'                 => 'section',
 			'section_additional_classes'  => '',
 			'additional_classes'          => ''

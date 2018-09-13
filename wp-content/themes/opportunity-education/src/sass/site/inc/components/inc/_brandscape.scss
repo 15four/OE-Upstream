@@ -52,6 +52,17 @@
 			z-index: 0;
 			top: 0;
 			overflow: hidden;
+
+			// If this is the child of a brandscape with an overlay, add an overlay
+			#{$block}--has-overlay &::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(PSJ_color(victoria), 0.75);
+			}
 		}
 
 		&__section-background-subject-container {
