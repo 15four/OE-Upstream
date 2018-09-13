@@ -53,7 +53,6 @@ class UI_Component {
 
 		// If either the component directory or template name is not specified, return false
 		if ( $this->_component_directory === null || $this->_template_name === null ) {
-			echo 'JUNK';
 			return false;
 		}
 

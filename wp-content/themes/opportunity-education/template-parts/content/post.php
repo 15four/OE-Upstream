@@ -36,7 +36,7 @@ $post_type = get_post_type();
 		// Add brandscape
 		\ui\brandscape(
 			array(
-				'has_overlay' => true,
+				'has_overlay' => ( bool ) $hero_image,
 				'sections'    => [$brandscape_section_args]
 			)
 		);

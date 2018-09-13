@@ -31,10 +31,9 @@ class Brandscape extends \ui\UI_Component {
 	// Configure the component
 	protected function _configure() {
 
-		// If the background image is not set, make it a default and set the overlay to false
-		if ( is_null( $this->_arg_schema['background_image'] ) ) {
-			$this->_arg_schema['background_image'] = \constants\get_default_image( 'brandscape' );
-			$this->_arg_schema['has_overlay'] = false;
+		// If the background image is not set, make it a default
+		if ( is_null( $this->_args['background_image'] ) ) {
+			$this->_args['background_image'] = \constants\get_default_image( 'brandscape' );
 		}
 	}
 }
