@@ -9,19 +9,11 @@ namespace ui;
 
 function get_horizontal_timeline( $args = array() ) {
 
-    // Set config defaults
-    $args = array_merge(
-        array(
-            'tag'                          => 'section',
-            'additional_classes'           => '',
-            'content'                      => '',
-            'content_additional_classes'   => ''
-        ),
-        $args
-    );
+    // Instantiate horizontal timeline with args
+	$horizontal_timeline = new \ui\Horizontal_Timeline( $args );
 
-    // Get and return the template
-    return \fifteen_four\helpers\get_include( __DIR__ . '/templates/horizontal-timeline.template.php', $args );
+	// Return horizontal timeline markup
+	return $horizontal_timeline->get_component();
 }
 
 function horizontal_timeline( $args = array() ) {
@@ -36,18 +28,47 @@ function horizontal_timeline_shortcode( $atts, $content ) {
 	// Atts
 	$atts = shortcode_atts(
 		array(
-			'tag'                          => 'section',
-			'additional_classes'           => '',
-			'content'                      => '',
-            'content_additional_classes'   => ''
+			'tag'                         => 'div',
+            'periods_tag'                 => 'div',
+            'periods_additional_classes'  => '',
+            'period_additional_classes'   => '',
+            'additional_classes'          => ''
 		),
 		$atts
 	);
 
-	// Add content text back in
-	$atts['content'] = $content;
+	// Get all periods within slider
+	$periods = \fifteen_four\helpers\filter_shortcodes( \fifteen_four\helpers\explode_by_shortcode( $content ), 'period' );
+
+	// Loop through periods and do shortcodes for content
+	foreach( $periods as &$period ) {
+		$period['content'] = do_shortcode( $period['content'] );
+	}
+
+	// Add periods to atts
+	$atts['periods'] = $periods;
 
 	// Return the UI element
 	return \ui\get_horizontal_timeline( $atts );
 }
 add_shortcode( 'horizontal_timeline', '\ui\horizontal_timeline_shortcode' );
+
+/**
+ * Horizontal timeline period shortcode
+ */
+function horizontal_timeline_period_shortcode( $atts ) {
+
+	// Atts
+	$atts = shortcode_atts(
+		array(
+			'title'              => '',
+            'excerpt'            => '',
+		    'content'            => '',
+		    'additional_classes' => ''
+		),
+		$atts
+	);
+
+	return '';
+}
+add_shortcode( 'horizontal_timeline_period', '\ui\horizontal_timeline_period_shortcode' );

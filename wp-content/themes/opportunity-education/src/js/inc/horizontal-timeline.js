@@ -5,7 +5,7 @@
 /* global jQuery */
 
 jQuery(document).ready(function($){
-	var timelines = $('.cd-horizontal-timeline'),
+	var timelines = $('.c-horizontal-timeline'),
 		eventsMinDistance = 60;
 
 	(timelines.length > 0) && initTimeline(timelines);
@@ -15,14 +15,14 @@ jQuery(document).ready(function($){
 			var timeline = $(this),
 				timelineComponents = {};
 			//cache timeline components 
-			timelineComponents['timelineWrapper'] = timeline.find('.events-wrapper');
-			timelineComponents['eventsWrapper'] = timelineComponents['timelineWrapper'].children('.events');
-			timelineComponents['fillingLine'] = timelineComponents['eventsWrapper'].children('.filling-line');
+			timelineComponents['timelineWrapper'] = timeline.find('.c-horizontal-timeine__events-wrapper');
+			timelineComponents['eventsWrapper'] = timelineComponents['timelineWrapper'].children('.c-horizontal-timeine__events');
+			timelineComponents['fillingLine'] = timelineComponents['eventsWrapper'].children('.c-horizontal-timeine__filling-line');
 			timelineComponents['timelineEvents'] = timelineComponents['eventsWrapper'].find('a');
 			timelineComponents['timelineDates'] = parseDate(timelineComponents['timelineEvents']);
 			timelineComponents['eventsMinLapse'] = minLapse(timelineComponents['timelineDates']);
-			timelineComponents['timelineNavigation'] = timeline.find('.cd-timeline-navigation');
-			timelineComponents['eventsContent'] = timeline.children('.events-content');
+			timelineComponents['timelineNavigation'] = timeline.find('.c-horizontal-timeine__timeline-navigation');
+			timelineComponents['eventsContent'] = timeline.children('c-horizontal-timeline__periods');
 
 			//assign a left postion to the single events along the timeline
 			setDatePosition(timelineComponents, eventsMinDistance);
@@ -32,20 +32,20 @@ jQuery(document).ready(function($){
 			timeline.addClass('loaded');
 
 			//detect click on the next arrow
-			timelineComponents['timelineNavigation'].on('click', '.next', function(event){
+			timelineComponents['timelineNavigation'].on('click', '.c-horizontal-timeine__timeline-navigation-item--next', function(event){
 				event.preventDefault();
 				updateSlide(timelineComponents, timelineTotWidth, 'next');
 			});
 			//detect click on the prev arrow
-			timelineComponents['timelineNavigation'].on('click', '.prev', function(event){
+			timelineComponents['timelineNavigation'].on('click', '.c-horizontal-timeine__timeline-navigation-item--prev', function(event){
 				event.preventDefault();
 				updateSlide(timelineComponents, timelineTotWidth, 'prev');
 			});
 			//detect click on the a single event - show new event content
 			timelineComponents['eventsWrapper'].on('click', 'a', function(event){
 				event.preventDefault();
-				timelineComponents['timelineEvents'].removeClass('selected');
-				$(this).addClass('selected');
+				timelineComponents['timelineEvents'].removeClass('is-selected');
+				$(this).addClass('is-selected');
 				updateOlderEvents($(this));
 				updateFilling($(this), timelineComponents['fillingLine'], timelineTotWidth);
 				updateVisibleContent($(this), timelineComponents['eventsContent']);
@@ -84,17 +84,17 @@ jQuery(document).ready(function($){
 
 	function showNewContent(timelineComponents, timelineTotWidth, string) {
 		//go from one event to the next/previous one
-		var visibleContent =  timelineComponents['eventsContent'].find('.selected'),
+		var visibleContent =  timelineComponents['eventsContent'].find('.is-selected'),
 			newContent = ( string == 'next' ) ? visibleContent.next() : visibleContent.prev();
 
 		if ( newContent.length > 0 ) { //if there's a next/prev event - show it
-			var selectedDate = timelineComponents['eventsWrapper'].find('.selected'),
+			var selectedDate = timelineComponents['eventsWrapper'].find('.is-selected'),
 				newEvent = ( string == 'next' ) ? selectedDate.parent('li').next('li').children('a') : selectedDate.parent('li').prev('li').children('a');
 			
 			updateFilling(newEvent, timelineComponents['fillingLine'], timelineTotWidth);
 			updateVisibleContent(newEvent, timelineComponents['eventsContent']);
-			newEvent.addClass('selected');
-			selectedDate.removeClass('selected');
+			newEvent.addClass('is-selected');
+			selectedDate.removeClass('is-selected');
 			updateOlderEvents(newEvent);
 			updateTimelinePosition(string, newEvent, timelineComponents, timelineTotWidth);
 		}
@@ -119,8 +119,8 @@ jQuery(document).ready(function($){
 		value = ( !(typeof totWidth === 'undefined') &&  value < totWidth ) ? totWidth : value; //do not translate more than timeline width
 		setTransformValue(eventsWrapper, 'translateX', value+'px');
 		//update navigation arrows visibility
-		(value == 0 ) ? timelineComponents['timelineNavigation'].find('.prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.prev').removeClass('inactive');
-		(value == totWidth ) ? timelineComponents['timelineNavigation'].find('.next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.next').removeClass('inactive');
+		(value == 0 ) ? timelineComponents['timelineNavigation'].find('.c-horizontal-timeine__timeline-navigation-item--prev').addClass('inactive') : timelineComponents['timelineNavigation'].find('.c-horizontal-timeine__timeline-navigation-item--prev').removeClass('inactive');
+		(value == totWidth ) ? timelineComponents['timelineNavigation'].find('.c-horizontal-timeine__timeline-navigation-item--next').addClass('inactive') : timelineComponents['timelineNavigation'].find('.c-horizontal-timeine__timeline-navigation-item--next').removeClass('inactive');
 	}
 
 	function updateFilling(selectedEvent, filling, totWidth) {
@@ -155,15 +155,15 @@ jQuery(document).ready(function($){
 
 	function updateVisibleContent(event, eventsContent) {
 		var eventDate = event.data('date'),
-			visibleContent = eventsContent.find('.selected'),
+			visibleContent = eventsContent.find('.is-selected'),
 			selectedContent = eventsContent.find('[data-date="'+ eventDate +'"]'),
 			selectedContentHeight = selectedContent.height();
 
 		if (selectedContent.index() > visibleContent.index()) {
-			var classEnetering = 'selected enter-right',
+			var classEnetering = 'is-selected enter-right',
 				classLeaving = 'leave-left';
 		} else {
-			var classEnetering = 'selected enter-left',
+			var classEnetering = 'is-selected enter-left',
 				classLeaving = 'leave-right';
 		}
 
@@ -280,6 +280,6 @@ jQuery(document).ready(function($){
 
 	function checkMQ() {
 		//check if mobile or desktop device
-		return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
+		return window.getComputedStyle(document.querySelector('.c-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
 	}
 });
