@@ -42,13 +42,17 @@ $preloader_attributes = array(
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
 	<?php echo \theme\get_google_analytics_code( true ); ?>
+	<?php echo \theme\get_google_tag_manager_code( true ); ?>
 
 	<?php wp_head(); ?>
+
 </head>
 
 <body <?php body_class(); ?>>
 
 <div id="page" class="site">
+
+	<?php echo \theme\get_google_tag_manager_noscript_code( true ); ?>
 
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'opportunity-education' ); ?></a>
 
