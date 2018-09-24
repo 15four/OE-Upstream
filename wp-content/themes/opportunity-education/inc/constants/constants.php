@@ -59,7 +59,7 @@ function get_default_image( $name = null ) {
 		: DEFAULT_IMAGES[$name];
 
 	// Otherwise, return image path
-	return get_stylesheet_directory_uri() . '/assets/img/defaults/' . $default_image;
+	return get_template_directory_uri() . '/assets/img/defaults/' . $default_image;
 }
 
 // Forms
