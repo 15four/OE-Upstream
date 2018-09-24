@@ -12,7 +12,8 @@ $featured_post = $args['featured_post'] !== null
 	? get_post( $featured_post )
 	: wp_get_recent_posts(
 		array(
-			'numberposts' => 1
+			'numberposts' => 1,
+			'post_status' => 'publish'
 		),
 		OBJECT
 	)[0];
