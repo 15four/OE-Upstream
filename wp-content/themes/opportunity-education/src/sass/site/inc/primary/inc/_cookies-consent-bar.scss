@@ -13,12 +13,14 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	transition: transform transition(std);
+	opacity: 1;
+	transition: opacity transition(std), transform transition(std);
 
 	@at-root {
 
 		&--hidden {
 			pointer-events: none;
+			opacity: 0;
 			transform: translate(0, 100%);
 		}
 

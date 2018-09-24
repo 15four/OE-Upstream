@@ -18,7 +18,6 @@ get_header();
 			// Set post as queried object
 			$post = get_queried_object();
 
-
 			// Get hero template part
 			get_template_part( 'template-parts/hero' );
 

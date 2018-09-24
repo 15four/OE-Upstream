@@ -255,14 +255,17 @@ function get_the_hero_brandscape() {
 		// Get background subject type
 		$background_subject_type = \fifteen_four\helpers\acf\normalize_select_field( get_sub_field( 'background_subject_type' ) )[0];
 
+		// Get background subject
+		$background_subject = $background_subject_type === 'video'
+			? get_sub_field( 'background_video' )
+			: \fifteen_four\helpers\acf\get_image( get_sub_field( 'background_image' ), 'brandscape' );
+
 		// Set args for section and push it into array
 		array_push(
 			$sections,
 			array(
 				'background_subject_type' => $background_subject_type,
-				'background_subject'      => $background_subject_type === 'video'
-					? get_sub_field( 'background_video' )
-					: \fifteen_four\helpers\acf\get_image( get_sub_field( 'background_image' ), 'brandscape' ),
+				'background_subject'      => $background_subject ?: null,
 				'content'                 => get_sub_field( 'content' )
 			)
 		);
@@ -272,7 +275,7 @@ function get_the_hero_brandscape() {
 	return \ui\get_brandscape(
 		array(
 			'type'             => get_field( 'hero_type' ),
-			'background_image' => \fifteen_four\helpers\acf\get_image( get_field( 'background_image' ), 'brandscape' ),
+			'background_image' => \fifteen_four\helpers\acf\get_image( get_field( 'background_image' ), 'brandscape' ) ?: null,
 			'sections'         => $sections
 		)
 	);
