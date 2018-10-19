@@ -47,30 +47,33 @@ $title = apply_filters( 'widget_title', $instance['title'] );
 echo $args['before_widget'];
 if ( ! empty( $title ) )
 echo $args['before_title'] . $title . $args['after_title'];
+
+// Return the recent news markup
+echo \fifteen_four\helpers\get_include( __DIR__ . '/templates/search-filter.template.php' );
  
 // This is where you run the code and display the output
-echo '<form role="search" method="get" class="search-form sidebar-search" action="//localhost:3000/">
-        <label>
-            <span class="screen-reader-text"></span>
-            <div class="o-field--search"><input type="search" class="search-form__field o-field--small" placeholder="Search …" value="' . get_search_query() . '" name="s"></div>
-        </label>
-        <!-- <input type="submit" class="search-form__submit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" /> -->
+//echo '<form role="search" method="get" class="search-form sidebar-search" action="//localhost:3000/">
+  //      <label>
+    //        <span class="screen-reader-text"></span>
+      //      <div class="o-field--search"><input type="search" class="search-form__field o-field--small" placeholder="Search …" value="' . get_search_query() . '" name="s"></div>
+        //</label>
+        //<!-- <input type="submit" class="search-form__submit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" /> -->
 
-        <div class="o-field--select"><select name="cat" id="cat" class="postform sidebar-cat o-field--small">
-            <option value="-1">Select Category</option>
-            <option class="level-0" value="58">Academy</option>
-            <option class="level-0" value="63">Curriculum</option>
-            <option class="level-0" value="62">Mentors</option>
-            <option class="level-0" value="68">Methodology</option>
-            <option class="level-0" value="59">Programs</option>
-            <option class="level-0" value="64">Research</option>
-            <option class="level-0" value="67">School Leaders</option>
-            <option class="level-0" value="66">Student/Parents</option>
-            <option class="level-0" value="60">Tanzania</option>
-            <option class="level-0" value="65">Technology</option>
-            <option class="level-0" value="61">United States</option>
-        </select></div>
-    </form>';
+        //<div class="o-field--select"><select name="cat" id="cat" class="postform sidebar-cat o-field--small">
+          //  <option value="-1">Select Category</option>
+            //<option class="level-0" value="58">Academy</option>
+           // <option class="level-0" value="63">Curriculum</option>
+           // <option class="level-0" value="62">Mentors</option>
+           // <option class="level-0" value="68">Methodology</option>
+           // <option class="level-0" value="59">Programs</option>
+           // <option class="level-0" value="64">Research</option>
+           // <option class="level-0" value="67">School Leaders</option>
+           // <option class="level-0" value="66">Student/Parents</option>
+           // <option class="level-0" value="60">Tanzania</option>
+           // <option class="level-0" value="65">Technology</option>
+           // <option class="level-0" value="61">United States</option>
+       // </select></div>
+   // </form>';
 
 }
          
