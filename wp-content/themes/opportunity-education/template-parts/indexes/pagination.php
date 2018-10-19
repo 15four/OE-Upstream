@@ -34,11 +34,11 @@ $display_next_page_link = $next_page_link && $are_posts_on_next_page;
 	<div class="o-button-container u-flex--justify-center">
 
 	<?php if ( $display_previous_page_link ): ?>
-		<a class="o-button" href="<?php echo $previous_page_link; ?>">Previous Page</a>
+		<a class="o-button" href="<?php echo $previous_page_link; ?>">Previous Post</a>
 	<?php endif; ?>
 
 	<?php if ( $display_next_page_link ): ?>
-		<a class="o-button" href="<?php echo $next_page_link; ?>">Next Page</a>
+		<a class="o-button" href="<?php echo $next_page_link; ?>">Next Post</a>
 	<?php endif; ?>
 
 	</div>

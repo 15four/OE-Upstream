@@ -17,6 +17,7 @@ require __DIR__ . '/inc/walkers.php';
 require __DIR__ . '/inc/plugin-overrides.php';
 require __DIR__ . '/inc/google-analytics.php';
 require __DIR__ . '/inc/cookies-consent-bar.php';
+require __DIR__ . '/inc/custom-widgets.php';
 
 // Custom post types and taxonomies
 require __DIR__ . '/inc/custom-post-types/custom-post-types.php';

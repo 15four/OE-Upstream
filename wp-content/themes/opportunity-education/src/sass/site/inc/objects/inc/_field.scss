@@ -7,6 +7,39 @@
 
 	@at-root {
 
+        &--search,
+        &--select {
+            position: relative;
+
+            &::after {
+                @include transition(transform, std);
+    
+                content: '\203A';
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                right: 0;
+                margin-right: 0.75rem;
+                font-size: 1.75em;
+                line-height: 0.57142857;
+                pointer-events: none;
+                transform: translateY(-50%);
+            }
+        }
+
+        &--search {
+            margin-bottom: 1.5rem;
+        }
+        
+        &--select {
+            background: PSJ_color(rich-white);
+
+            &::after {
+                top: 40%;
+                transform: rotate(90deg);
+            }
+        }
+
 		&--small {
 			$padding-while-focused: 1.5rem;
 

@@ -23,10 +23,11 @@
 		padding-left: $padding-while-focused;
 	}
 
-	&:focus {
+    &:focus,
+    &.is-selected {
 		padding-left: calc(#{$padding-while-focused} - #{border(std)});
 		border-left: border(std) solid PSJ_color(zest);
-	}
+    }
 
 	// Children of zesty backgrounds have a victoria border
 	.u-background--zest :not([class*=".u-background--"]) & {
@@ -58,7 +59,8 @@ select {
 
 	appearance: none;
 	-webkit-appearance: none;
-	line-height: 1.2;
+    line-height: 1.2;
+    
 }
 
 textarea {

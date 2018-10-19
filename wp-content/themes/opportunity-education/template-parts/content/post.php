@@ -71,6 +71,7 @@ $post_type = get_post_type();
 					</div>
 
 					<div class="sidebar-column c-grid__column c-grid__column--12 c-grid__column--4@lg s-no-print">
+                        <?php dynamic_sidebar( 'sidebar-1' ); ?>
 						<?php \template\the_related_posts(); ?>
 					</div>
 

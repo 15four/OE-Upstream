@@ -3,9 +3,19 @@
 // ================================================= /
 
 .c-related-posts {
-	$block: &;
+    $block: &;
+    
+    &__title {
+        &::after {
+            content: ' ';
+            display: block;
+            padding-bottom: .5rem;
+            margin-bottom: .75rem;
+            border-bottom: 1px solid PSJ_color(light-mid-gray);
+        }
+    }
 
-	@at-root {
+	@at-root {        
 
 		&__post-list {
 			margin-left: 0.85em;

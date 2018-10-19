@@ -7,87 +7,98 @@
 
 ?>
 
-<section id="section-1" class="c-section u-background--light u-background--rich-white u-padding-top--section u-padding-bottom--section">
+<section id="section-1" class="c-section u-background--light u-background--light-gray u-padding-top--section u-padding-bottom--section">
 	<div class="c-section__content">
 		<div class="c-container">
 
-		<?php
+            <div class="c-grid c-grid--single-row@lg u-flex--justify-between">
 
-			// Get global WP Query
-			global $wp_query;
+                <div class="main-content-column c-grid__column c-grid__column--12 c-grid__column--8@lg">
 
-			// If the main query has posts, start it
-			if ( $wp_query->have_posts() ):
+                    <?php
 
-				// Start main loop
-				while ( $wp_query->have_posts() ):
+                        // Get global WP Query
+                        global $wp_query;
 
-					// Set post object
-					$wp_query->the_post();
-		?>
+                        // If the main query has posts, start it
+                        if ( $wp_query->have_posts() ):
 
-			<div class="o-block">
-				<div class="c-grid u-flex--justify-center">
-					<div class="c-grid__column c-grid__column--12 c-grid__column--10@lg">
-						<div class="o-block u-padding-bottom--section u-border-bottom--solid-sm u-border--color-light-mid-gray">
-							<div class="c-grid c-grid--single-row@md">
-								<div class="c-grid__column c-grid__column--12 c-grid__column--4@md c-grid__column--5@lg">
-									<a class="o-link--plain" href="<?php echo get_the_permalink(); ?>">
-										<?php
-											echo get_the_post_thumbnail(
-												$post,
-												'card',
-												array(
-													'class' => 'u-display--block'
-												)
-											);
-										?>
-									</a>
-								</div>
-								<div class="c-grid__column c-grid__column--12 c-grid__column--8@md c-grid__column--7@lg">
-									<div class="u-text--caption u-text--family-roboto u-text--bold u-text--uppercase u-text--color-mid-gray u-margin-bottom--micro">
-										<?php the_date(); ?>
-									</div>
-									<h2>
-										<a class="o-link--plain" href="<?php the_permalink(); ?>">
-											<?php the_title(); ?>
-										</a>
-									</h2>
-									<p>
-										<?php \template\the_better_excerpt( $post, 240 ); ?>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                            // Start main loop
+                            while ( $wp_query->have_posts() ):
 
-		<?php
+                                // Set post object
+                                $wp_query->the_post();
+                    ?>
 
-			// End loop and reset post data
-			endwhile;
-			wp_reset_postdata();
+                        <div class="o-block">
+                            <div class="c-grid u-flex--justify-center">
+                                <div class="c-grid__column c-grid__column--12 c-grid__column--10@lg">
+                                    <div class="o-block u-padding-bottom--section u-border-bottom--solid-sm u-border--color-light-mid-gray">
+                                        <div class="c-grid c-grid--single-row@md">
+                                            <!-- <div class="c-grid__column c-grid__column--12 c-grid__column--4@md c-grid__column--5@lg">
+                                                <a class="o-link--plain" href="<?php //echo get_the_permalink(); ?>">
+                                                    <?php
+                                                        // echo get_the_post_thumbnail(
+                                                        // 	$post,
+                                                        // 	'card',
+                                                        // 	array(
+                                                        // 		'class' => 'u-display--block'
+                                                        // 	)
+                                                        // );
+                                                    ?>
+                                                </a>
+                                            </div> -->
+                                            <div class="c-grid__column c-grid__column--12">
+                                                <div class="u-text--caption u-text--family-roboto u-text--bold u-text--uppercase u-text--color-mid-gray u-margin-bottom--micro">
+                                                    <?php the_date(); ?>
+                                                </div>
+                                                <h2>
+                                                    <a class="o-link--plain" href="<?php the_permalink(); ?>">
+                                                        <?php the_title(); ?>
+                                                    </a>
+                                                </h2>
+                                                <p>
+                                                    <?php \template\the_better_excerpt( $post, 240 ); ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-			// Get pagination template part
-			get_template_part( 'template-parts/indexes/pagination' );
+                    <?php
 
-			// Otherwise, output 'nothing found' notice
-			else:
-		?>
+                        // End loop and reset post data
+                        endwhile;
+                        wp_reset_postdata();
 
-			<div class="c-grid u-flex--justify-center">
-				<div class="c-grid__column c-grid__column--12 c-grid__column--8@lg">
-					<h2 class="u-text--align-center">
-						Uh Oh! Nothing Matched Your Criteria
-					</h2>
-					<p class="u-text--align-center">
-						Do you think there's some information missing? Is there something you'd like to see here? <a href="<?php echo get_the_permalink( \constants\IMPORTANT_PAGES['contact_us'] ); ?>">Send us a message</a> and let us know!
-					</p>
-				</div>
-			</div>
+                        // Get pagination template part
+                        get_template_part( 'template-parts/indexes/pagination' );
 
-		<?php endif; ?>
+                        // Otherwise, output 'nothing found' notice
+                        else:
+                    ?>
+
+                        <div class="c-grid u-flex--justify-center">
+                            <div class="c-grid__column c-grid__column--12 c-grid__column--8@lg">
+                                <h2 class="u-text--align-center">
+                                    Uh Oh! Nothing Matched Your Criteria
+                                </h2>
+                                <p class="u-text--align-center">
+                                    Do you think there's some information missing? Is there something you'd like to see here? <a href="<?php echo get_the_permalink( \constants\IMPORTANT_PAGES['contact_us'] ); ?>">Send us a message</a> and let us know!
+                                </p>
+                            </div>
+                        </div>
+
+                    <?php endif; ?>
+            
+                </div>
+                <div class="sidebar-column c-grid__column c-grid__column--12 c-grid__column--4@lg u-margin-top--section s-no-print">
+                    <?php dynamic_sidebar( 'sidebar-1' ); ?>
+                    <?php //\template\the_related_posts(); ?>
+                </div>
+            </div>
 
 		</div>
 	</div>
