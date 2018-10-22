@@ -2,9 +2,9 @@
 // ======   CUSTOM WIDGETS  ======================== /
 // ================================================= /
 
-// Search Sidebar Widget
-#oe-search-and-filter-2 {
+#categories-2 {
     position: relative;
+    margin-bottom: 5rem;
 
     .widget-title {
         padding-bottom: .5rem;
@@ -21,21 +21,31 @@
         border-bottom: 1px solid PSJ_color(light-mid-gray);
     }
 
-    .sidebar-search {
-        margin-bottom: 5rem;
+    form {
+        position: relative;
+
+        &::after {
+            transition: transform .2s;
+
+            content: '\203A';
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            margin-right: 0.75rem;
+            font-size: 1.75em;
+            line-height: 0.57142857;
+            pointer-events: none;
+            transform: translateY(-50%) rotate(90deg);
+        }
     }
 
 }
 
-// Categories Widget
-
-    select.sidebar-cat {
-        background: PSJ_color(rich-white);
-        padding: 0.975em 0.75em;
-
-        @include PSJ_breakpoint(xl) {
-            padding-left: 1rem;
-            padding-right: 1rem;
+body.archive {
+    #categories-2 {
+        select {
+            border-left: border(std) solid PSJ_color(zest);
         }
-    
     }
+}

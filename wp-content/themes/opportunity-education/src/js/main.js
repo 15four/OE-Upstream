@@ -21,5 +21,6 @@ import './inc/timeline';
 import './inc/horizontal-timeline';
 import './inc/tooltip';
 import './inc/cookies-consent-bar';
+import './inc/make-widget-classy';
 
 console.log( 'Main JS Loaded' );
