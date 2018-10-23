@@ -42,5 +42,16 @@
 
 .page-links {
 	clear: both;
-	margin: 0 0 1.5em;
+    margin: 0 0 1.5em;
+    
+    &__title {
+        margin: 0;
+        color: PSJ_color(dark-gray);
+    }
+
+    &--styled {
+        
+        text-decoration: none;
+        border-bottom: 2px solid PSJ_color(zest);
+    }
 }
