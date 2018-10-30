@@ -55,7 +55,7 @@
 				const closer = $( event.target );
 
 				// Set cookie
-				document.cookie = 'opportunity-education-cookie-consent=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+				document.cookie = 'opportunity-education-cookie-consent=true; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/';
 
 				// Hide the cookies consent bar
 				closer.closest( '.' + object.config.cookiesConsentBarJsClass ).addClass( object.config.cookiesConsentBarClass + '--hidden' );
