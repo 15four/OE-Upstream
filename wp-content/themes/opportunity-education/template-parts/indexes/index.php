@@ -13,7 +13,20 @@
 
             <div class="c-grid c-grid--single-row@lg u-flex--justify-between">
 
-                <div class="main-content-column c-grid__column c-grid__column--12 c-grid__column--8@lg">
+                <div class="main-content-column c-grid__column c-grid__column--12">
+
+                    <div class="o-block">
+                        <div class="c-grid c-grid--single-row">
+                        <div class="c-grid__column c-grid__column--12">
+                            <div class="o-block u-border-bottom--solid-sm u-border--color-light-mid-gray">
+                                <div class="c-grid c-grid--single-row@md">
+                                    <div class="c-grid__column c-grid__column--12 c-grid__column--5@lg">
+                                        <?php dynamic_sidebar( 'sidebar-1' ); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <?php
 
@@ -32,23 +45,23 @@
 
                         <div class="o-block">
                             <div class="c-grid u-flex--justify-center">
-                                <div class="c-grid__column c-grid__column--12 c-grid__column--10@lg">
+                                <div class="c-grid__column c-grid__column--12">
                                     <div class="o-block u-padding-bottom--section u-border-bottom--solid-sm u-border--color-light-mid-gray">
                                         <div class="c-grid c-grid--single-row@md">
-                                            <!-- <div class="c-grid__column c-grid__column--12 c-grid__column--4@md c-grid__column--5@lg">
-                                                <a class="o-link--plain" href="<?php //echo get_the_permalink(); ?>">
+                                            <div class="c-grid__column c-grid__column--12 c-grid__column--4@md c-grid__column--5@lg">
+                                                <a class="o-link--plain" href="<?php echo get_the_permalink(); ?>">
                                                     <?php
-                                                        // echo get_the_post_thumbnail(
-                                                        // 	$post,
-                                                        // 	'card',
-                                                        // 	array(
-                                                        // 		'class' => 'u-display--block'
-                                                        // 	)
-                                                        // );
+                                                        echo get_the_post_thumbnail(
+                                                        	$post,
+                                                        	'card',
+                                                        	array(
+                                                        		'class' => 'u-display--block'
+                                                        	)
+                                                        );
                                                     ?>
                                                 </a>
-                                            </div> -->
-                                            <div class="c-grid__column c-grid__column--12">
+                                            </div>
+                                            <div class="c-grid__column c-grid__column--12 c-grid__column--8@md c-grid__column--7@lg">
                                                 <div class="u-text--caption u-text--family-roboto u-text--bold u-text--uppercase u-text--color-mid-gray u-margin-bottom--micro">
                                                     <?php the_date(); ?>
                                                 </div>
@@ -94,10 +107,10 @@
                     <?php endif; ?>
             
                 </div>
-                <div class="sidebar-column c-grid__column c-grid__column--12 c-grid__column--4@lg s-no-print">
-                    <?php dynamic_sidebar( 'sidebar-1' ); ?>
+                <!--<div class="sidebar-column c-grid__column c-grid__column--12 c-grid__column--4@lg s-no-print">-->
+                    <?php //dynamic_sidebar( 'sidebar-1' ); ?>
                     <?php //\template\the_related_posts(); ?>
-                </div>
+                <!--</div>-->
             </div>
 
 		</div>

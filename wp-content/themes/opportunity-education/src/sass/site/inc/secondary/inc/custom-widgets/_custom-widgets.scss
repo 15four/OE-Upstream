@@ -58,3 +58,11 @@ body.archive {
         }
     }
 }
+
+body.blog,
+body.archive,
+body.category {
+    #categories-2 {
+        margin-bottom: 2rem;
+    }
+}

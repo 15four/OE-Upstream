@@ -47,6 +47,7 @@ $post_type = get_post_type();
 			<div class="c-container">
 
 				<?php \template\the_shares(); ?>
+                <?php echo get_the_category_list(); ?>
 
 				<div class="c-grid c-grid--single-row@lg u-flex--justify-between">
 
