@@ -36,3 +36,13 @@ require __DIR__ . '/inc/admin-functions/admin-functions.php';
  * Include helper functions
  */
 require __DIR__ . '/inc/helpers/helpers.php';
+
+/**
+ * Adding All Categories Option to Cat Dropdown
+ */
+function add_all_categories_to_widget($cat_args) {
+    $cat_args['show_option_all'] = 'Show all categories';
+    $cat_args['show_option_none'] = false;
+    return $cat_args;
+}
+add_filter('widget_categories_dropdown_args', 'add_all_categories_to_widget');

@@ -18,7 +18,7 @@
                     <div class="o-block">
                         <div class="c-grid c-grid--single-row">
                         <div class="c-grid__column c-grid__column--12">
-                            <div class="o-block u-border-bottom--solid-sm u-border--color-light-mid-gray">
+                            <div class="o-block u-border-bottom--solid-sm u-border--color-light-mid-gray cat-widget">
                                 <div class="c-grid c-grid--single-row@md">
                                     <div class="c-grid__column c-grid__column--12 c-grid__column--5@lg">
                                         <?php dynamic_sidebar( 'sidebar-1' ); ?>
