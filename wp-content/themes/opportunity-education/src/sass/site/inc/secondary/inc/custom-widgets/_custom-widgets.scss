@@ -2,9 +2,9 @@
 // ======   CUSTOM WIDGETS  ======================== /
 // ================================================= /
 
-#categories-2 {
-    position: relative;
-    margin-bottom: 5rem;
+.widget_categories {
+    position: relative!important;
+    margin-bottom: 5rem!important;
 
     .widget-title {
         padding-bottom: .5rem;
@@ -52,9 +52,9 @@
 }
 
 body.archive {
-    #categories-2 {
+    .widget_categories {
         select {
-            border-left: border(std) solid PSJ_color(zest);
+            border-left: border(std) solid PSJ_color(zest)!important;
         }
     }
 }
@@ -62,8 +62,8 @@ body.archive {
 body.blog,
 body.archive,
 body.category {
-    #categories-2 {
-        margin-bottom: 2rem;
+    .widget_categories {
+        margin-bottom: 2rem!important;
     }
 }
 
