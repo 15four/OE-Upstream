@@ -1,0 +1,19 @@
+// ================================================= /
+// =========   TABLEPRESS PLUGIN OVERRIDES  ======== /
+// ================================================= /
+
+.tablepress-table-description {
+    margin-bottom: 1.5rem!important;
+}
+
+.tablepress {
+    font-size: 0.875rem;
+
+    thead {
+        th {
+            background: PSJ_color(zest)!important;
+            color: PSJ_color(victoria)!important;
+        }
+    }
+
+}
