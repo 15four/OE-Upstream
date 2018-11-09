@@ -8,11 +8,26 @@
 
 .tablepress {
     font-size: 0.875rem;
+    width: 99.9%!important;
 
     thead {
         th {
             background: PSJ_color(zest)!important;
             color: PSJ_color(victoria)!important;
+        }
+    }
+
+    tr {
+        &:last-child {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    td {
+        border-left: 1px solid #ddd!important;
+
+        &:last-child {
+            border-right: 1px solid #ddd!important;
         }
     }
 
