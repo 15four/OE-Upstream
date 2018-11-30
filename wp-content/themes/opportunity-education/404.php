@@ -20,7 +20,7 @@ get_header();
 				array(
 					'sections' => [
 						array(
-							'content' => '<h1>We couldn\'t find the page you\'re looking for</h1>'
+							'content' => '<h1>We couldn\'t find the page you\'re looking for.</h1>'
 						)
 					]
 				)
@@ -33,7 +33,7 @@ get_header();
 						<div class="c-grid u-flex--justify-center">
 							<div class="c-grid__column c-grid__column--12 c-grid__column--8@lg">
 								<h2 class="u-text--align-center">
-									We're Here to Help
+									We're Here to Help.
 								</h2>
 								<p class="u-text--align-center">
 									Please give our site's search a try, and if you're still feeling lost, feel free to <a href="<?php echo get_the_permalink( \constants\IMPORTANT_PAGES['contact_us'] ); ?>">contact us</a>.
