@@ -26,20 +26,20 @@ $content_atts = array(
 		<div class="events-wrapper">
 			<div class="events">
 				<ol style="list-style:none;">
-                    <li><a href="#0" data-tooltip="Ameritrade Founder and CEO Joe Ricketts travels to Tanzania" data-date="01/01/2005" class="selected">2005</a></li>
-                    <li><a href="#0" data-tooltip="OE expands the Primary School Student Program" data-date="01/01/2006">2006</a></li>
-                    <li><a href="#0" data-tooltip="Jim Ricketts begins work with OE in various capacities" data-date="01/01/2007">2007</a></li>
-                    <li><a data-tooltip="OE establishes its Sister School Program" href="#0" data-date="01/01/2008">2008</a></li>
-                    <li><a data-tooltip="OE begins to work in Lesotho and Sierra Leone" href="#0" data-date="01/01/2009">2009</a></li>
-                    <li><a data-tooltip="OE increases our reach to 646 schools and 400,520 students" href="#0" data-date="01/01/2010">2010</a></li>
-                    <li><a data-tooltip="OE inaugurates the OE Teacher Training Program" href="#0" data-date="01/01/2011">2011</a></li>
-                    <li><a data-tooltip="OE begins work in Cameroon with 10 primary programs" href="#0" data-date="01/01/2012">2012</a></li>
-                    <li><a data-tooltip="OE initiates the Tablet Program" href="#0" data-date="01/01/2013">2013</a></li>
-                    <li><a data-tooltip="OE redesigns our Teacher Training Program" href="#0" data-date="01/01/2014">2014</a></li>
-                    <li><a data-tooltip="OE expands our reach" href="#0" data-date="01/01/2015">2015</a></li>
-                    <li><a data-tooltip="OE begins to develop the Quest! app" href="#0" data-date="01/01/2016">2016</a></li>
-                    <li><a data-tooltip="Pilot program of quests using tablets is conducted" href="#0" data-date="01/01/2017">2017</a></li>
-                    <li><a data-tooltip="Next Generation Learning becomes Quest Forward Learning" href="#0" data-date="01/01/2018">2018</a></li>
+                    <li><a href="#0" data-tooltip="Ameritrade Founder and CEO Joe Ricketts travels to Tanzania." data-date="01/01/2005" class="selected">2005</a></li>
+                    <li><a href="#0" data-tooltip="OE expands the Primary School Program." data-date="01/01/2006">2006</a></li>
+                    <li><a href="#0" data-tooltip="Jim Ricketts begins leading OE operations." data-date="01/01/2007">2007</a></li>
+                    <li><a data-tooltip="OE establishes its Sister School Program." href="#0" data-date="01/01/2008">2008</a></li>
+                    <li><a data-tooltip="OE begins to work in Lesotho and Sierra Leone." href="#0" data-date="01/01/2009">2009</a></li>
+                    <li><a data-tooltip="OE increases its reach to 646 schools and 400,520 students worldwide." href="#0" data-date="01/01/2010">2010</a></li>
+                    <li><a data-tooltip="OE launches its Teacher Training Program." href="#0" data-date="01/01/2011">2011</a></li>
+                    <li><a data-tooltip="Partnering with the Catholic Church, OE begins work in Cameroon with 10 primary programs in 4 Catholic dioceses." href="#0" data-date="01/01/2012">2012</a></li>
+                    <li><a data-tooltip="OE expands to secondary education and creates tablet-based pilot programs." href="#0" data-date="01/01/2013">2013</a></li>
+                    <li><a data-tooltip="OE expands our reach to 1,434 schools supporting 889,080 students." href="#0" data-date="01/01/2014">2014</a></li>
+                    <li><a data-tooltip="OE launches its first pilots with the Quest Forward methodology and Quest! app prototype." href="#0" data-date="01/01/2015">2015</a></li>
+                    <li><a data-tooltip="OE runs 20 Quest Forward Learning pilots in the US and Tanzania." href="#0" data-date="01/01/2016">2016</a></li>
+                    <li><a data-tooltip="Quest Forward Learning runs full-year in Tanzania, Quest Forward Academies launch in US." href="#0" data-date="01/01/2017">2017</a></li>
+                    <li><a data-tooltip="Next Generation Learning becomes Quest Forward Learning, expands to almost 1,000 students worldwide." href="#0" data-date="01/01/2018">2018</a></li>
 				</ol>
 
 				<span class="filling-line" aria-hidden="true"></span>
@@ -64,10 +64,10 @@ $content_atts = array(
 			<li class="selected" data-date="01/01/2005">
             <h3 class="u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std">Ameritrade Founder and CEO Joe Ricketts travels to Tanzania</h3>
             <?php echo do_shortcode('[animation][header_card header_content="Ameritrade Founder and CEO Joe Ricketts travels to Tanzania" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"][launcher target="2005-1-popover-modal"]<img src="https://opportunityeducation.org/wp-content/uploads/2018/09/2005-1-1-900x288.png" alt="" width="1480" height="474" class="u-display--block u-margin-bottom--std alignnone size-bleed wp-image-1481" />
-[/launcher]Ameritrade Founder and CEO Joe Ricketts travels to Tanzania​ for holiday. While there, he meets safari guide Shangi Wilson and learns that Wilson is building a nursery and primary school. Ricketts visits the school and donates $1,400 to Wilson for its construction. Later, Ricketts sends off-the-shelf video and other educational materials to Wilson’s school in Tanzania and begins to consider how he might help other schools in Tanzania and the developing world.[/header_card][/animation]'); ?>
+[/launcher]Ameritrade Founder and CEO Joe Ricketts travels to Tanzania​ for holiday. While there, he meets safari guide Shange Wilson and learns that Wilson is building a nursery and primary school. Ricketts visits the school and donates $1,400 to Wilson for its construction. Later, Ricketts sends off-the-shelf video and other educational materials to Wilson’s school in Tanzania and begins to consider how he might help other schools in Tanzania and the developing world.[/header_card][/animation]'); ?>
 
             <?php echo do_shortcode('[animation][header_card header_content="Opportunity Education Foundation is Established" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
-<img src="https://opportunityeducation.org/wp-content/uploads/2018/07/Copy-of-OENGL_RGB_forLiteBkgd_SM.png" alt="" width="452" height="147" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1495" />Opportunity Education Foundation is established​ with Joe Ricketts serving as CEO. Our mission is “to make quality education accessible to children indeveloping nations so they can improve their standards of living and work towards a brighter future.”[/header_card][/animation]'); ?>
+<img src="https://www.opportunityeducation.org/wp-content/uploads/2018/12/2005-oe-logo.png" alt="" width="452" height="147" class="u-display--block u-margin-bottom--std alignnone size-full wp-image-1495" />Opportunity Education Foundation is established​ with Joe Ricketts serving as CEO. Our mission is “to make quality education accessible to children indeveloping nations so they can improve their standards of living and work towards a brighter future.”[/header_card][/animation]'); ?>
 
 <?php echo do_shortcode('[animation][header_card header_content="OE establishes the Primary School Student Program in Tanzania and Uganda" header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"][launcher target="2005-3-popover-modal"]
 <img src="https://opportunityeducation.org/wp-content/uploads/2018/09/2005-3-900x288.png" alt="" width="1480" height="474" class="u-display--block u-margin-bottom--std alignnone size-bleed wp-image-1483" />
@@ -80,7 +80,7 @@ $content_atts = array(
             <?php echo do_shortcode('[animation]
 [header_card header_content="OE expands the Primary School Student Program." header_content_tag="h4" header_content_additional_classes="u-text--heading-micro u-text--bold" header_background_color="rich_white" additional_classes="u-border-left--solid-std u-border--color-zest"]
 
-OE expands the Primary School Student Program.​ We begin to​​produce “Let’s Learn” video programming and supplemental educational materials filmed anddeveloped in the US for primary schools overseas. Our programming is designedto address milestones in primary educational curricula, Forms 1-6, and covers five principal areas of study: reading, mathematics, science, creative arts, and social studies. OE ships video lessons and supplemental materials to partnering schools throughout the developing world.
+OE expands the Primary School Student Program.​ We begin to​​produce “Let’s Learn” video programming and supplemental educational materials filmed and developed in the US for primary schools overseas. Our programming is designed to address milestones in primary educational curricula, Forms 1-6, and covers five principal areas of study: reading, mathematics, science, creative arts, and social studies. OE ships video lessons and supplemental materials to partnering schools throughout the developing world.
 
 [/header_card]
 [/animation]'); ?>
