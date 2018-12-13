@@ -18,7 +18,9 @@ class Icon_List extends \ui\UI_Component {
 	// Argument schema
 	protected $_arg_schema = array(
 		'type'                    => 'document',
-		'columns'                 => false,
+        'columns'                 => false,
+        'column_layout'           => false,
+        'breakpoint'              => 'lg',
 		'items'                   => [],
 		'item_additional_classes' => '',
 		'additional_classes'      => ''

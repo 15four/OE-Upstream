@@ -19,7 +19,27 @@
 			.c-grid__column {
 				@include PSJ_proportion(margin-bottom, tiny);
 			}
-		}
+        }
+        
+        &--custom-order {
+            column-count: 2;
+            column-gap: 24px;
+            @include PSJ_breakpoint(md) {
+                column-gap: 32px;
+            }
+            @include PSJ_breakpoint(lg) {
+                column-gap: 38px;
+            }
+            @include PSJ_breakpoint(xl) {
+                column-gap: 46px;
+            }
+            @include PSJ_breakpoint(xl) {
+                column-gap: 60px;
+            }
+            li {
+                display: inline-flex;
+            }
+        }
 
 		&__item {
 
@@ -80,7 +100,7 @@
 		}
 
 		&__item-content {
-			@extend %padded-element;
+            @extend %padded-element;
 
 			@include PSJ_proportion(padding-left, tiny);
 
@@ -97,7 +117,12 @@
 				.c-card--quest & {
 					@include PSJ_proportion(padding-left, tiny);
 				}
-			}
+            }
+
+            #{$block}--numbered & {
+                padding-left: 0.75rem;
+            }
+
 		}
 	}
 }

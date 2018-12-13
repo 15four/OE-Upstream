@@ -7,29 +7,9 @@ namespace ui;
  * @package Opportunity_Education
  */
 
-// Merge item with defaults
-$item = array_merge(
-	array(
-		'width'              => 6,
-		'breakpoint'         => 'lg',
-		'icon'               => null,
-		'content'            => '',
-		'additional_classes' => ''
-	),
-	$item
-);
-
 // Set attributes
 $attributes = array(
 	'class' => 'c-icon-list__item u-display--flex u-flex--align-start '	. $args['item_additional_classes'] . ' ' . $item['additional_classes']
-);
-
-// Set up grid column classes
-$grid_column_attributes = array(
-	'class' => 'c-grid__column c-grid__column--12 '
-		. ( ( int ) $item['width'] !== 12
-			? 'c-grid__column--' . $item['width'] . '@' . $item['breakpoint']
-			: '' )
 );
 
 // Set icon attributes
@@ -59,10 +39,6 @@ if ( $args['type'] === 'custom' ) {
 
 ?>
 
-<?php if ( $args['columns'] ): ?>
-	<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $grid_column_attributes ); ?>>
-<?php endif; ?>
-
 <li <?php echo \fifteen_four\helpers\get_attributes_from_array( $attributes ); ?>>
 
 	<div class="c-icon-list__item-icon-container">
@@ -78,7 +54,3 @@ if ( $args['type'] === 'custom' ) {
 	</div>
 
 </li>
-
-<?php if ( $args['columns'] ): ?>
-	</div>
-<?php endif; ?>

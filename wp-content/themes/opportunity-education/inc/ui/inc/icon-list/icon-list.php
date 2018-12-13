@@ -40,7 +40,9 @@ function icon_list_shortcode( $atts, $content ) {
 	$atts = shortcode_atts(
 		array(
 			'type'                    => 'document',
-			'columns'                 => false,
+            'columns'                 => false,
+            'layout'                  => false,
+            'breakpoint'              => 'lg',
 			'item_additional_classes' => '',
 			'additional_classes'      => ''
 		),
