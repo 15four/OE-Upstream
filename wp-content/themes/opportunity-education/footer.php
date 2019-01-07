@@ -24,7 +24,10 @@
 		);
 
 		// Echo the section
-		\ui\section( $newsletter_subscribe_section_args );
+        \ui\section( $newsletter_subscribe_section_args );
+        
+        // Grab current year for legal
+        $curYear = date('Y');
 
 	?>
 
@@ -61,7 +64,7 @@
 				<div class="u-display--flex u-flex--wrap u-flex--justify-center u-flex--justify-between@lg u-flex--align-center">
 					<div class="site-footer__secondary-info u-display--flex@lg u-text--align-center u-text--caption u-text--align-left@lg u-block--full-width u-block--auto-width@lg u-margin-bottom--micro u-margin-bottom--none@lg">
 						<div class="site-footer__copyright-info u-margin-right--sm@lg">
-							<strong>&copy; 2018 Opportunity Education Foundation, Inc.<br class="u-display--none@md" /></strong> All rights reserved.
+							<strong>&copy; <?php echo $curYear; ?> Opportunity Education Foundation, Inc.<br class="u-display--none@md" /></strong> All rights reserved.
 						</div>
 						<?php dynamic_sidebar( 'sidebar-subfooter' ); ?>
 					</div>
