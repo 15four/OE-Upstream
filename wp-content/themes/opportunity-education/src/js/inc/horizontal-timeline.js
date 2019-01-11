@@ -281,5 +281,11 @@ jQuery(document).ready(function($){
 	function checkMQ() {
 		//check if mobile or desktop device
 		return window.getComputedStyle(document.querySelector('.cd-horizontal-timeline'), '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, "");
-	}
+    }
+
+    // Load horizontal timeline with first item selected
+    $( '.events > ol > li:first-child' ).addClass( 'selected' );
+    $( '.events > ol > li:first-child > a' ).addClass( 'selected' );
+    $( '.events-content > ol > li:first-child' ).addClass( 'selected' );
+
 });
