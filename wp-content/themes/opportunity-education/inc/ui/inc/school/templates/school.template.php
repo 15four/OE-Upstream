@@ -71,7 +71,7 @@ $content_attributes = array(
 
             <div class="c-grid__column c-grid__column--12 c-grid__column--6@md">
 
-                <h4>Rev. Rodrick Lymo, Head of School</h4>
+                <h4><?php echo $args['school_leader']; ?></h4>
                 <p><strong>Phone:</strong> <?php echo $args['school_phone']; ?></p>
                 <p><strong>Email:</strong> <a href="mailto:<?php echo $args['school_email']; ?>"><?php echo $args['school_email']; ?></a></p>
 
