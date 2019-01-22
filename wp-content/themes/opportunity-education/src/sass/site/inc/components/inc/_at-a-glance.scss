@@ -6,7 +6,8 @@
 	$block: &;
 
     position: relative;
-    transform: translateY(-30%);
+    transform: translateY(-80%);
+    margin-bottom: -10rem;
 
     p {
         &:nth-child(1),
