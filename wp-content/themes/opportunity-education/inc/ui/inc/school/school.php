@@ -12,7 +12,13 @@ function get_school( $args = array() ) {
     // Set config defaults
     $args = array_merge(
         array(
-            'tag'                          => 'section',
+            'tag'                          => 'div',
+            'link'                               => null,
+            'background_color'                   => 'rich_white',
+		'image'                              => null,
+		'image_side'                         => 'left',
+		'image_container_additional_classes' => '',
+		'image_additional_classes'           => '',
             'additional_classes'           => '',
             'content'                      => '',
             'content_additional_classes'   => ''
@@ -36,7 +42,13 @@ function school_shortcode( $atts, $content ) {
 	// Atts
 	$atts = shortcode_atts(
 		array(
-			'tag'                          => 'section',
+            'tag'                          => 'div',
+            'link'                               => null,
+        'background_color'                   => 'rich_white',
+		'image'                              => null,
+		'image_side'                         => 'left',
+		'image_container_additional_classes' => '',
+		'image_additional_classes'           => '',
 			'additional_classes'           => '',
 			'content'                      => '',
             'content_additional_classes'   => ''

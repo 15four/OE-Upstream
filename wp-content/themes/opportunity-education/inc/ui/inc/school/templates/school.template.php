@@ -7,93 +7,62 @@
  */
 
 
-// Set attributes for component
-$atts = array(
-    'class' => 'cd-horizontal-timeline '
-    . $args['additional_classes']
+// Set attributes
+$attributes = array(
+	'class' => 'c-card c-card--number '
+		. 'c-card--image-' . $args['image_side'] . ' '
+		. ( $args['image_side'] !== 'top'
+			? 'u-display--flex@lg'
+			: '' ) . ' '
+		. ( $args['link']
+			? 'c-card--has-link'
+			: '' ) . ' '
+		. \helpers\prepare_background_class_names( $args['background_color'] ) . ' '
+		. $args['additional_classes']
 );
 
-// Content atts
-$content_atts = array(
-    'class' => ' ' . $args['content_additional_classes']
+// Set image container attributes
+$image_container_attributes = array(
+	'class' => 'c-card__image-container '
+		. ( $args['image_side'] === 'right'
+			? 'u-flex--order-1@lg '
+			: '' )
+		. $args['image_container_additional_classes']
+);
+
+// Set image attributes
+$image_attributes = array(
+	'class' => 'c-card__image u-block--full-height '
+		. $args['image_additional_classes'],
+	'style' => array(
+		'background-image' => 'url("' . $args['image'] . '")'
+	)
+);
+
+// Set content attributes
+$content_attributes = array(
+	'class' => 'c-card__content '
+		. $args['content_additional_classes']
 );
 
 ?>
 
-<<?php echo $args['tag'] . ' ' . \fifteen_four\helpers\get_attributes_from_array( $atts ); ?>>
+<<?php echo $args['tag'] . ' ' . \fifteen_four\helpers\get_attributes_from_array( $attributes ); ?>>
 
-    <?php if( have_rows('horizontal_timeline') ): ?>
+	<?php if ( $args['link'] ): ?>
+		<a class="c-card__link o-link--plain u-display--flex@lg u-block--full-width" href="<?php echo $args['link']; ?>">
+	<?php endif; ?>
 
-    <!-- Timeline navigation -->
-    <div class="timeline">
-		<div class="events-wrapper">
-			<div class="events">
-                <ol style="list-style:none;">
+	<header <?php echo \fifteen_four\helpers\get_attributes_from_array( $image_container_attributes ); ?>>
+		<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $image_attributes ); ?>>
+	</header>
 
-                    <?php while( have_rows('horizontal_timeline') ): the_row(); 
+	<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $content_attributes ); ?>>
+		<?php echo $args['content']; ?>
+	</div>
 
-                        // vars
-                        $header = get_sub_field('header');
-                        $year = get_sub_field('year');
-                        $content = get_sub_field('content');
-
-                        ?>
-
-                        <li><a href="#0" data-tooltip="<?php echo $header; ?>" data-date="01/01/<?php echo $year?>"><?php echo $year; ?></a></li>
-
-                    <?php endwhile; ?>
-                
-                </ol>
-
-            <!-- Timeline line -->
-            <span class="filling-line" aria-hidden="true"></span>
-
-            </div><!-- .events -->
-        </div><!-- .events-wrapper -->
-
-        <!-- Timeline arrow buttons -->
-        <ul class="cd-timeline-navigation">
-			<li><a href="#0" class="prev inactive"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/arrow.png"></a></li>
-			<li><a href="#0" class="next"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/arrow.png"></a></li>
-		</ul><!-- .cd-timeline-navigation -->
-
-	</div><!-- .timeline -->
-
-    <!-- Timeline content -->
-    <div class="events-content">
-		<ol style="list-style-type:none;">
-
-            <?php while( have_rows('horizontal_timeline') ): the_row(); 
-
-                // vars
-                $header = get_sub_field('header');
-                $year = get_sub_field('year');
-                $content = get_sub_field('content');
-
-                ?>
-
-                <li data-date="01/01/<?php echo $year; ?>">
-                    <h3 class="u-text--bold u-text--centered u-padding-left--section u-padding-right--section u-padding-top--std"><?php echo $header; ?></h3>
-                    <?php echo $content; ?>
-                </li>
-
-            <?php endwhile; ?>
-            
-        </ol>
-    </div><!-- .events-content -->
-
-    <div class="c-container">
-        <div class="c-grid">
-            <div class="c-grid__column c-grid__column--12@xxs c-grid__column--6@lg">
-
-                <div class="<?php echo \fifteen_four\helpers\get_attributes_from_array( $content_atts ); ?>">
-                    <?php echo apply_filters( 'the_content', $args['content'] ); ?>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <?php endif; ?>
+	<?php if ( $args['link'] ): ?>
+		</a>
+	<?php endif; ?>
 
 </<?php echo $args['tag']; ?>>
