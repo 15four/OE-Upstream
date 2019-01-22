@@ -18,7 +18,7 @@ $attributes = array(
 
 <div class="c-at-a-glance c-grid u-display--flex u-flex--justify-end">
 
-<div class="c-grid__column c-grid__column--5">
+<div class="c-grid__column c-grid__column--12 c-grid__column--8@md c-grid__column--5@lg">
 
 <<?php echo $args['tag'] . ' ' . \fifteen_four\helpers\get_attributes_from_array( $attributes ); ?>>
 
