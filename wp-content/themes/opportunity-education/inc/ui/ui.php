@@ -75,3 +75,6 @@ require __DIR__ . '/inc/timeline/timeline.php';
 
 // Horizontal Timeline
 require __DIR__ . '/inc/horizontal-timeline/horizontal-timeline.php';
+
+// School
+require __DIR__ . '/inc/school/school.php';
