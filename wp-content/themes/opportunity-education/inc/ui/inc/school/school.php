@@ -12,16 +12,17 @@ function get_school( $args = array() ) {
     // Set config defaults
     $args = array_merge(
         array(
-            'tag'                          => 'div',
+            'tag'                                => 'div',
             'link'                               => null,
-            'background_color'                   => 'rich_white',
-		'image'                              => null,
-		'image_side'                         => 'left',
-		'image_container_additional_classes' => '',
-		'image_additional_classes'           => '',
-            'additional_classes'           => '',
-            'content'                      => '',
-            'content_additional_classes'   => ''
+            'background_color'                   => 'light_gray',
+            'image'                              => null,
+            'image_side'                         => 'left',
+            'image_container_additional_classes' => '',
+            'image_additional_classes'           => '',
+            'school_name'                        => '',
+            'additional_classes'                 => '',
+            'content'                            => '',
+            'content_additional_classes'         => ''
         ),
         $args
     );
@@ -42,16 +43,17 @@ function school_shortcode( $atts, $content ) {
 	// Atts
 	$atts = shortcode_atts(
 		array(
-            'tag'                          => 'div',
+            'tag'                                => 'div',
             'link'                               => null,
-        'background_color'                   => 'rich_white',
-		'image'                              => null,
-		'image_side'                         => 'left',
-		'image_container_additional_classes' => '',
-		'image_additional_classes'           => '',
-			'additional_classes'           => '',
-			'content'                      => '',
-            'content_additional_classes'   => ''
+            'background_color'                   => 'light_gray',
+            'image'                              => null,
+            'image_side'                         => 'left',
+            'image_container_additional_classes' => '',
+            'image_additional_classes'           => '',
+            'school_name'                        => '',
+			'additional_classes'                 => '',
+			'content'                            => '',
+            'content_additional_classes'         => ''
 		),
 		$atts
 	);

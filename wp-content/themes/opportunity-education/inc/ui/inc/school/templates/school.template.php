@@ -9,7 +9,7 @@
 
 // Set attributes
 $attributes = array(
-	'class' => 'c-card c-card--number '
+	'class' => 'c-card c-card--school '
 		. 'c-card--image-' . $args['image_side'] . ' '
 		. ( $args['image_side'] !== 'top'
 			? 'u-display--flex@lg'
@@ -55,7 +55,11 @@ $content_attributes = array(
 
 	<header <?php echo \fifteen_four\helpers\get_attributes_from_array( $image_container_attributes ); ?>>
 		<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $image_attributes ); ?>>
-	</header>
+    </header>
+    
+    <?php if ( $args['link'] ): ?>
+        <h2 class="u-text--heading-md"><?php echo $args['school_name']; ?></h2>
+    <?php endif; ?>
 
 	<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $content_attributes ); ?>>
 		<?php echo $args['content']; ?>
