@@ -85,4 +85,28 @@ input[type="radio"] {
     justify-content: center;
     align-items: center;
     align-content: center;
+
+    input {
+        display: none!important;
+    }
+
+    li {
+        @include PSJ_proportion (margin-right, std);
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
 }
+
+li#field_1_4 label {
+    display: block!important;
+    text-align: center;
+    padding: 0;
+}
+
+.ginput_complex label {
+    font-weight: 700;
+    font-size: inherit!important;
+}
+
