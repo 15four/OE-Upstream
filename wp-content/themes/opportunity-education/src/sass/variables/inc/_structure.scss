@@ -16,7 +16,10 @@ $breakpoint-map: (
 
 // Proportion map
 $proportion-map: (
-	none: (
+    negative: (
+        default: -1rem,
+    ),
+    none: (
 		default: 0,
 		md: 0,
 		lg: 0,

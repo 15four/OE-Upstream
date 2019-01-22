@@ -55,14 +55,39 @@ $content_attributes = array(
 
 	<header <?php echo \fifteen_four\helpers\get_attributes_from_array( $image_container_attributes ); ?>>
 		<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $image_attributes ); ?>>
-    </header>
-    
-    <?php if ( $args['link'] ): ?>
-        <h2 class="u-text--heading-md"><?php echo $args['school_name']; ?></h2>
-    <?php endif; ?>
+    </header>    
 
-	<div <?php echo \fifteen_four\helpers\get_attributes_from_array( $content_attributes ); ?>>
-		<?php echo $args['content']; ?>
+    <div <?php echo \fifteen_four\helpers\get_attributes_from_array( $content_attributes ); ?>>
+
+        <div class="c-grid">
+
+            <div class="c-grid__column c-grid__column--12">
+    
+                <?php if ( $args['school_name'] ): ?>
+                    <h2 class="u-text--heading-md"><?php echo $args['school_name']; ?></h2>
+                <?php endif; ?>
+
+            </div>
+
+            <div class="c-grid__column c-grid__column--6">
+
+                <?php echo $args['content']; ?>
+                <p><strong>Phone:</strong> <?php echo $args['school_phone']; ?></p>
+                <p><strong>Email:</strong> <a href="mailto:<?php echo $args['school_email']; ?>"><?php echo $args['school_email']; ?></a></p>
+
+            </div>
+
+            <div class="c-grid__column c-grid__column--6">
+
+                <p><strong>Address:</strong> <?php echo $args['school_address']; ?></p>
+                <p><strong>Total Students:</strong> <?php echo $args['total_students']; ?>, <strong>Quest Forward Students:</strong> <?php echo $args['quest_forward_students']; ?></p>
+                <p><strong>Total Teachers:</strong> <?php echo $args['total_teachers']; ?>, <strong>Quest Forward Mentors:</strong> <?php echo $args['quest_forward_mentors']; ?></p>
+                <p><strong>Streams:</strong> <?php echo $args['streams']; ?></p>
+
+            </div>
+
+        </div>
+
 	</div>
 
 	<?php if ( $args['link'] ): ?>

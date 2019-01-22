@@ -11,6 +11,14 @@
             #{$block}__content & {
                 width: 100%;
             }
+
+            p {
+                font-size: .95rem;
+
+                a {
+                    color: PSJ_color(rich-black);
+                }
+            }
             
         }
 	}

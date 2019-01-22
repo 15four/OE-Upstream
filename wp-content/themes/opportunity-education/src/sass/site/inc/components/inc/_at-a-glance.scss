@@ -1,0 +1,24 @@
+// ================================================= /
+// ======   ICON LIST COMPONENT  =================== /
+// ================================================= /
+
+.c-at-a-glance {
+	$block: &;
+
+    position: relative;
+    transform: translateY(-30%);
+
+    p {
+        &:nth-child(1),
+        &:nth-child(2) {
+            letter-spacing: 1px;
+        }
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+            font-size: .875rem;
+        }
+
+    }
+
+}

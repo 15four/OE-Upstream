@@ -78,3 +78,6 @@ require __DIR__ . '/inc/horizontal-timeline/horizontal-timeline.php';
 
 // School
 require __DIR__ . '/inc/school/school.php';
+
+// At a Glance
+require __DIR__ . '/inc/at-a-glance/at-a-glance.php';
