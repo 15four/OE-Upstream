@@ -69,15 +69,15 @@ $content_attributes = array(
 
             </div>
 
-            <div class="c-grid__column c-grid__column--6">
+            <div class="c-grid__column c-grid__column--12 c-grid__column--6@md">
 
-                <?php echo $args['content']; ?>
+                <h4>Rev. Rodrick Lymo, Head of School</h4>
                 <p><strong>Phone:</strong> <?php echo $args['school_phone']; ?></p>
                 <p><strong>Email:</strong> <a href="mailto:<?php echo $args['school_email']; ?>"><?php echo $args['school_email']; ?></a></p>
 
             </div>
 
-            <div class="c-grid__column c-grid__column--6">
+            <div class="c-grid__column c-grid__column--12 c-grid__column--6@md">
 
                 <p><strong>Address:</strong> <?php echo $args['school_address']; ?></p>
                 <p><strong>Total Students:</strong> <?php echo $args['total_students']; ?>, <strong>Quest Forward Students:</strong> <?php echo $args['quest_forward_students']; ?></p>
