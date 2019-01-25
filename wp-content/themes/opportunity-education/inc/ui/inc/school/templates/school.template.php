@@ -77,7 +77,7 @@ $content_attributes = array(
 
             </div>
 
-            <div class="c-grid__column c-grid__column--12 c-grid__column--6@md">
+            <div class="c-grid__column c-grid__column--12 c-grid__column--6@md u-padding-left--tiny">
 
                 <p><strong>Address:</strong> <?php echo $args['school_address']; ?></p>
                 <p><strong>Total Students:</strong> <?php echo $args['total_students']; ?>, <strong>Quest Forward Students:</strong> <?php echo $args['quest_forward_students']; ?></p>
