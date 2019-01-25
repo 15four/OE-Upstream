@@ -61,10 +61,10 @@ $content_attributes = array(
 
         <div class="c-grid">
 
-            <div class="c-grid__column c-grid__column--12">
+            <div class="c-grid__column c-grid__column--12 u-margin-bottom--sm">
     
                 <?php if ( $args['school_name'] ): ?>
-                    <h2 class="u-text--heading-md"><?php echo $args['school_name']; ?></h2>
+                    <h2><?php echo $args['school_name']; ?></h2>
                 <?php endif; ?>
 
             </div>

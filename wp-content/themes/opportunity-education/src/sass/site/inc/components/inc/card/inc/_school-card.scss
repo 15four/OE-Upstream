@@ -3,6 +3,9 @@
 // ================================================= /
 
 .c-card {
+    box-shadow: none;
+    border-radius: 0;
+
     $block: &;
 	@at-root {
 
@@ -13,17 +16,25 @@
             }
 
             p {
-                font-size: .95rem;
+                font-size: 1rem;
+                margin: 0 0 .125rem 0;
 
                 a {
                     color: PSJ_color(rich-black);
                 }
             }
 
+            h2 {
+                font-family: PSJ_font-family(roboto);
+                color: PSJ_color(victoria);
+                font-size: 1.5625rem;
+            }
+
             h4 {
-                font-size: 1.125rem;
                 font-style: italic;
-                color: PSJ_color(mid-gray)!important;
+                margin-bottom: .5125rem;
+                font-size: 1.25rem;
+                color: #727F95!important;
             }
             
         }
