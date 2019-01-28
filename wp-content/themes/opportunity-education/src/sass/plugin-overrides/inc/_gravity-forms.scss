@@ -312,6 +312,7 @@ li#field_1_4 {
         flex-wrap: wrap;
 
         label {
+            outline: none;
             &::before {
                 margin-bottom: -0.3125rem;
             }
