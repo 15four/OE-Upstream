@@ -303,3 +303,12 @@
 		}
 	}
 }
+
+// TZ Contact Form
+ul#input_1_2 {
+    label {
+        &::before {
+            margin-bottom: -0.3125rem;
+        }
+    }
+}

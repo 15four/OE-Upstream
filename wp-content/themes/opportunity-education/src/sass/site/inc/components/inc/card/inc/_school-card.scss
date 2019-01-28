@@ -18,16 +18,22 @@
             p {
                 font-size: 1rem;
                 margin: 0 0 .125rem 0;
+                color: #444444;
 
                 a {
-                    color: PSJ_color(rich-black);
+                    color: #444444;
+                    font-weight: 400;
+                    &:hover {
+                        color: PSJ_color(zest);
+                    }
                 }
             }
 
             h2 {
-                font-family: PSJ_font-family(roboto);
+                font-family: PSJ_font-family(meta-serif);
                 color: PSJ_color(victoria);
                 font-size: 1.5625rem;
+                font-weight: 700;
             }
 
             h4 {
@@ -35,6 +41,14 @@
                 margin-bottom: .5125rem;
                 font-size: 1.25rem;
                 color: #727F95!important;
+            }
+
+            &__slider {
+            
+                button {
+                    font-weight: 400;
+                }
+
             }
             
         }
