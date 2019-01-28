@@ -308,10 +308,17 @@
 li#field_1_2,
 li#field_1_4 {
     .gfield_radio {
+        display: flex;
+        flex-wrap: wrap;
+
         label {
             &::before {
                 margin-bottom: -0.3125rem;
             }
         }
+        li {
+            width: auto;
+        }
+        
     }
 }
