@@ -305,10 +305,16 @@
 }
 
 // TZ Contact Form
-ul#input_1_2 {
-    label {
-        &::before {
-            margin-bottom: -0.3125rem;
+li#field_1_2,
+li#field_1_4 {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    .gfield_radio {
+        label {
+            &::before {
+                margin-bottom: -0.3125rem;
+            }
         }
     }
 }
