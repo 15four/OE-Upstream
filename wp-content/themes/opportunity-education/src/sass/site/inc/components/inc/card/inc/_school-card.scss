@@ -38,14 +38,15 @@
 
             h4 {
                 font-style: italic;
-                margin-bottom: .5125rem;
+                margin-bottom: .245rem;
                 font-size: 1.25rem;
                 color: #727F95!important;
             }
 
             &__slider {
             
-                button {
+                .c-slider__control--tab {
+                    font-size: 1.125rem!important;
                     font-weight: 400;
                 }
 
