@@ -166,7 +166,7 @@ class GFMailChimp extends GFFeedAddOn {
 	 *
 	 * @since  1.0
 	 * @access protected
-	 * @var    object $api If available, contains an instance of the Mailchimp API library.
+	 * @var    GF_MailChimp_API $api If available, contains an instance of the Mailchimp API library.
 	 */
 	public $api = null;
 
@@ -400,6 +400,17 @@ class GFMailChimp extends GFFeedAddOn {
 								'name'  => 'markAsVIP',
 								'label' => esc_html__( 'Mark subscriber as VIP', 'gravityformsmailchimp' ),
 							),
+						),
+					),
+					array(
+						'name'  => 'tags',
+						'type'  => 'text',
+						'class' => 'medium merge-tag-support mt-position-right mt-hide_all_fields',
+						'label' => esc_html__( 'Tags', 'gravityformsmailchimp' ),
+						'tooltip'       => sprintf(
+							'<h6>%s</h6>%s',
+							esc_html__( 'Tags', 'gravityformsmailchimp' ),
+							esc_html__( 'Associate tags to your MailChimp contacts with a comma separated list (e.g. new lead, Gravity Forms, web source). Commas within a merge tag value will be created as a single tag.', 'gravityformsmailchimp' )
 						),
 					),
 					array(
@@ -1150,6 +1161,24 @@ class GFMailChimp extends GFFeedAddOn {
 
 		}
 
+		// Get tags.
+		$tags = explode(',', rgars( $feed, 'meta/tags' ) );
+		$tags = array_map( 'trim', $tags );
+
+		// Prepare tags.
+		if ( ! empty( $tags ) ) {
+
+			// Loop through tags, replace merge tags.
+			foreach ( $tags as &$tag ) {
+				$tag = GFCommon::replace_variables( $tag, $form, $entry, false, false, false, 'text' );
+				$tag = trim( $tag );
+			}
+
+			// Remove empty tags.
+			$tags = array_filter( $tags );
+
+		}
+
 		// If member status is not defined or is anything other than pending, set to subscribed.
 		$member_status = isset( $member_status ) && $member_status === 'pending' ? $member_status : 'subscribed';
 
@@ -1165,7 +1194,20 @@ class GFMailChimp extends GFFeedAddOn {
 			'ip_signup'    => rgar( $entry, 'ip' ),
 			'vip'          => rgars( $feed, 'meta/markAsVIP' ) ? true : false,
 			'note'         => rgars( $feed, 'meta/note' ),
+			'tags'         => array(),
 		);
+
+		// Get existing tags.
+		$existing_tags = $member ? wp_list_pluck( $member['tags'], 'name' ) : array();
+
+		// Add tags to subscription.
+		if ( ! empty( $tags ) ) {
+			$subscription['tags'] = $member ? array_merge( $existing_tags, $tags ) : $tags;
+			$subscription['tags'] = array_unique( $subscription['tags'] );
+		} else {
+			$subscription['tags'] = $member ? $existing_tags : $subscription['tags'];
+			$subscription['tags'] = array_unique( $subscription['tags'] );
+		}
 
 		// Prepare transaction type for filter.
 		$transaction = $member_found ? 'Update' : 'Subscribe';
@@ -1228,6 +1270,13 @@ class GFMailChimp extends GFFeedAddOn {
 			unset( $subscription['vip'] );
 		}
 
+		// Remove tags from subscription object.
+		$tags = $subscription['tags'];
+		unset( $subscription['tags'] );
+		foreach ( $tags as &$tag ) {
+			$tag = array( 'name' => $tag, 'status' => 'active' );
+		}
+
 		// Remove note from the subscription object and process any merge tags.
 		$note = GFCommon::replace_variables( $subscription['note'], $form, $entry, false, true, false, 'text' );
 		unset( $subscription['note'] );
@@ -1255,13 +1304,31 @@ class GFMailChimp extends GFFeedAddOn {
 				$this->log_error( __METHOD__ . '(): Field errors when attempting subscription: ' . print_r( $e->getErrors(), true ) );
 			}
 
-			return;
+			return $entry;
+
+		}
+
+		try {
+
+			// Log the subscriber tags to be added or updated.
+			$this->log_debug( __METHOD__ . "(): Subscriber tags to be {$action}: " . print_r( $tags, true ) );
+
+			// Update tags.
+			$this->api->update_member_tags( $list_id, $subscription['email_address'], $tags );
+
+			// Log that the subscriber tags was added or updated.
+			$this->log_debug( __METHOD__ . "(): Subscriber tags successfully {$action}." );
+
+		} catch ( Exception $e ) {
+
+			// Log that subscription could not be added or updated.
+			$this->add_feed_error( sprintf( esc_html__( 'Unable to add/update subscriber tags: %s', 'gravityformsmailchimp' ), $e->getMessage() ), $feed, $entry, $form );
 
 		}
 
 		if ( ! $note ) {
 			// Abort as there is no note to process.
-			return;
+			return $entry;
 		}
 
 		try {
@@ -1275,7 +1342,7 @@ class GFMailChimp extends GFFeedAddOn {
 			// Log that the note could not be added.
 			$this->add_feed_error( sprintf( esc_html__( 'Unable to add note to subscriber: %s', 'gravityformsmailchimp' ), $e->getMessage() ), $feed, $entry, $form );
 
-			return;
+			return $entry;
 
 		}
 

@@ -23,11 +23,11 @@
 		padding-left: $padding-while-focused;
 	}
 
-    &:focus,
-    &.is-selected {
+	&:focus,
+	&.is-selected {
 		padding-left: calc(#{$padding-while-focused} - #{border(std)});
 		border-left: border(std) solid PSJ_color(zest);
-    }
+	}
 
 	// Children of zesty backgrounds have a victoria border
 	.u-background--zest :not([class*=".u-background--"]) & {
@@ -51,8 +51,9 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-    @extend %field;
-    @include PSJ_proportion(padding, sm);
+	@extend %field;
+
+	@include PSJ_proportion(padding, sm);
 }
 
 select {
@@ -60,53 +61,9 @@ select {
 
 	appearance: none;
 	-webkit-appearance: none;
-    line-height: 1.2;
-    
+	line-height: 1.2;
 }
 
 input[type="radio"] {
-    appearance: none!important;
-    -webkit-appearance: none!important;
-    @include PSJ_proportion(padding, sm);
+	@include PSJ_proportion(padding, sm);
 }
-
-.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
-    padding: 24px 0 24px 24px!important;
-}
-
-.gform_wrapper ul.gfield_checkbox li label, .gform_wrapper ul.gfield_radio li label {
-    display: flex;
-    align-content: center;
-    white-space: nowrap;
-}
-
-.gform_wrapper ul.gfield_radio {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-
-    input {
-        display: none!important;
-    }
-
-    li {
-        @include PSJ_proportion (margin-right, std);
-        &:last-child {
-            margin-right: 0;
-        }
-    }
-
-}
-
-li#field_1_4 label {
-    display: block!important;
-    text-align: center;
-    padding: 0;
-}
-
-.ginput_complex label {
-    font-weight: 700;
-    font-size: inherit!important;
-}
-

@@ -93,7 +93,9 @@
 
 		// Kill the actual inputs
 		input[type="radio"] {
-			display: none;
+			position: absolute;
+			opacity: 0;
+			pointer-events: none;
 		}
 
 		// Make some fake ones
@@ -122,6 +124,11 @@
 					border-color: PSJ_color(zest);
 				}
 			}
+		}
+
+		// When the input is focused, the label dude only changes its border color
+		input:focus + label::before {
+			border-color: PSJ_color(zest);
 		}
 
 		// When the input is checked, the label dude changes
@@ -279,7 +286,6 @@
 	}
 
 	.gform_body {
-
 		@include PSJ_breakpoint(lg) {
 			@include PSJ_proportion(margin-right, tiny);
 
@@ -307,23 +313,62 @@
 // TZ Contact Form
 li#field_1_2,
 li#field_1_4 {
-    .gfield_radio {
-        display: flex;
-        flex-wrap: wrap;
 
-        label {
-            outline: none;
-            &::before {
-                margin-bottom: -0.3125rem;
-            }
-        }
-        li {
-            width: auto!important;
-        }
-        
-    }
+	.gfield_radio {
+		display: flex;
+		flex-wrap: wrap;
+
+		label {
+			outline: none;
+
+			&::before {
+				margin-bottom: -0.3125rem;
+			}
+		}
+
+		li {
+			width: auto !important;
+		}
+	}
 }
 
-input[type=submit] {
-    justify-content: center!important;
+// Begin Nick having no idea what these are for
+// Humbly request better organization because this becomes dangerous to modify and leads to bloat
+
+.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]) {
+	padding: 24px 0 24px 24px !important;
 }
+
+.gform_wrapper ul.gfield_checkbox li label,
+.gform_wrapper ul.gfield_radio li label {
+	display: flex;
+	align-content: center;
+	white-space: nowrap;
+}
+
+.gform_wrapper ul.gfield_radio {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+	li {
+		@include PSJ_proportion (margin-right, std);
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+li#field_1_4 label {
+	display: block !important;
+	text-align: center;
+	padding: 0;
+}
+
+.ginput_complex label {
+	font-weight: 700;
+	font-size: inherit !important;
+}
+
+// End Nick having no idea what these are for

@@ -22,6 +22,6 @@ import './inc/horizontal-timeline';
 import './inc/tooltip';
 import './inc/cookies-consent-bar';
 import './inc/make-widget-classy';
-import './inc/form-accessibility';
+// import './inc/form-accessibility';
 
 console.log( 'Main JS Loaded' );

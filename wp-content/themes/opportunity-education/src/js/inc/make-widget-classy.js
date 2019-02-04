@@ -6,17 +6,21 @@
 
 ( function( $ ) {
 
-    $('select#cat').addClass('o-field--small');
+	$( 'select#cat' ).addClass('o-field--small');
 
-    var dropdown = document.getElementById( "cat" );
+	var dropdown = document.getElementById( 'cat' );
+
 	function onCatChange() {
-		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
 			dropdown.parentNode.submit();
-        }
-        else if ( dropdown.options[ dropdown.selectedIndex ].value == 0 ) {
-			location.href = "/recent-news";
+		}
+		else if ( dropdown.options[dropdown.selectedIndex].value === 0 ) {
+			location.href = '/recent-news';
 		}
 	}
-    dropdown.onchange = onCatChange;
-    
+
+	if ( dropdown ) {
+		dropdown.onchange = onCatChange;
+	}
+
 } )( jQuery );
