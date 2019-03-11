@@ -56,10 +56,25 @@ function get_default_image( $name = null ) {
 	// If the default image is an array, pick a random one, otherwise, just pick it
 	$default_image = is_array( DEFAULT_IMAGES[$name] )
 		? DEFAULT_IMAGES[$name][array_rand( DEFAULT_IMAGES[$name] )]
-		: DEFAULT_IMAGES[$name];
+        : DEFAULT_IMAGES[$name];
+        
+    $parent_theme_dir = get_template_directory_uri() . '/assets/img/defaults/';
+
+    $dir = is_child_theme()
+        ? get_stylesheet_directory_uri() . '/assets/img/defaults/'
+        : $parent_theme_dir;
+
+    
 
 	// Otherwise, return image path
-	return get_template_directory_uri() . '/assets/img/defaults/' . $default_image;
+    // return get_template_directory_uri() . '/assets/img/defaults/' . $default_image;
+    
+    if ( is_child_theme() ) {
+        return get_stylesheet_directory_uri() . '/assets/img/defaults/' . $default_image;
+    }
+    else {
+        return get_template_directory_uri() . '/assets/img/defaults/' . $default_image;
+    }
 }
 
 // Forms
